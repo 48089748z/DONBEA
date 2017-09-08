@@ -57,11 +57,11 @@
             android:layout_height="1dp"
             android:layout_weight="35">
 
-            <Button
-                android:id="@+id/BTmp3"
+            <TextView
+                android:id="@+id/TVtitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="test1" />
+                android:text="Test1" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,8 +79,8 @@
             android:layout_height="1dp"
             android:layout_weight="35">
 
-            <Button
-                android:id="@+id/BTmp4"
+            <TextView
+                android:id="@+id/TVlength"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="test2" />
