@@ -1,16 +1,17 @@
 package com.example.uge01006.converter;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.uge01006.converter.POJOs.VideoYoutube;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
 {
-    private ArrayList<Result> items;
+    private ArrayList<VideoYoutube> items;
     private ListViewAdapter listViewAdapter;
     private ListView listView;
 
@@ -23,21 +24,29 @@ public class MainActivity extends AppCompatActivity
         listViewAdapter = new ListViewAdapter(this, 0, items);
         listView = (ListView) this.findViewById(R.id.LVitems);
         listView.setAdapter(listViewAdapter);
+
         testItems();
     }
 
     public void testItems()
     {
-        Result a = new Result();
-        a.setTitle("David Guetta ft. Justin Bieber - 2U");
-        a.setLength("3:27 minutes");
-        items.add(a);
+        VideoYoutube video = new VideoYoutube();
+        video.setTitle("Martin Garrix - Pizza");
+        video.setLikeCount("372.484");
+        video.setViewCount("34.478.424");
+        items.add(video);
 
-        Result b = new Result();
-        b.setTitle("Lost Frequencies & Netsky - Here With You");
-        b.setLength("Length 2:53");
-        items.add(a);
+        video.setTitle("David Guetta ft. Justin Bieber - 2U");
+        video.setLikeCount("15.484");
+        video.setViewCount("3.685.485");
+        items.add(video);
+
+        video.setTitle("Calvin Harris ft. Rihanna - This Is What You Came For");
+        video.setLikeCount("2.147.484");
+        video.setViewCount("1.373.685.485");
+        items.add(video);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
