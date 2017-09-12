@@ -1,13 +1,17 @@
 package com.example.uge01006.converter;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,24 +31,30 @@ public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
             convertView = inflater.inflate(R.layout.listview_layout, parent, false);
         }
 
-        VideoView video = convertView.findViewById(R.id.VVvideo);
+        ImageView image = convertView.findViewById(R.id.IVimage);
         TextView title = convertView.findViewById(R.id.TVtitle);
-        TextView length = convertView.findViewById(R.id.TVlength);
-        //TextView views = convertView.findViewById(R.id.TVviews);
-        //TextView likes = convertView.findViewById(R.id.TVlikes);
+        TextView views = convertView.findViewById(R.id.TVviews);
+        TextView likes = convertView.findViewById(R.id.TVlikes);
+        TextView dislikes = convertView.findViewById(R.id.TVdislikes);
 
-
+        Picasso.with(getContext()).load(item.getThumbnailmedium()).fit().into(image);
         title.setText(item.getTitle());
-        length.setText(item.getViewCount());
-        /** Meter el video en el VideoView a partir de la información del item
-        video.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=JsKIAO11q1Y&list=FLtYx3YJq_0mlhJO_rpE1MTQ"));
-      //  video.setVideoURI(Uri.parse("rtsp://v4.cache3.c.youtube.com/CjYLENy73wIaLQlW_ji2apr6AxMYDSANFEIJbXYtZ29vZ2xlSARSBXdhdGNoYOr_86Xm06e5UAw=/0/0/0/video.3gp"));
-        video.setMediaController(new MediaController(getContext())); //sets MediaController in the video view
-        // MediaController containing controls for a MediaPlayer
-        video.requestFocus();//give focus to a specific view
-        video.start();//starts the video
-         */
+        views.setText(getKorM(item.getViewCount()));
+        likes.setText(getKorM(item.getLikeCount()));
+        dislikes.setText(getKorM(item.getDislikeCount()));
+
         return convertView;
     }
 
+    private String getKorM (String number)
+    {
+        String result;
+        if (number.length()==5) {result = number.substring(0,2)+"."+number.substring(2,3)+"K";}
+        else if (number.length()==6) {result = number.substring(0,3)+"."+number.substring(3,4)+"K";}
+        else if (number.length()==7) {result = number.substring(0,1)+"."+number.substring(2,4)+"M";}
+        else if (number.length()==8) {result = number.substring(0,2)+"."+number.substring(2,3)+"M";}
+        else if (number.length()>8) {result = number.substring(0,number.length()-6)+"M";}
+        else {return number;}
+        return result;
+    }
 }

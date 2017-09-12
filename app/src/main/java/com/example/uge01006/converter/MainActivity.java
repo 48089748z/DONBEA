@@ -1,10 +1,16 @@
 package com.example.uge01006.converter;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
@@ -21,28 +27,60 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+        //this.getSupportActionBar().setLogo(R.drawable.dislikes_24_red);
+
         items = new ArrayList<>();
         listViewAdapter = new ListViewAdapter(this, 0, items);
         listView = (ListView) this.findViewById(R.id.LVitems);
         listView.setAdapter(listViewAdapter);
-        LoadListTask async = new LoadListTask();
+        clearList();
+
+        loadPopularMusic();
+    }
+
+    public void loadPopularMusic()
+    {
+        this.getSupportActionBar().setTitle("Popular Videos Today");
+        AsyncListLoader async = new AsyncListLoader();
         async.execute();
     }
-    class LoadListTask extends AsyncTask<String, Void, Integer>
+
+    private void clearList()
     {
-        private String query = "Garrix";
+        items.clear();
+        listViewAdapter.clear();
+        listView.setAdapter(null);
+        listView.setAdapter(listViewAdapter);
+    }
+
+    class AsyncListLoader extends AsyncTask<String, Void, Integer>
+    {
+        private String query = "";
         private YoutubeAPI youtubeAPI = new YoutubeAPI();
-        protected void onPreExecute() {/*progressDialog.show();*/}
+        protected void onPreExecute()
+        {
+            /**Mostrar barra de carga*/
+        }
         protected Integer doInBackground(String... params)
         {
-            while (items.size()<youtubeAPI.MAX_ITEMS_RETURNED) {items.addAll(youtubeAPI.searchVideos(query));}
+            /**Actualizar barra de carga*/
+            while (items.size()<youtubeAPI.MAX_ITEMS_RETURNED)
+            {
+                if (query == "") {items.addAll(youtubeAPI.getMusicChannelVideos());}
+                else {items.addAll(youtubeAPI.searchVideos(query));}
+            }
             return 0;
         }
         protected void onPostExecute(Integer result)
         {
-          /*  progressDialog.dismiss();*/
+           /**Quitar barra de carga*/
             if (result == 0) {listViewAdapter.notifyDataSetChanged();}
+            query = "";
         }
+        public void setQuery(String query) {this.query = query;}
     }
 
     @Override

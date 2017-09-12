@@ -29,12 +29,7 @@ public class YoutubeAPI
     public ArrayList<VideoYoutube> searchVideos (String query)
     {
         String ids = null;
-        try {
-            ids = getSearchId(query);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        try {ids = getSearchId(query);} catch (IOException e) {e.printStackTrace();}
         ArrayList<VideoYoutube> youtubeVideos = new ArrayList<>();
         try
         {
@@ -93,17 +88,22 @@ public class YoutubeAPI
         return youtubeVideos;
     }
 
-    public  ArrayList<VideoYoutube> getMusicChannelVideos() throws IOException
+    public  ArrayList<VideoYoutube> getMusicChannelVideos()
     {
-        String MUSIC_CHANNEL_ID = "UC-9-kyTW8ZkZNDHQJ6FgpwQ";
-        YouTube.Search.List search = youtube.search().list("id");
-        search.setKey(API_KEY);
-        search.setChannelId(MUSIC_CHANNEL_ID);
-        search.setType("video");
-        search.setFields("items(id)");
-        search.setMaxResults(MAX_ITEMS_RETURNED);
-        SearchListResponse searchResponse = search.execute();
-        List<SearchResult> searchResultList = searchResponse.getItems();
+        List<SearchResult> searchResultList = null;
+        try
+        {
+            String MUSIC_CHANNEL_ID = "UC-9-kyTW8ZkZNDHQJ6FgpwQ";
+            YouTube.Search.List search = youtube.search().list("id");
+            search.setKey(API_KEY);
+            search.setChannelId(MUSIC_CHANNEL_ID);
+            search.setType("video");
+            search.setFields("items(id)");
+            search.setMaxResults(MAX_ITEMS_RETURNED);
+            SearchListResponse searchResponse = search.execute();
+            searchResultList = searchResponse.getItems();
+        }
+        catch (IOException e){e.printStackTrace();}
         return searchVideos(getMusicChannelVideosIDs(searchResultList));
     }
 
