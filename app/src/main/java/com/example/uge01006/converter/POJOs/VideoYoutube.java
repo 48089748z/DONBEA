@@ -1,10 +1,10 @@
 package com.example.uge01006.converter.POJOs;
-/**import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+/**
+ compile 'com.fasterxml.jackson.core:jackson-core:2.5.+'
+ compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.+'
+ compile 'com.fasterxml.jackson.core:jackson-databind:2.5.+'
+ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
-
-compile 'com.fasterxml.jackson.core:jackson-core:2.5.+'
-compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.+'
-compile 'com.fasterxml.jackson.core:jackson-databind:2.5.+'
  */
 public class VideoYoutube extends GenericYoutube
 {

@@ -1,5 +1,6 @@
 package com.example.uge01006.converter;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,4 +46,5 @@ public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
          */
         return convertView;
     }
+
 }

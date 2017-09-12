@@ -1,10 +1,12 @@
 package com.example.uge01006.converter;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import java.util.ArrayList;
 
@@ -19,26 +21,28 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         items = new ArrayList<>();
         listViewAdapter = new ListViewAdapter(this, 0, items);
         listView = (ListView) this.findViewById(R.id.LVitems);
         listView.setAdapter(listViewAdapter);
-        testItems();
+        LoadListTask async = new LoadListTask();
+        async.execute();
     }
-
-    public void testItems ()
+    class LoadListTask extends AsyncTask<String, Void, Integer>
     {
-        VideoYoutube x = new VideoYoutube();
-        x.setTitle("aaaaa");
-        VideoYoutube y = new VideoYoutube();
-        y.setTitle("bbbb");
-        VideoYoutube z = new VideoYoutube();
-        z.setTitle("cccccc");
-        items.add(x);
-        items.add(y);
-        items.add(z);
-        Log.e("ERROR", String.valueOf(items.size()));
+        private String query = "Garrix";
+        private YoutubeAPI youtubeAPI = new YoutubeAPI();
+        protected void onPreExecute() {/*progressDialog.show();*/}
+        protected Integer doInBackground(String... params)
+        {
+            while (items.size()<youtubeAPI.MAX_ITEMS_RETURNED) {items.addAll(youtubeAPI.searchVideos(query));}
+            return 0;
+        }
+        protected void onPostExecute(Integer result)
+        {
+          /*  progressDialog.dismiss();*/
+            if (result == 0) {listViewAdapter.notifyDataSetChanged();}
+        }
     }
 
     @Override
