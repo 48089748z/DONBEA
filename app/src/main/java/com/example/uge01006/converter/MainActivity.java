@@ -36,15 +36,22 @@ public class MainActivity extends AppCompatActivity
         listViewAdapter = new ListViewAdapter(this, 0, items);
         listView = (ListView) this.findViewById(R.id.LVitems);
         listView.setAdapter(listViewAdapter);
-        clearList();
-
         loadPopularMusic();
     }
 
     public void loadPopularMusic()
     {
+        clearList();
         this.getSupportActionBar().setTitle("Popular Videos Today");
         AsyncListLoader async = new AsyncListLoader();
+        async.execute();
+    }
+    public void loadMartinGarrix()
+    {
+        clearList();
+        this.getSupportActionBar().setTitle("Martin Garrix");
+        AsyncListLoader async = new AsyncListLoader();
+        async.setQuery("Martin Garrix");
         async.execute();
     }
 
@@ -90,13 +97,19 @@ public class MainActivity extends AppCompatActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-
     public boolean onOptionsItemSelected(MenuItem item)
     {
         int id = item.getItemId();
-        if (id == R.id.action_search) {return true;}
-
-        if (id == R.id.action_settings) {return true;}
+        if (id == R.id.action_search)
+        {
+            loadMartinGarrix();
+            return true;
+        }
+        if (id == R.id.action_settings)
+        {
+            loadPopularMusic();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
