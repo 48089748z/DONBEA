@@ -36,14 +36,34 @@ public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
         TextView views = convertView.findViewById(R.id.TVviews);
         TextView likes = convertView.findViewById(R.id.TVlikes);
         TextView dislikes = convertView.findViewById(R.id.TVdislikes);
+        TextView duration = convertView.findViewById(R.id.TVduration);
 
         Picasso.with(getContext()).load(item.getThumbnailmedium()).fit().into(image);
         title.setText(item.getTitle());
-        views.setText(getKorM(item.getViewCount()));
-        likes.setText(getKorM(item.getLikeCount()));
-        dislikes.setText(getKorM(item.getDislikeCount()));
-
+        views.setText(getKorM(item.getViewCount())+" views");
+        likes.setText(getKorM(item.getLikeCount())+" likes");
+        dislikes.setText(getKorM(item.getDislikeCount())+" dislikes");
+        duration.setText(translateDuration(item.getDuration()));
         return convertView;
+    }
+
+    private String translateDuration(String code)
+    {
+        String[] parts = code.split("M");
+        Integer hoursN = 0;
+        Integer minutesN = Integer.valueOf(parts[0].substring(2, parts[0].length()));
+        String seconds = parts[1].substring(0, parts[1].length()-1);
+        while (Integer.valueOf(minutesN)>=60)
+        {
+            minutesN=minutesN-60;
+            hoursN++;
+        }
+        String minutes = String.valueOf(minutesN);
+        String hours = String.valueOf(hoursN);
+        if (seconds.length()==1){seconds="0"+seconds;}
+        if (minutes.length()==1){minutes="0"+minutes;}
+        if (hoursN==0){return minutes+":"+seconds+" ";}
+        else {return hours+":"+minutes+":"+seconds+" ";}
     }
 
     private String getKorM (String number)

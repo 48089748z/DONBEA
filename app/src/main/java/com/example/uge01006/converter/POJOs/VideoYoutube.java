@@ -15,6 +15,15 @@ public class VideoYoutube extends GenericYoutube
     private String dislikeCount;
     private String favoriteCount;
     private String commentCount;
+    private String duration;
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
 
     /**
      * @return

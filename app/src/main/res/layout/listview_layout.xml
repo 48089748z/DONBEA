@@ -14,30 +14,37 @@ VERTICAL: 100dp
 
     <!--
     LEFT LIST VIEW LAYOUT CONTAINER
-    HORIZONTAL: 40% SCREEN
+    HORIZONTAL: 45% SCREEN
     VERTICAL: MATCH_PARENT = 100dp
     -->
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_weight="40"
+        android:layout_weight="45"
         android:weightSum="100"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/TVspace1"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_weight="5"/>
-        <ImageView
-            android:id="@+id/IVimage"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_weight="90" />
-        <TextView
-            android:id="@+id/TVspace2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_weight="5"/>
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/IVimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:layout_alignParentTop="true"/>
+            <TextView
+                android:id="@+id/TVduration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/IVimage"
+                android:layout_alignBottom="@id/IVimage"
+                android:textColor="@color/colorIcons"
+                android:textStyle="bold"
+                android:background="#000000"
+                android:textAlignment="textEnd"
+                android:textSize="15dp" />
+        </RelativeLayout>
     </LinearLayout>
 
     <!--
@@ -52,24 +59,29 @@ VERTICAL: 100dp
 
     <!--
     RIGHT LIST VIEW LAYOUT CONTAINER
-    HORIZONTAL: 60% SCREEN
+    HORIZONTAL: 50% SCREEN
     VERTICAL: MATCH_PARENT = 100dp
     -->
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_weight="55"
+        android:layout_weight="50"
         android:weightSum="100"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight="5"/>
+
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 50% SCREEN
+        -->
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="50">
-
             <TextView
                 android:id="@+id/TVtitle"
                 android:layout_width="match_parent"
@@ -79,6 +91,11 @@ VERTICAL: 100dp
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -101,6 +118,11 @@ VERTICAL: 100dp
                 android:textSize="12dp" />
         </LinearLayout>
 
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -123,6 +145,11 @@ VERTICAL: 100dp
                 android:textSize="12dp"/>
         </LinearLayout>
 
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"

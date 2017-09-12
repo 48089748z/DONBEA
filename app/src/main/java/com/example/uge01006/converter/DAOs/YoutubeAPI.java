@@ -33,14 +33,14 @@ public class YoutubeAPI
         ArrayList<VideoYoutube> youtubeVideos = new ArrayList<>();
         try
         {
-            YouTube.Videos.List videos = youtube.videos().list("id,snippet,statistics");
+            YouTube.Videos.List videos = youtube.videos().list("id,snippet,statistics,contentDetails");
             videos.setKey(API_KEY);
             videos.setId(ids);
             videos.setMaxResults(MAX_ITEMS_RETURNED);
             videos.setFields("items(id,snippet/publishedAt,snippet/title,snippet/description," +
                     "snippet/thumbnails/default/url,snippet/thumbnails/medium/url,snippet/thumbnails/high/url," +
                     "snippet/channelId,snippet/channelTitle,statistics/viewCount,statistics/likeCount,statistics/dislikeCount," +
-                    "statistics/favoriteCount,statistics/commentCount)");
+                    "statistics/favoriteCount,statistics/commentCount,contentDetails/duration)");
             VideoListResponse videoResponse = videos.execute();
             List<Video> videoResultList = videoResponse.getItems();
             if (videoResultList != null)
@@ -67,17 +67,17 @@ public class YoutubeAPI
                         toAdd.setChannelId(singleVideo.getSnippet().getChannelId());
                         toAdd.setChannelTitle(singleVideo.getSnippet().getChannelTitle());
                         toAdd.setViewCount(singleVideo.getStatistics().getViewCount().toString());
+                        toAdd.setDuration(singleVideo.getContentDetails().getDuration().toString());
                         try
                         {
                             toAdd.setLikeCount(singleVideo.getStatistics().getLikeCount().toString());
                             toAdd.setDislikeCount(singleVideo.getStatistics().getDislikeCount().toString());
                         }
-                        catch (Exception e){
+                        catch (Exception e)
+                        {
                             toAdd.setLikeCount("Private");
                             toAdd.setDislikeCount("Private");
                         }
-                        toAdd.setFavoriteCount(singleVideo.getStatistics().getFavoriteCount().toString());
-                        toAdd.setCommentCount(singleVideo.getStatistics().getCommentCount().toString());
                         youtubeVideos.add(toAdd);
                     }
                     return youtubeVideos;
