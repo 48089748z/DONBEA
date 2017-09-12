@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('google-api-services-youtube-v3-rev167-1.21.0.jar'))

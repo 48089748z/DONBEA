@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('google-oauth-client-java6-1.21.0.jar'))

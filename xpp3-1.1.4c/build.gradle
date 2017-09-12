@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('xpp3-1.1.4c.jar'))

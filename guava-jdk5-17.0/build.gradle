@@ -1,2 +1,0 @@
-configurations.maybeCreate("default")
-artifacts.add("default", file('guava-jdk5-17.0.jar'))
