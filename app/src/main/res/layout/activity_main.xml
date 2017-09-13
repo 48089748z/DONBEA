@@ -37,7 +37,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="88"
                 android:hint="Search ..."
-                android:textColorHint="@color/colorSecondaryText"/>
+                android:textColorHint="@color/colorSecondaryText"
+                android:inputType="textCapSentences"/>
         </LinearLayout>
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
