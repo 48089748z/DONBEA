@@ -48,12 +48,46 @@
             app:titleTextColor="@color/colorIcons" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/LVitems"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="92"/>
+        android:layout_weight="92">
 
+        <ListView
+            android:id="@+id/LVitems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="10"/>
+            <ProgressBar
+                android:id="@+id/loading"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/ic_logo"/>
+
+            <TextView
+                android:id="@+id/TVloading"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="10"
+                android:text="Loading Results for 'Popular Videos Today' ..."
+                android:textAlignment="center"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
 
 
