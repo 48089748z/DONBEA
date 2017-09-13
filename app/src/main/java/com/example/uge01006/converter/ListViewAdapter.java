@@ -12,7 +12,15 @@ import android.widget.VideoView;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
+
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
@@ -49,28 +57,27 @@ public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
 
     private String translateDuration(String code)
     {
-        /**ME LO CURRO Y RESULTA QUE EL FORMATO DE VERDAD
-         * DE YOUTUBE ES
-         * PT1H1M1S*/
-        if (code.contains("H")) {return "Hours";}
-        else
+        DateFormat dateFormat;
+        Calendar calendar = new GregorianCalendar();
+        if (code.contains("H")) {dateFormat = new SimpleDateFormat("'PT'hh'H'mm'M'ss'S'");}
+        else if (code.contains("M")){dateFormat = new SimpleDateFormat("'PT'mm'M'ss'S'");}
+        else {dateFormat = new SimpleDateFormat("'PT'ss'S'");}
+        try
         {
-            String[] parts = code.split("M");
-            Integer hoursN = 0;
-            Integer minutesN = Integer.valueOf(parts[0].substring(2, parts[0].length()));
-            String seconds = parts[1].substring(0, parts[1].length()-1);
-            while (Integer.valueOf(minutesN)>=60)
-            {
-                minutesN=minutesN-60;
-                hoursN++;
-            }
-            String minutes = String.valueOf(minutesN);
-            String hours = String.valueOf(hoursN);
-            if (seconds.length()==1){seconds="0"+seconds;}
-            if (minutes.length()==1){minutes="0"+minutes;}
-            if (hoursN==0){return minutes+":"+seconds+" ";}
-            else {return " "+hours+":"+minutes+":"+seconds+" ";}
+            Date date = dateFormat.parse(code);
+            calendar.setTime(date);
         }
+        catch (ParseException e) {e.printStackTrace();}
+
+        String hours = String.valueOf(calendar.get(Calendar.HOUR));
+        String minutes = String.valueOf(calendar.get(Calendar.MINUTE));
+        String seconds = String.valueOf(calendar.get(Calendar.SECOND));
+        if (seconds.length() == 1) {seconds = "0"+seconds;}
+        if (minutes.length() == 1) {minutes = "0"+minutes;}
+        if (hours.length() == 1) {hours = "0"+hours;}
+
+        if (hours.equals("00")){return " "+minutes+":"+seconds+" ";}
+        else{return " "+hours+":"+minutes+":"+seconds+" ";}
     }
 
     private String getKorM (String number)
