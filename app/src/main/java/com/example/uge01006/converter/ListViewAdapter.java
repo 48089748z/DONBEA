@@ -1,17 +1,13 @@
 package com.example.uge01006.converter;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,13 +15,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.TimeZone;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
+class ListViewAdapter extends ArrayAdapter<VideoYoutube>
 {
-    public ListViewAdapter(Context context, int resource, List<VideoYoutube> objects)
+    ListViewAdapter(Context context, int resource, List<VideoYoutube> objects)
     {super(context, resource, objects);}
 
     @NonNull

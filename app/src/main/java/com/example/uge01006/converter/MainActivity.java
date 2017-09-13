@@ -1,12 +1,9 @@
 package com.example.uge01006.converter;
-import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,18 +13,13 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
@@ -53,8 +45,8 @@ public class MainActivity extends AppCompatActivity
         loading = (ProgressBar) this.findViewById(R.id.loading);
         loadingText = (TextView) this.findViewById(R.id.TVloading);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        keyboard = (InputMethodManager) getSystemService(this.INPUT_METHOD_SERVICE);
-        IVback.setOnClickListener(view -> {showToolbarHideKeyboard("");});
+        keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        IVback.setOnClickListener(view -> showToolbarHideKeyboard(""));
         ETsearch.setOnEditorActionListener((v, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) || actionId == EditorInfo.IME_ACTION_NEXT)
             {
@@ -69,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         LVlist.setOnItemClickListener((adapterView, view, i, l) -> {
-            /**INTENT PARA PODER REPRODUCIR EL VIDEO EN CUESTIÓN CON OPCIONES DE DESCARGA EN MP3 Y MP3 ADEMÁS DE TODA LA INFORMACIÓN
+            /*INTENT PARA PODER REPRODUCIR EL VIDEO EN CUESTIÓN CON OPCIONES DE DESCARGA EN MP3 Y MP3 ADEMÁS DE TODA LA INFORMACIÓN
              * ANTERIOR Y FLECHITA DE ATRÁS
              *
              * */
@@ -155,7 +147,7 @@ public class MainActivity extends AppCompatActivity
         {
             while (items.size()<youtubeAPI.MAX_ITEMS_RETURNED)
             {
-                if (query == "") {items.addAll(youtubeAPI.getMusicChannelVideos());}
+                if (query.equals("")) {items.addAll(youtubeAPI.getMusicChannelVideos());}
                 else {items.addAll(youtubeAPI.searchVideos(query));}
             }
             return 0;
