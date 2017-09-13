@@ -69,7 +69,7 @@ public class ListViewAdapter extends ArrayAdapter<VideoYoutube>
             if (seconds.length()==1){seconds="0"+seconds;}
             if (minutes.length()==1){minutes="0"+minutes;}
             if (hoursN==0){return minutes+":"+seconds+" ";}
-            else {return hours+":"+minutes+":"+seconds+" ";}
+            else {return " "+hours+":"+minutes+":"+seconds+" ";}
         }
     }
 

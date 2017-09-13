@@ -23,7 +23,7 @@ public class YoutubeAPI
     public YoutubeAPI()
     {
         API_KEY = "AIzaSyBGcQhbTSqaeldT3Hn0l2eb-pIXShk2ZVE";
-        youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, httpRequest -> {}).setApplicationName("youtube-cmdline-search-sample").build();
+        youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, httpRequest -> {}).setApplicationName("youtube-cmdline-search_48-sample").build();
     }
 
     public ArrayList<VideoYoutube> searchVideos (String query)
