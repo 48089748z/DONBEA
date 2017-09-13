@@ -49,23 +49,23 @@ VERTICAL: 100dp
 
     <!--
     MIDDLE LIST VIEW LAYOUT SPLITTER
-    HORIZONTAL: 5% SCREEN
+    HORIZONTAL: 3% SCREEN
     VERTICAL: MATCH_PARENT = 100dp
     -->
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_weight="5"/>
+        android:layout_weight="3"/>
 
     <!--
     RIGHT LIST VIEW LAYOUT CONTAINER
-    HORIZONTAL: 50% SCREEN
+    HORIZONTAL: 52% SCREEN
     VERTICAL: MATCH_PARENT = 100dp
     -->
     <LinearLayout
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:layout_weight="50"
+        android:layout_weight="52"
         android:weightSum="100"
         android:orientation="vertical">
         <TextView
