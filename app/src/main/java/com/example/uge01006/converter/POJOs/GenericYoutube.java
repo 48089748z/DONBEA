@@ -1,5 +1,8 @@
 package com.example.uge01006.converter.POJOs;
-public abstract class GenericYoutube {
+import java.io.Serializable;
+
+public abstract class GenericYoutube implements Serializable
+{
 
     private String id;
     private String publishedAt;

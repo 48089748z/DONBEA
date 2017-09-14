@@ -1,5 +1,5 @@
 package com.example.uge01006.converter;
-import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,12 +59,12 @@ public class MainActivity extends AppCompatActivity
             }
             return false;
         });
-
-        LVlist.setOnItemClickListener((adapterView, view, i, l) -> {
-            /*INTENT PARA PODER REPRODUCIR EL VIDEO EN CUESTIÓN CON OPCIONES DE DESCARGA EN MP3 Y MP3 ADEMÁS DE TODA LA INFORMACIÓN
-             * ANTERIOR Y FLECHITA DE ATRÁS
-             *
-             * */
+        LVlist.setOnItemClickListener((adapterView, view, i, l) ->
+        {
+            VideoYoutube clickedVideo = (VideoYoutube) LVlist.getAdapter().getItem(i);
+            Intent detail = new Intent(this, DetailActivity.class);
+            detail.putExtra("selectedVideo", clickedVideo);
+            startActivity(detail);
         });
         setSupportActionBar(toolbar);
         ETsearch.setVisibility(View.INVISIBLE);
