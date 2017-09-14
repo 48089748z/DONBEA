@@ -18,7 +18,7 @@ public class YoutubeAPI
     private static String API_KEY = DeveloperKey.DEVELOPER_KEY;
     private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private final JsonFactory JSON_FACTORY = new JacksonFactory();
-    public final long MAX_ITEMS_RETURNED = 10;
+    public final long MAX_ITEMS_RETURNED = 15;
     private YouTube youtube;
     public YoutubeAPI()
     {

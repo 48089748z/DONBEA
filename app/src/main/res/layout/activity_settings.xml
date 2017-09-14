@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="50"
-        android:text="Settings Activity Test"/>
-
+        android:text="I'm sorry, settings activity ain't developed yet :("
+        android:gravity="center"/>
 
 </LinearLayout>
