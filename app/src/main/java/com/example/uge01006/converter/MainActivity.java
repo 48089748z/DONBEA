@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity
         LVlist.setAdapter(LVadapter);
         loadPopularMusic();
     }
+
+    private void settings()
+    {
+        Intent settings = new Intent(this, SettingsActivity.class);
+        startActivity(settings);
+    }
     private void spinImage()
     {
         spinner.setInterpolator(new LinearInterpolator());
@@ -140,6 +146,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.action_settings)
         {
+            settings();
             return true;
         }
         return super.onOptionsItemSelected(item);

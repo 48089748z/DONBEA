@@ -70,4 +70,10 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         if (errorReason.isUserRecoverableError()) {errorReason.getErrorDialog(this, 1).show();}
         else {Toast.makeText(this, "There was an error initializing the Video", Toast.LENGTH_LONG).show();}
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        this.finish();
+    }
 }
