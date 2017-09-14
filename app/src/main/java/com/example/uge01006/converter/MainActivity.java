@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -30,8 +33,9 @@ public class MainActivity extends AppCompatActivity
     private EditText ETsearch;
     private ImageView IVback;
     private InputMethodManager keyboard;
-    private ProgressBar loading;
+    private ImageView loading;
     private TextView loadingText;
+    private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         LVlist = (ListView) this.findViewById(R.id.LVitems);
         ETsearch = (EditText) this.findViewById(R.id.ETsearch);
         IVback = (ImageView) this.findViewById(R.id.IVback);
-        loading = (ProgressBar) this.findViewById(R.id.loading);
+        loading = (ImageView) this.findViewById(R.id.loading);
         loadingText = (TextView) this.findViewById(R.id.TVloading);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -72,6 +76,13 @@ public class MainActivity extends AppCompatActivity
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
         loadPopularMusic();
+    }
+    private void spinImage()
+    {
+        spinner.setInterpolator(new LinearInterpolator());
+        spinner.setDuration(1200);
+        spinner.setRepeatCount(Animation.INFINITE);
+        loading.startAnimation(spinner);
     }
 
     private void showToolbarHideKeyboard(String text)
@@ -140,6 +151,7 @@ public class MainActivity extends AppCompatActivity
         public void setQuery(String query) {this.query = query;}
         protected void onPreExecute()
         {
+            spinImage();
             loading.setVisibility(View.VISIBLE);
             loadingText.setVisibility(View.VISIBLE);
         }
@@ -154,9 +166,13 @@ public class MainActivity extends AppCompatActivity
         }
         protected void onPostExecute(Integer result)
         {
-            loading.setVisibility(View.INVISIBLE);
-            loadingText.setVisibility(View.INVISIBLE);
-            if (result == 0) {LVadapter.notifyDataSetChanged();}
+            if (result == 0)
+            {
+                loading.clearAnimation();
+                loading.setVisibility(View.INVISIBLE);
+                loadingText.setVisibility(View.INVISIBLE);
+                LVadapter.notifyDataSetChanged();
+            }
             query = "";
         }
     }

@@ -36,7 +36,7 @@
             android:layout_weight="90"
             android:text="Video Title"
             android:textColor="@color/colorPrimaryText"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
         <TextView
             android:layout_width="1dp"
@@ -47,7 +47,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="7"
+        android:layout_weight="3"
         android:orientation="horizontal"
         android:weightSum="100">
         <TextView
@@ -62,16 +62,86 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="2"/>
 
         <TextView
             android:id="@+id/TVviewsDetail"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="80"
+            android:layout_weight="81"
             android:text="Views"
             android:textColor="@color/colorSecondaryText"
-            android:textSize="15dp"
+            android:textSize="13dp"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:src="@drawable/likes_24_blue"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:id="@+id/TVlikesDetail"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="81"
+            android:text="Likes"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="13dp"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:src="@drawable/dislikes_24_red"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:id="@+id/TVdislikesDetail"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="81"
+            android:text="Dislikes"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="13dp"
             android:gravity="center_vertical"/>
         <TextView
             android:layout_width="1dp"
