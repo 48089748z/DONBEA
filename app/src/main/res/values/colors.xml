@@ -7,5 +7,12 @@
     <color name="colorPrimaryText">#2A2A2A</color>
     <color name="colorSecondaryText">#6C6C6C</color>
     <color name="colorIcons">#ffffff</color>
-    <color name="colorDivider">#DEDEDE</color>
+    <color name="colorDivider">#999999</color>
+
+    <color name="BLUE_FACEBOOK">#3B5999</color>
+    <color name="GREY_TEXT_LIGHT">#B0B0B0</color>
+    <color name="GREY_TEXT_MEDIUM">#999999</color>
+    <color name="GREY_TEXT_DARK">#6C6C6C</color>
+    <color name="BLACK_TEXT">#292929</color>
+   <!-- <color name="colorDivider">#DEDEDE</color> -->
 </resources>

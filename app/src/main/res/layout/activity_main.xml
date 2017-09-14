@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/colorDivider">
+    android:background="@color/GREY_TEXT_LIGHT">
 
 
     <RelativeLayout
@@ -38,15 +38,15 @@
                 android:layout_height="match_parent"
                 android:layout_weight="88"
                 android:hint="Search ..."
-                android:textColorHint="@color/colorSecondaryText"
+                android:textColorHint="@color/GREY_TEXT_DARK"
                 android:inputType="textCapSentences"/>
         </LinearLayout>
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            app:titleTextColor="@color/colorIcons" />
+            android:background="@color/BLUE_FACEBOOK"
+            app:titleTextColor="@color/BLACK_TEXT" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -83,7 +83,7 @@
                 android:layout_weight="10"
                 android:text="Loading Popular Videos Today ..."
                 android:textAlignment="center"
-                android:textColor="@color/colorSecondaryText"
+                android:textColor="@color/GREY_TEXT_DARK"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
