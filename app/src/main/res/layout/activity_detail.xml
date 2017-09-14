@@ -1,15 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.uge01006.converter.DetailActivity">
+    tools:context="com.example.uge01006.converter.DetailActivity"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/YTVplayer"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="30"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="1dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/views_24_green"/>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/likes_24_blue"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/dislikes_24_red"/>
 
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="55">
+
+
+
+    </LinearLayout>
+</LinearLayout>
