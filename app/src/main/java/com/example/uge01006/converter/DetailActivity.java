@@ -36,10 +36,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored)
     {
-        if (!wasRestored)
-        {
-            player.cueVideo("wKJ9KzGQq0w");
-        }
+        if (!wasRestored) {player.cueVideo(clickedVideo.getId().toString());}
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
