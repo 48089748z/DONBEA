@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.uge01006.converter.DAOs.DeveloperKey;
@@ -12,10 +13,15 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import org.w3c.dom.Text;
+
 public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener
 {
     private YouTubePlayerView youtubePlayer;
     private VideoYoutube clickedVideo;
+    private TextView TVtitleDetail;
+    private TextView TVviewsDetail;
+
         @Override
         protected void onCreate(Bundle savedInstanceState)
         {
@@ -23,16 +29,32 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
             setContentView(R.layout.activity_detail);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
             clickedVideo = (VideoYoutube) getIntent().getExtras().getSerializable("selectedVideo");
-            youtubePlayer = findViewById(R.id.YTVplayer);
-            youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
 
-            /**Crear el layout
-             * Reproducir video
-             * Poner info de VIEWS LIKES DISLIKSE
-             * Poner Botones de DOWNLOAD mp3 y mp4
-             * */
+            TVtitleDetail = findViewById(R.id.TVtitleDetail);
+            youtubePlayer = findViewById(R.id.YTVplayer);
+            TVviewsDetail = findViewById(R.id.TVviewsDetail);
+
+            TVtitleDetail.setText(clickedVideo.getTitle().toString());
+            TVviewsDetail.setText(addDots(clickedVideo.getViewCount().toString())+" views");
+
+
+            youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
         }
 
+        private String addDots(String number)
+        {
+
+            int counter = 0;
+            for (int x=number.length(); x>0; x--)
+            {
+                if (counter%3==0)
+                {
+                    number = number.substring(0,x)+"."+number.substring(x,number.length());
+                }
+                counter++;
+            }
+            return number.substring(0,number.length()-1);
+        }
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored)
     {

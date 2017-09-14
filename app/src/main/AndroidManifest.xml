@@ -6,7 +6,6 @@
 
     <application
         android:allowBackup="true"
-        android:background="#FFFFFF"
         android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo"

@@ -11,7 +11,7 @@ VERTICAL: 100dp
     android:layout_height="100dp"
     android:weightSum="100"
     android:orientation="horizontal"
-    android:background="#FFFFFF">
+    >
 
     <!--
     LEFT LIST VIEW LAYOUT CONTAINER
