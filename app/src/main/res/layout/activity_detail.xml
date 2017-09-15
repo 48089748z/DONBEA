@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:layout_weight="3"/>
         <ImageView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"/>
+            android:layout_weight="1"/>
         <TextView
             android:id="@+id/TVviewsDetail"
             android:layout_width="1dp"
@@ -67,11 +67,11 @@
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"
-            android:layout_weight="35"/>
+            android:layout_weight="39"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <TextView
@@ -96,7 +96,8 @@
             android:text="Video Title"
             android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
             android:textSize="20dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:gravity="center"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -179,6 +180,95 @@
         android:layout_height="1dp"
         android:layout_weight="2"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
+
+
+    <!--This LL is just the splitter.-->
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_weight="20"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
+
+
+    <LinearLayout
+        android:id="@+id/LLdownloadVideo"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="12"
+        android:weightSum="100"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:text="Download (Video)"
+            android:textColor="@color/GREY_TEXT_LIGHT"
+            android:gravity="center"
+            android:textSize="18dp"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/download_48"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/LLdownloadAudio"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="12"
+        android:weightSum="100"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:text="Convert (Audio)"
+            android:textColor="@color/GREY_TEXT_LIGHT"
+            android:gravity="center"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_logo"/>
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"

@@ -1,7 +1,9 @@
 package com.example.uge01006.converter;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.uge01006.converter.DAOs.DeveloperKey;
@@ -19,6 +21,8 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVlikesDetail;
     private TextView TVdislikesDetail;
     private TextView TVuserDetail;
+    private LinearLayout LLdownloadVideo;
+    private LinearLayout LLdownloadAudio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,20 +32,30 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         clickedVideo = (VideoYoutube) getIntent().getExtras().getSerializable("selectedVideo");
 
-        TVtitleDetail = findViewById(R.id.TVtitleDetail);
-        youtubePlayer = findViewById(R.id.YTVplayer);
-        TVviewsDetail = findViewById(R.id.TVviewsDetail);
-        TVlikesDetail = findViewById(R.id.TVlikesDetail);
-        TVdislikesDetail = findViewById(R.id.TVdislikesDetail);
-        TVuserDetail = findViewById(R.id.TVuserDetail);
-
+        TVtitleDetail = this.findViewById(R.id.TVtitleDetail);
+        youtubePlayer = this.findViewById(R.id.YTVplayer);
+        TVviewsDetail = this.findViewById(R.id.TVviewsDetail);
+        TVlikesDetail = this.findViewById(R.id.TVlikesDetail);
+        TVdislikesDetail = this.findViewById(R.id.TVdislikesDetail);
+        TVuserDetail = this.findViewById(R.id.TVuserDetail);
+        LLdownloadVideo = this.findViewById(R.id.LLdownloadVideo);
+        LLdownloadAudio = this.findViewById(R.id.LLdownloadAudio);
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
-
         youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
+
+        LLdownloadVideo.setOnClickListener(view ->
+        {
+            //TODO Download Youtube Video to Smartphone
+        });
+
+        LLdownloadAudio.setOnClickListener(view ->
+        {
+            //TODO Convert to Audio the Youtube Video & Download it to Smartphone
+        });
     }
 
     private String addDots(String number)

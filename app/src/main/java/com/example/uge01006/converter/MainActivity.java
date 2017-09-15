@@ -20,6 +20,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences settings;
     private TextView TVsplitBar1;
     private TextView TVsplitBar2;
+    private LinearLayout LLtoolbarLayout;
+    private LinearLayout LLsearchLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,15 +59,17 @@ public class MainActivity extends AppCompatActivity
         loadingText = (TextView) this.findViewById(R.id.TVloading);
         TVsplitBar1 = (TextView) this.findViewById(R.id.TVsplitBar1);
         TVsplitBar2 = (TextView) this.findViewById(R.id.TVsplitBar2);
+        LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
+        LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        IVback.setOnClickListener(view -> showToolbarHideKeyboard(""));
+        IVback.setOnClickListener(view -> showToolbarHideKeyboard());
         ETsearch.setOnEditorActionListener((v, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) || actionId == EditorInfo.IME_ACTION_NEXT)
             {
                 clearList();
-                showToolbarHideKeyboard(ETsearch.getText().toString());
+                showToolbarHideKeyboard();
                 loadingText.setText("Loading Results for '"+ETsearch.getText().toString()+"' ...");
                 loadCustom(ETsearch.getText().toString());
             }
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity
             detail.putExtra("selectedVideo", clickedVideo);
             startActivity(detail);
         });
-        ETsearch.setVisibility(View.INVISIBLE);
+        LLsearchLayout.setVisibility(View.INVISIBLE);
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
@@ -98,22 +103,21 @@ public class MainActivity extends AppCompatActivity
         loading.startAnimation(spinner);
     }
 
-    private void showToolbarHideKeyboard(String text)
+    private void showToolbarHideKeyboard()
     {
-        ETsearch.setVisibility(View.INVISIBLE);
-        IVback.setVisibility(View.INVISIBLE);
+        LLtoolbarLayout.setVisibility(View.VISIBLE);
+        LLsearchLayout.setVisibility(View.INVISIBLE);
+        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
         ETsearch.clearFocus();
         keyboard.hideSoftInputFromWindow(ETsearch.getWindowToken(), 0);
-        toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-        getSupportActionBar().setTitle("'"+text+"'");
     }
 
 
     private void search()
     {
+        LLtoolbarLayout.setVisibility(View.INVISIBLE);
+        LLsearchLayout.setVisibility(View.VISIBLE);
         toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
-        ETsearch.setVisibility(View.VISIBLE);
-        IVback.setVisibility(View.VISIBLE);
         ETsearch.setText("");
         if (ETsearch.requestFocus()) {keyboard.showSoftInput(ETsearch, InputMethodManager.SHOW_IMPLICIT);}
     }
@@ -121,7 +125,6 @@ public class MainActivity extends AppCompatActivity
     public void loadCustom(String custom)
     {
         loadingText.setText("Loading Results for '"+custom+"' ...");
-        getSupportActionBar().setTitle("'"+custom+"'");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery(custom);
         loader.execute();
@@ -130,7 +133,6 @@ public class MainActivity extends AppCompatActivity
     {
         clearList();
         loadingText.setText("Loading Popular Videos of Today ...");
-        getSupportActionBar().setTitle("'Popular Videos Today'");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery("");
         loader.execute();
@@ -166,6 +168,14 @@ public class MainActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        if (LLsearchLayout.isShown()){ showToolbarHideKeyboard();}
+        else { super.onBackPressed();}
+    }
+
     private class AsyncListLoader extends AsyncTask<String, Void, Integer>
     {
         private String query = "";

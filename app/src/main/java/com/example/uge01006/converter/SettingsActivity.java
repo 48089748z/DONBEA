@@ -34,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity
         ETcustomSearch = (EditText) this.findViewById(R.id.ETcustomSearch);
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Settings");
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         ETcustomSearch.addTextChangedListener(new TextWatcher() {
             @Override
