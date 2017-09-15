@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         LVlist = (ListView) this.findViewById(R.id.LVitems);
         ETsearch = (EditText) this.findViewById(R.id.ETsearch);
         IVback = (ImageView) this.findViewById(R.id.IVback);
@@ -70,7 +71,6 @@ public class MainActivity extends AppCompatActivity
             detail.putExtra("selectedVideo", clickedVideo);
             startActivity(detail);
         });
-        setSupportActionBar(toolbar);
         ETsearch.setVisibility(View.INVISIBLE);
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         ETsearch.clearFocus();
         keyboard.hideSoftInputFromWindow(ETsearch.getWindowToken(), 0);
         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-        if (text!=""){toolbar.setTitle(text);}
+        if (text!=""){ getSupportActionBar().setTitle(text);}
     }
 
     private void hideToolbarShowKeyboard()

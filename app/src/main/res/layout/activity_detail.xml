@@ -7,7 +7,7 @@
     tools:context="com.example.uge01006.converter.DetailActivity"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/GREY_TEXT_LIGHT">
+    android:background="@color/GREY_BACKGROUND_DARK_SUPER">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/YTVplayer"
@@ -15,38 +15,63 @@
         android:layout_height="1dp"
         android:layout_weight="35"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="4"
         android:orientation="horizontal"
-        android:weightSum="100"
-        android:background="@color/colorPrimaryText">
+        android:weightSum="100">
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"/>
+            android:layout_weight="4"/>
         <ImageView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:src="@drawable/views_24_green"/>
+            android:src="@drawable/views_24_green_light"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
         <TextView
             android:id="@+id/TVviewsDetail"
-            android:layout_width="wrap_content"
+            android:layout_width="1dp"
             android:layout_height="match_parent"
             android:text="Views"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:layout_weight="35"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:src="@drawable/user_24_yellow"/>
+        <TextView
+            android:id="@+id/TVuserDetail"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:text="Channel"
+            android:textColor="@color/GREY_TEXT_LIGHT"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
+            android:layout_weight="35"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"/>
+            android:layout_weight="4"/>
     </LinearLayout>
 
     <TextView
@@ -69,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="90"
             android:text="Video Title"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
             android:textSize="20dp"
             android:textStyle="bold"/>
         <TextView
@@ -77,20 +102,18 @@
             android:layout_height="match_parent"
             android:layout_weight="5" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="1"/>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="4"
         android:orientation="horizontal"
-        android:weightSum="100"
-        android:background="@color/colorPrimaryText">
+        android:weightSum="100">
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -99,7 +122,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:src="@drawable/likes_24_blue"/>
+            android:src="@drawable/likes_24_blue_light"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -109,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Likes"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"/>
         <TextView
@@ -123,8 +146,7 @@
         android:layout_height="1dp"
         android:layout_weight="4"
         android:orientation="horizontal"
-        android:weightSum="100"
-        android:background="@color/colorPrimaryText">
+        android:weightSum="100">
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -133,7 +155,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:src="@drawable/dislikes_24_red"/>
+            android:src="@drawable/dislikes_24_red_light"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -143,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Dislikes"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"/>
         <TextView
@@ -151,5 +173,17 @@
             android:layout_height="match_parent"
             android:layout_weight="5"/>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 
 </LinearLayout>

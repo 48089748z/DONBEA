@@ -8,9 +8,10 @@ VERTICAL: 100dp
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="110dp"
     android:weightSum="100"
     android:orientation="horizontal"
+    android:background="@color/GREY_BACKGROUND_DARK_SUPER"
     >
 
     <!--
@@ -37,18 +38,19 @@ VERTICAL: 100dp
                 android:layout_weight="100"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true" />
             <TextView
                 android:id="@+id/TVduration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignRight="@id/IVimage"
                 android:layout_alignBottom="@id/IVimage"
-                android:textColor="@color/colorIcons"
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
                 android:textStyle="bold"
                 android:background="#000000"
                 android:textAlignment="textEnd"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:text=" 18:36"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -76,7 +78,14 @@ VERTICAL: 100dp
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="5"/>
+            android:layout_weight="0.1"
+            android:background="@color/GREY_TEXT_LIGHT_SUPER">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="3"/>
 
         <!--
         RIGHT LIST VIEW LAYOUT CONTAINER
@@ -84,18 +93,19 @@ VERTICAL: 100dp
         VERTICAL: 50% SCREEN
         -->
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="50">
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="57.9">
 
             <TextView
                 android:id="@+id/TVtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewStart"
-                android:textColor="@color/colorPrimaryText"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:text="Title"
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
         </LinearLayout>
 
         <!--
@@ -106,23 +116,26 @@ VERTICAL: 100dp
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="15"
+            android:layout_weight="12"
             android:weightSum="100"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/views_24_green" />
+                app:srcCompat="@drawable/views_24_green_light" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:layout_weight="5" />
             <TextView
                 android:id="@+id/TVviews"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp" />
+                android:textSize="11dp"
+                android:text="Views"
+                android:textColor="@color/GREY_TEXT_LIGHT"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <!--
@@ -133,23 +146,26 @@ VERTICAL: 100dp
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="15"
+            android:layout_weight="12"
             android:weightSum="100"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/likes_24_blue"/>
+                app:srcCompat="@drawable/likes_24_blue_light"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:layout_weight="5" />
             <TextView
                 android:id="@+id/TVlikes"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp"/>
+                android:textSize="11dp"
+                android:text="Likes"
+                android:textColor="@color/GREY_TEXT_LIGHT"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <!--
@@ -160,24 +176,30 @@ VERTICAL: 100dp
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_weight="15"
+            android:layout_weight="12"
             android:weightSum="100"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/dislikes_24_red"/>
+                app:srcCompat="@drawable/dislikes_24_red_light"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:layout_weight="5" />
             <TextView
                 android:id="@+id/TVdislikes"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp"/>
+                android:textSize="11dp"
+                android:text="Dislikes"
+                android:textColor="@color/GREY_TEXT_LIGHT"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="3"/>
     </LinearLayout>
 </LinearLayout>

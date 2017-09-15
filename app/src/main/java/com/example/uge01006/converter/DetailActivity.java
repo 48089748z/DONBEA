@@ -18,6 +18,8 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVviewsDetail;
     private TextView TVlikesDetail;
     private TextView TVdislikesDetail;
+    private TextView TVuserDetail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -31,11 +33,13 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVviewsDetail = findViewById(R.id.TVviewsDetail);
         TVlikesDetail = findViewById(R.id.TVlikesDetail);
         TVdislikesDetail = findViewById(R.id.TVdislikesDetail);
+        TVuserDetail = findViewById(R.id.TVuserDetail);
 
-        TVtitleDetail.setText(clickedVideo.getTitle().toString());
-        TVviewsDetail.setText(addDots(clickedVideo.getViewCount().toString()));
-        TVlikesDetail.setText(addDots(clickedVideo.getLikeCount().toString()));
-        TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount().toString()));
+        TVtitleDetail.setText(clickedVideo.getTitle());
+        TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
+        TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
+        TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
+        TVuserDetail.setText(clickedVideo.getChannelTitle());
 
         youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
     }
