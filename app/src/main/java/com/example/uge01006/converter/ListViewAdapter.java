@@ -19,9 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 class ListViewAdapter extends ArrayAdapter<VideoYoutube>
 {
-    ListViewAdapter(Context context, int resource, List<VideoYoutube> objects)
-    {super(context, resource, objects);}
-
+    ListViewAdapter(Context context, int resource, List<VideoYoutube> objects) {super(context, resource, objects);}
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)

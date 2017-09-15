@@ -3,7 +3,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -55,7 +54,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
 
         LLdownloadVideo.setOnClickListener(view ->
         {
-            watchOnYoutube(clickedVideo.getId());
             //TODO Download Youtube Video to Smartphone
         });
 
@@ -68,8 +66,8 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
 
     public void watchOnYoutube(String id)
     {
-        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + id));
+        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:"+id));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_BASE_URL+id));
         try {startActivity(appIntent);}
         catch (ActivityNotFoundException ex) {startActivity(webIntent);}
     }
@@ -103,10 +101,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         if (errorReason.isUserRecoverableError()) {errorReason.getErrorDialog(this, 1).show();}
         else {Toast.makeText(this, "There was an error initializing the Video", Toast.LENGTH_LONG).show();}
     }
-
     @Override
-    protected void onPause() {
-        super.onPause();
-        this.finish();
-    }
+    protected void onPause() {super.onPause(); this.finish();}
 }

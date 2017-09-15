@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         LVlist = (ListView) this.findViewById(R.id.LVitems);
         ETsearch = (EditText) this.findViewById(R.id.ETsearch);
         IVback = (ImageView) this.findViewById(R.id.IVback);
@@ -59,11 +57,18 @@ public class MainActivity extends AppCompatActivity
         loadingText = (TextView) this.findViewById(R.id.TVloading);
         TVsplitBar1 = (TextView) this.findViewById(R.id.TVsplitBar1);
         TVsplitBar2 = (TextView) this.findViewById(R.id.TVsplitBar2);
+        setSupportActionBar(toolbar);
+
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
         LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        LLsearchLayout.setVisibility(View.INVISIBLE);
+        items = new ArrayList<>();
+        LVadapter = new ListViewAdapter(this, 0, items);
+        LVlist.setAdapter(LVadapter);
+
         IVback.setOnClickListener(view -> showToolbarHideKeyboard());
         ETsearch.setOnEditorActionListener((v, actionId, event) -> {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) || actionId == EditorInfo.IME_ACTION_NEXT)
@@ -82,10 +87,6 @@ public class MainActivity extends AppCompatActivity
             detail.putExtra("selectedVideo", clickedVideo);
             startActivity(detail);
         });
-        LLsearchLayout.setVisibility(View.INVISIBLE);
-        items = new ArrayList<>();
-        LVadapter = new ListViewAdapter(this, 0, items);
-        LVlist.setAdapter(LVadapter);
         if (settings.getBoolean("custom", true)) {loadCustom(settings.getString("text", "default"));}
         else {loadDefault();}
     }
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity
         ETsearch.clearFocus();
         keyboard.hideSoftInputFromWindow(ETsearch.getWindowToken(), 0);
     }
-
 
     private void search()
     {
@@ -173,14 +173,14 @@ public class MainActivity extends AppCompatActivity
     public void onBackPressed()
     {
         if (LLsearchLayout.isShown()){ showToolbarHideKeyboard();}
-        else { super.onBackPressed();}
+        else {super.onBackPressed();}
     }
 
     private class AsyncListLoader extends AsyncTask<String, Void, Integer>
     {
         private String query = "";
         private YoutubeAPI youtubeAPI = new YoutubeAPI();
-        public void setQuery(String query) {this.query = query;}
+        void setQuery(String query) {this.query = query;}
         protected void onPreExecute()
         {
             spinImage();

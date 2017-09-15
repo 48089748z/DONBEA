@@ -9,11 +9,9 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
-
 public class SettingsActivity extends AppCompatActivity
 {
     private SharedPreferences settings;
@@ -22,7 +20,6 @@ public class SettingsActivity extends AppCompatActivity
     private Switch SWcustomSearch;
     private EditText ETcustomSearch;
     private ImageView IVbackSettings;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,6 +32,7 @@ public class SettingsActivity extends AppCompatActivity
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
         setSupportActionBar(toolbar);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
+
         ETcustomSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -48,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
+
         SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked)
             {
@@ -67,6 +66,7 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
+
         IVbackSettings.setOnClickListener(view -> {ETcustomSearch.setText("");});
         if (settings.getBoolean("custom", true))
         {
@@ -82,25 +82,6 @@ public class SettingsActivity extends AppCompatActivity
             SWcustomSearch.setChecked(false);
         }
     }
-
-    public void setSettingsExample()
-    {
-        settingsEditor = settings.edit();
-        settingsEditor.putBoolean("musicON", true);
-        settingsEditor.putString("id", "Popular");
-        settingsEditor.commit();
-    }
-
-    public void getSettingsExample()
-    {
-        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
-        if (settings.getBoolean("musicON", true))
-        {
-            //Si hay musica haz esto...
-        }
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
