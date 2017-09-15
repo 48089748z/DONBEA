@@ -1,5 +1,7 @@
 package com.example.uge01006.converter;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView loading;
     private TextView loadingText;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+    private SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity
         IVback = (ImageView) this.findViewById(R.id.IVback);
         loading = (ImageView) this.findViewById(R.id.loading);
         loadingText = (TextView) this.findViewById(R.id.TVloading);
+        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         IVback.setOnClickListener(view -> showToolbarHideKeyboard(""));
@@ -57,10 +61,8 @@ public class MainActivity extends AppCompatActivity
             {
                 clearList();
                 showToolbarHideKeyboard(ETsearch.getText().toString());
-                AsyncListLoader loader = new AsyncListLoader();
-                loader.setQuery(ETsearch.getText().toString());
                 loadingText.setText("Loading Results for '"+ETsearch.getText().toString()+"' ...");
-                loader.execute();
+                loadCustom(ETsearch.getText().toString());
             }
             return false;
         });
@@ -75,7 +77,8 @@ public class MainActivity extends AppCompatActivity
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
-        loadPopularMusic();
+        if (settings.getBoolean("custom", true)) {loadCustom(settings.getString("text", "default"));}
+        else {loadDefault();}
     }
 
     private void settings()
@@ -98,10 +101,11 @@ public class MainActivity extends AppCompatActivity
         ETsearch.clearFocus();
         keyboard.hideSoftInputFromWindow(ETsearch.getWindowToken(), 0);
         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-        if (text!=""){ getSupportActionBar().setTitle(text);}
+        getSupportActionBar().setTitle(text);
     }
 
-    private void hideToolbarShowKeyboard()
+
+    private void search()
     {
         toolbar.animate().translationY(-toolbar.getBottom()).setInterpolator(new AccelerateInterpolator()).start();
         ETsearch.setVisibility(View.VISIBLE);
@@ -110,9 +114,18 @@ public class MainActivity extends AppCompatActivity
         if (ETsearch.requestFocus()) {keyboard.showSoftInput(ETsearch, InputMethodManager.SHOW_IMPLICIT);}
     }
 
-    public void loadPopularMusic()
+    public void loadCustom(String custom)
+    {
+        loadingText.setText("Loading Results for '"+custom+"' ...");
+        getSupportActionBar().setTitle(custom);
+        AsyncListLoader loader = new AsyncListLoader();
+        loader.setQuery(custom);
+        loader.execute();
+    }
+    public void loadDefault()
     {
         clearList();
+        loadingText.setText("Loading Popular Videos of Today ...");
         getSupportActionBar().setTitle("Popular Videos Today");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery("");
@@ -126,8 +139,6 @@ public class MainActivity extends AppCompatActivity
         LVlist.setAdapter(null);
         LVlist.setAdapter(LVadapter);
     }
-
-    private void search() {hideToolbarShowKeyboard();}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

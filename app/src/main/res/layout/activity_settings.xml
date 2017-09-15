@@ -13,28 +13,83 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="9"
+        android:layout_weight="10"
         android:background="@color/BLUE_FACEBOOK"
         app:titleTextColor="@color/WHITE"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="15">
+        android:layout_weight="9">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="100">
-            <Switch
+            <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="50"
+                android:layout_weight="5"/>
+            <Switch
+                android:id="@+id/SWcustomSearch"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="90"
                 android:text="Custom Default Search"
-                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
         </LinearLayout>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="8">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+
+            <EditText
+                android:id="@+id/ETcustomSearch"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="90"
+                android:hint="Enter Default Search"
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textColorHint="@color/GREY_TEXT_LIGHT"
+                android:textSize="16dp"/>
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 </LinearLayout>
 
 
