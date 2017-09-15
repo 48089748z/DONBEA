@@ -72,11 +72,17 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="90"
+                android:layout_weight="80"
                 android:hint="Enter Default Search"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
                 android:textColorHint="@color/GREY_TEXT_LIGHT"
                 android:textSize="16dp"/>
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:src="@drawable/close_48"
+                android:id="@+id/IVbackSettings"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"

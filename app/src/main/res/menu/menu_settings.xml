@@ -8,10 +8,4 @@
         android:orderInCategory="100"
         android:icon="@drawable/ok_48"/>
 
-    <item app:showAsAction="ifRoom"
-        android:id="@+id/action_info"
-        android:title="Ok"
-        android:orderInCategory="100"
-        android:icon="@drawable/info_48"/>
-
 </menu>

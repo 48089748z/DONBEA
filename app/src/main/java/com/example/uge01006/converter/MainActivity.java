@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     private TextView loadingText;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private SharedPreferences settings;
+    private TextView TVsplitBar1;
+    private TextView TVsplitBar2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity
         IVback = (ImageView) this.findViewById(R.id.IVback);
         loading = (ImageView) this.findViewById(R.id.loading);
         loadingText = (TextView) this.findViewById(R.id.TVloading);
+        TVsplitBar1 = (TextView) this.findViewById(R.id.TVsplitBar1);
+        TVsplitBar2 = (TextView) this.findViewById(R.id.TVsplitBar2);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity
         ETsearch.clearFocus();
         keyboard.hideSoftInputFromWindow(ETsearch.getWindowToken(), 0);
         toolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator()).start();
-        getSupportActionBar().setTitle(text);
+        getSupportActionBar().setTitle("'"+text+"'");
     }
 
 
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity
     public void loadCustom(String custom)
     {
         loadingText.setText("Loading Results for '"+custom+"' ...");
-        getSupportActionBar().setTitle(custom);
+        getSupportActionBar().setTitle("'"+custom+"'");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery(custom);
         loader.execute();
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity
     {
         clearList();
         loadingText.setText("Loading Popular Videos of Today ...");
-        getSupportActionBar().setTitle("Popular Videos Today");
+        getSupportActionBar().setTitle("'Popular Videos Today'");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery("");
         loader.execute();
@@ -172,6 +176,8 @@ public class MainActivity extends AppCompatActivity
             spinImage();
             loading.setVisibility(View.VISIBLE);
             loadingText.setVisibility(View.VISIBLE);
+            TVsplitBar1.setVisibility(View.VISIBLE);
+            TVsplitBar2.setVisibility(View.VISIBLE);
         }
         protected Integer doInBackground(String... params)
         {
@@ -189,6 +195,8 @@ public class MainActivity extends AppCompatActivity
                 loading.clearAnimation();
                 loading.setVisibility(View.INVISIBLE);
                 loadingText.setVisibility(View.INVISIBLE);
+                TVsplitBar1.setVisibility(View.INVISIBLE);
+                TVsplitBar2.setVisibility(View.INVISIBLE);
                 LVadapter.notifyDataSetChanged();
             }
             query = "";

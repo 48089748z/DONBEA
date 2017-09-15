@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity
@@ -20,6 +21,7 @@ public class SettingsActivity extends AppCompatActivity
     private Toolbar toolbar;
     private Switch SWcustomSearch;
     private EditText ETcustomSearch;
+    private ImageView IVbackSettings;
 
 
     @Override
@@ -30,10 +32,10 @@ public class SettingsActivity extends AppCompatActivity
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         SWcustomSearch = (Switch) this.findViewById(R.id.SWcustomSearch);
         ETcustomSearch = (EditText) this.findViewById(R.id.ETcustomSearch);
+        IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Settings");
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
-
         ETcustomSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -47,22 +49,10 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
-
-        if (settings.getBoolean("custom", true))
-        {
-            ETcustomSearch.setVisibility(View.VISIBLE);
-            SWcustomSearch.setChecked(true);
-            ETcustomSearch.setText(settings.getString("text", "default"));
-        }
-        else
-        {
-            ETcustomSearch.setVisibility(View.INVISIBLE);
-            SWcustomSearch.setChecked(false);
-        }
-
         SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked)
             {
+                IVbackSettings.setVisibility(View.VISIBLE);
                 ETcustomSearch.setVisibility(View.VISIBLE);
                 ETcustomSearch.setText(settings.getString("text", "default"));
                 settingsEditor = settings.edit();
@@ -71,13 +61,27 @@ public class SettingsActivity extends AppCompatActivity
             }
             else
             {
+                IVbackSettings.setVisibility(View.INVISIBLE);
                 ETcustomSearch.setVisibility(View.INVISIBLE);
                 settingsEditor = settings.edit();
                 settingsEditor.putBoolean("custom", false);
                 settingsEditor.apply();
             }
         });
-
+        IVbackSettings.setOnClickListener(view -> {ETcustomSearch.setText("");});
+        if (settings.getBoolean("custom", true))
+        {
+            IVbackSettings.setVisibility(View.VISIBLE);
+            ETcustomSearch.setVisibility(View.VISIBLE);
+            SWcustomSearch.setChecked(true);
+            ETcustomSearch.setText(settings.getString("text", "default"));
+        }
+        else
+        {
+            IVbackSettings.setVisibility(View.INVISIBLE);
+            ETcustomSearch.setVisibility(View.INVISIBLE);
+            SWcustomSearch.setChecked(false);
+        }
     }
 
     public void setSettingsExample()
@@ -111,15 +115,13 @@ public class SettingsActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.action_ok)
         {
+            if (ETcustomSearch.getText().toString().trim().isEmpty())
+            {
+                SWcustomSearch.setChecked(false);
+            }
             this.finish();
             return true;
         }
-        if (id == R.id.action_info)
-        {
-            //info();
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 }
