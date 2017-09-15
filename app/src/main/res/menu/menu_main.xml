@@ -6,11 +6,11 @@
         android:id="@+id/action_search"
         android:title="Search"
         android:orderInCategory="100"
-        android:icon="@drawable/search_48"/>
+        android:icon="@drawable/search_48_white"/>
 
     <item app:showAsAction="ifRoom"
         android:id="@+id/action_settings"
         android:title="Settings"
         android:orderInCategory="100"
-        android:icon="@drawable/settings_48"/>
+        android:icon="@drawable/settings_48_white"/>
 </menu>

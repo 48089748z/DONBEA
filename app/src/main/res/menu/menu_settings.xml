@@ -6,6 +6,6 @@
         android:id="@+id/action_ok"
         android:title="Ok"
         android:orderInCategory="100"
-        android:icon="@drawable/ok_48"/>
+        android:icon="@drawable/ok_48_white"/>
 
 </menu>

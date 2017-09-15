@@ -22,7 +22,7 @@ public class YoutubeAPI
     private YouTube youtube;
     public YoutubeAPI()
     {
-        youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, httpRequest -> {}).setApplicationName("youtube-cmdline-search_48-sample").build();
+        youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, httpRequest -> {}).setApplicationName("youtube-cmdline-search_48_white-sample").build();
     }
 
     public ArrayList<VideoYoutube> searchVideos (String query)

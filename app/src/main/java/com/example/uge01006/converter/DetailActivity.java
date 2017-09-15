@@ -26,6 +26,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private LinearLayout LLdownloadVideo;
     private LinearLayout LLdownloadAudio;
     private LinearLayout LLwatchYoutube;
+    private LinearLayout LLshareVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +45,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         LLdownloadVideo = this.findViewById(R.id.LLdownloadVideo);
         LLdownloadAudio = this.findViewById(R.id.LLdownloadAudio);
         LLwatchYoutube = this.findViewById(R.id.LLwatchYoutube);
+        LLshareVideo = this.findViewById(R.id.LLshareVideo);
 
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
@@ -61,13 +63,25 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         {
             //TODO Convert to Audio the Youtube Video & Download it to Smartphone
         });
-        LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube(clickedVideo.getId());});
+        LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube();});
+        LLshareVideo.setOnClickListener(view -> {share();});
     }
 
-    public void watchOnYoutube(String id)
+    public void share()
     {
-        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:"+id));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_BASE_URL+id));
+        try
+        {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, YOUTUBE_BASE_URL+clickedVideo.getId());
+            startActivity(Intent.createChooser(shareIntent, " Share"));
+        }
+        catch(Exception e) {e.printStackTrace();}
+    }
+    public void watchOnYoutube()
+    {
+        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:"+clickedVideo.getId()));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(YOUTUBE_BASE_URL+clickedVideo.getId()));
         try {startActivity(appIntent);}
         catch (ActivityNotFoundException ex) {startActivity(webIntent);}
     }
