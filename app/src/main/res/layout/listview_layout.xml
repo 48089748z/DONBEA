@@ -122,7 +122,7 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/views_24_green_light" />
+                app:srcCompat="@drawable/views_24_whatsapp_green" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -152,7 +152,7 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/likes_24_blue_light"/>
+                app:srcCompat="@drawable/like_24_blue"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -182,7 +182,7 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/dislikes_24_red_light"/>
+                app:srcCompat="@drawable/dislike_24_red"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"

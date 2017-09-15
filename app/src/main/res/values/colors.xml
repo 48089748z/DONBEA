@@ -5,7 +5,11 @@
     <color name="colorAccent">#D7D7D7</color>
 
 
-    <color name="BLUE_FACEBOOK">#3B5999</color>
+    <color name="YELLOW">#FFC300</color>
+    <color name="GREEN">#34AF23</color>
+    <color name="RED">#C4302B</color>
+    <color name="BLUE">#3B5999</color>
+    <color name="BLACK_PURE">#000000</color>
     <color name="BLACK_TEXT">#292929</color>
     <color name="GREY_BACKGROUND_DARK_SUPER">#2A2A2A</color>
     <color name="GREY_TEXT_DARK">#6C6C6C</color>

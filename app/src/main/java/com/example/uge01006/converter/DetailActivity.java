@@ -1,5 +1,7 @@
 package com.example.uge01006.converter;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,6 +16,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener
 {
+    private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
     private YouTubePlayerView youtubePlayer;
     private VideoYoutube clickedVideo;
     private TextView TVtitleDetail;
@@ -23,6 +26,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVuserDetail;
     private LinearLayout LLdownloadVideo;
     private LinearLayout LLdownloadAudio;
+    private LinearLayout LLwatchYoutube;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +44,8 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVuserDetail = this.findViewById(R.id.TVuserDetail);
         LLdownloadVideo = this.findViewById(R.id.LLdownloadVideo);
         LLdownloadAudio = this.findViewById(R.id.LLdownloadAudio);
+        LLwatchYoutube = this.findViewById(R.id.LLwatchYoutube);
+
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
@@ -49,6 +55,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
 
         LLdownloadVideo.setOnClickListener(view ->
         {
+            watchOnYoutube(clickedVideo.getId());
             //TODO Download Youtube Video to Smartphone
         });
 
@@ -56,8 +63,16 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         {
             //TODO Convert to Audio the Youtube Video & Download it to Smartphone
         });
+        LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube(clickedVideo.getId());});
     }
 
+    public void watchOnYoutube(String id)
+    {
+        Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=" + id));
+        try {startActivity(appIntent);}
+        catch (ActivityNotFoundException ex) {startActivity(webIntent);}
+    }
     private String addDots(String number)
     {
 

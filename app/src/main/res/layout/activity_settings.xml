@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:weightSum="100"
             android:orientation="horizontal"
-            android:background="@color/BLUE_FACEBOOK">
+            android:background="@color/BLUE">
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
