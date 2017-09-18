@@ -1,8 +1,6 @@
 package com.example.uge01006.converter;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -15,7 +13,6 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import java.io.IOException;
 public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener
 {
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
@@ -61,6 +58,10 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         {
             //TODO Download Youtube Video to Smartphone
 
+            Intent downloader = new Intent(this, DownloadActivity.class);
+            downloader.setType("text/plain");
+            downloader.putExtra(Intent.EXTRA_TEXT, YOUTUBE_BASE_URL+clickedVideo.getId());
+            startActivity(downloader);
 
         });
 
