@@ -6,21 +6,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
+import com.example.uge01006.converter.Extractor.YoutubeFragmentedVideo;
 import com.example.uge01006.converter.Extractor.YtFile;
-
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +27,10 @@ import java.util.Collections;
 import java.util.List;
 public class DownloadActivity extends AppCompatActivity
 {
+    private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private static final int ITAG_FOR_AUDIO = 140;
-    private ProgressBar PBdownloading;
-    private List<YtFragmentedVideo> formatsToShowList;
+    private List<YoutubeFragmentedVideo> formatsToShowList;
+    private ImageView loadingDownload;
     private TextView TVtitleDownload;
     private Button BTaudio;
     private Button BTvideo144;
@@ -40,13 +40,15 @@ public class DownloadActivity extends AppCompatActivity
     private Button BTvideo720;
     private Button BTvideo1080;
     private Button BTvideo2160;
+    private Button BTvideo4320;
+    private ProgressBar PBdownloading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
-        PBdownloading = (ProgressBar) this.findViewById(R.id.PBdownloading);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         TVtitleDownload = (TextView) this.findViewById(R.id.TVtitleDownload);
         BTaudio = (Button) this.findViewById(R.id.BTaudio);
         BTvideo144 = (Button) this.findViewById(R.id.BTvideo144);
@@ -56,11 +58,14 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo720 = (Button) this.findViewById(R.id.BTvideo720);
         BTvideo1080 = (Button) this.findViewById(R.id.BTvideo1080);
         BTvideo2160 = (Button) this.findViewById(R.id.BTvideo2160);
+        BTvideo4320 = (Button) this.findViewById(R.id.BTvideo4320);
 
+        loadingDownload = (ImageView) this.findViewById(R.id.loadingDownload);
+        spinImage();
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        getYoutubeDownloadUrl(link);
+        getYoutubeVideoFileURL(link);
     }
-    private void manageButtons(final String videoTitle, final YtFragmentedVideo ytFrVideo)
+    private void manageButtons(final String videoTitle, final YoutubeFragmentedVideo ytFrVideo)
     {
         TVtitleDownload.setText(videoTitle);
 
@@ -98,43 +103,51 @@ public class DownloadActivity extends AppCompatActivity
             }
             finish();
         });
-
-
     }
-    private void getYoutubeDownloadUrl(String link)
+    private void getYoutubeVideoFileURL(String link)
     {
         new YouTubeExtractor(this)
         {
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                PBdownloading.setVisibility(View.GONE);
+                loadingDownload.clearAnimation();
+                BTaudio.setVisibility(View.VISIBLE);
+                BTvideo144.setVisibility(View.VISIBLE);
+                BTvideo240.setVisibility(View.VISIBLE);
+                BTvideo360.setVisibility(View.VISIBLE);
+                BTvideo480.setVisibility(View.VISIBLE);
+                BTvideo720.setVisibility(View.VISIBLE);
+                BTvideo1080.setVisibility(View.VISIBLE);
+                BTvideo2160.setVisibility(View.VISIBLE);
+                BTvideo4320.setVisibility(View.VISIBLE);
                 formatsToShowList = new ArrayList<>();
                 for (int i = 0, itag; i < ytFiles.size(); i++)
                 {
                     itag = ytFiles.keyAt(i);
                     YtFile ytFile = ytFiles.get(itag);
-                    if (ytFile.getFormat().getHeight() == -1 || ytFile.getFormat().getHeight() >= 360) {addFormatToList(ytFile, ytFiles);}
+                    if (ytFile.getFormat().getHeight() == -1 || ytFile.getFormat().getHeight() >= 360) {
+                        fillFormatsArray(ytFile, ytFiles);}
                 }
                 Collections.sort(formatsToShowList, (lhs, rhs) -> lhs.height - rhs.height);
-                for (YtFragmentedVideo files : formatsToShowList)
+                for (YoutubeFragmentedVideo files : formatsToShowList)
                 {
                     manageButtons(vMeta.getTitle(), files);
                 }
             }
         }.extract(link, true, true);
     }
-    private void addFormatToList(YtFile ytFile, SparseArray<YtFile> ytFiles)
+    private void fillFormatsArray(YtFile ytFile, SparseArray<YtFile> ytFiles)
     {
         int height = ytFile.getFormat().getHeight();
         if (height != -1)
         {
-            for (YtFragmentedVideo frVideo : formatsToShowList)
+            for (YoutubeFragmentedVideo frVideo : formatsToShowList)
             {
                 if (frVideo.height == height && (frVideo.videoFile == null || frVideo.videoFile.getFormat().getFps() == ytFile.getFormat().getFps())) {return;}
             }
         }
-        YtFragmentedVideo frVideo = new YtFragmentedVideo();
+        YoutubeFragmentedVideo frVideo = new YoutubeFragmentedVideo();
         frVideo.height = height;
         if (ytFile.getFormat().isDashContainer())
         {
@@ -159,9 +172,10 @@ public class DownloadActivity extends AppCompatActivity
             request.setVisibleInDownloadsUi(false);
         }
         else
+        {
             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+        }
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         return manager.enqueue(request);
     }
@@ -171,10 +185,21 @@ public class DownloadActivity extends AppCompatActivity
         try {dlCacheFile.createNewFile();}
         catch (IOException e) {e.printStackTrace();}
     }
-    private class YtFragmentedVideo
+    private void spinImage()
     {
-        int height;
-        YtFile audioFile;
-        YtFile videoFile;
+        spinner.setInterpolator(new LinearInterpolator());
+        spinner.setDuration(1200);
+        spinner.setRepeatCount(Animation.INFINITE);
+        loadingDownload.setVisibility(View.VISIBLE);
+        BTaudio.setVisibility(View.INVISIBLE);
+        BTvideo144.setVisibility(View.INVISIBLE);
+        BTvideo240.setVisibility(View.INVISIBLE);
+        BTvideo360.setVisibility(View.INVISIBLE);
+        BTvideo480.setVisibility(View.INVISIBLE);
+        BTvideo720.setVisibility(View.INVISIBLE);
+        BTvideo1080.setVisibility(View.INVISIBLE);
+        BTvideo2160.setVisibility(View.INVISIBLE);
+        BTvideo4320.setVisibility(View.INVISIBLE);
+        loadingDownload.startAnimation(spinner);
     }
 }

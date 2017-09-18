@@ -6,74 +6,246 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.uge01006.converter.DownloadActivity"
-    android:background="@color/BLUE"
+    android:background="@color/GREY_BACKGROUND_DARK_SUPER"
     android:weightSum="100">
 
     <TextView
-        android:id="@+id/TVtitleDownload"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Youtube Title"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:textStyle="bold"/>
+        android:layout_weight="3"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"/>
 
-    <ProgressBar
-        android:id="@+id/PBdownloading"
+        <TextView
+            android:id="@+id/TVtitleDownload"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="80"
+            android:text="Loading Download Options ..."
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/loadingDownload"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_gravity="center"
-        android:layout_weight="10" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/ic_logo"/>
 
-    <Button
-        android:id="@+id/BTaudio"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Audio"/>
 
-    <Button
-        android:id="@+id/BTvideo144"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 144"/>
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTaudio"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Audio"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/BTvideo240"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 240"/>
-    <Button
-        android:id="@+id/BTvideo360"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo144"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 144 (LD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 360"/>
-    <Button
-        android:id="@+id/BTvideo480"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo240"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 240 (LD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 480"/>
-    <Button
-        android:id="@+id/BTvideo720"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo360"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 360 (MD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 720"/>
-    <Button
-        android:id="@+id/BTvideo1080"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo480"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 480 (MD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 1080"/>
-    <Button
-        android:id="@+id/BTvideo2160"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo720"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 720 (HD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="10"
-        android:text="Video 2160 (2K HD)"/>
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo1080"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 1080 (HD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo2160"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 2160 (4K SUPER HD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_weight="10">
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+        <Button
+            android:id="@+id/BTvideo4320"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:text="Video 4320 (8K SUPER HD)"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"/>
+    </LinearLayout>
 </LinearLayout>

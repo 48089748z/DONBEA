@@ -62,7 +62,7 @@
         <TextView
             android:id="@+id/TVuserDetail"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Channel"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
@@ -214,7 +214,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Download"
+            android:text="Convert"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>

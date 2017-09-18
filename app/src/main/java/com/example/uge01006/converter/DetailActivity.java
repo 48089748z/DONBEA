@@ -55,7 +55,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
             downloader.setType("text/plain");
             downloader.putExtra(Intent.EXTRA_TEXT, YOUTUBE_BASE_URL+clickedVideo.getId());
             startActivity(downloader);
-
         });
         LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube();});
         LLshareVideo.setOnClickListener(view -> {share();});
