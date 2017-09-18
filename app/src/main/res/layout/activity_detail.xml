@@ -200,7 +200,7 @@
     </TextView>
 
     <LinearLayout
-        android:id="@+id/LLdownloadAudio"
+        android:id="@+id/LLdownload"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="11"

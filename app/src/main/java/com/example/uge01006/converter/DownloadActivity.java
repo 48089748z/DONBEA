@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
 import com.example.uge01006.converter.Extractor.YtFile;
+
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,26 +29,41 @@ import java.util.List;
 public class DownloadActivity extends AppCompatActivity
 {
     private static final int ITAG_FOR_AUDIO = 140;
-    private LinearLayout mainLayout;
-    private ProgressBar mainProgressBar;
+    private ProgressBar PBdownloading;
     private List<YtFragmentedVideo> formatsToShowList;
-    private Button button;
+    private TextView TVtitleDownload;
+    private Button BTaudio;
+    private Button BTvideo144;
+    private Button BTvideo240;
+    private Button BTvideo360;
+    private Button BTvideo480;
+    private Button BTvideo720;
+    private Button BTvideo1080;
+    private Button BTvideo2160;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
-        mainLayout = (LinearLayout) this.findViewById(R.id.LLdownloader);
-        mainProgressBar = (ProgressBar) this.findViewById(R.id.prgrBar);
-        button = (Button) this.findViewById(R.id.button);
+        PBdownloading = (ProgressBar) this.findViewById(R.id.PBdownloading);
+        TVtitleDownload = (TextView) this.findViewById(R.id.TVtitleDownload);
+        BTaudio = (Button) this.findViewById(R.id.BTaudio);
+        BTvideo144 = (Button) this.findViewById(R.id.BTvideo144);
+        BTvideo240 = (Button) this.findViewById(R.id.BTvideo240);
+        BTvideo360 = (Button) this.findViewById(R.id.BTvideo360);
+        BTvideo480 = (Button) this.findViewById(R.id.BTvideo480);
+        BTvideo720 = (Button) this.findViewById(R.id.BTvideo720);
+        BTvideo1080 = (Button) this.findViewById(R.id.BTvideo1080);
+        BTvideo2160 = (Button) this.findViewById(R.id.BTvideo2160);
+
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
         getYoutubeDownloadUrl(link);
     }
-    private void addButtonToMainLayout(final String videoTitle, final YtFragmentedVideo ytFrVideo)
+    private void manageButtons(final String videoTitle, final YtFragmentedVideo ytFrVideo)
     {
-        Log.e("MENUUUUUUUUUUU", videoTitle);
-        // Display some buttons and let the user choose the format
+        TVtitleDownload.setText(videoTitle);
+
         String btnText;
         if (ytFrVideo.height == -1)
         {
@@ -55,9 +73,8 @@ public class DownloadActivity extends AppCompatActivity
         {
             btnText = (ytFrVideo.videoFile.getFormat().getFps() == 60) ? ytFrVideo.height + "p60" : ytFrVideo.height + "p";
         }
-        //Button btn = new Button(this);
-        button.setText(btnText);
-        button.setOnClickListener(v ->
+
+        BTaudio.setOnClickListener(v ->
         {
             String filename;
             if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
@@ -81,7 +98,8 @@ public class DownloadActivity extends AppCompatActivity
             }
             finish();
         });
-        Log.e("ERRORRRRRRRRRRRRR", "mainLayout.addView not working");
+
+
     }
     private void getYoutubeDownloadUrl(String link)
     {
@@ -90,15 +108,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                mainProgressBar.setVisibility(View.GONE);
-                if (ytFiles == null)
-                {
-                    TextView tv = new TextView(DownloadActivity.this);
-                    tv.setText("Couldn't extract URLs");
-                    tv.setMovementMethod(LinkMovementMethod.getInstance());
-                    mainLayout.addView(tv);
-                    return;
-                }
+                PBdownloading.setVisibility(View.GONE);
                 formatsToShowList = new ArrayList<>();
                 for (int i = 0, itag; i < ytFiles.size(); i++)
                 {
@@ -107,7 +117,10 @@ public class DownloadActivity extends AppCompatActivity
                     if (ytFile.getFormat().getHeight() == -1 || ytFile.getFormat().getHeight() >= 360) {addFormatToList(ytFile, ytFiles);}
                 }
                 Collections.sort(formatsToShowList, (lhs, rhs) -> lhs.height - rhs.height);
-                for (YtFragmentedVideo files : formatsToShowList) {addButtonToMainLayout(vMeta.getTitle(), files);}
+                for (YtFragmentedVideo files : formatsToShowList)
+                {
+                    manageButtons(vMeta.getTitle(), files);
+                }
             }
         }.extract(link, true, true);
     }
