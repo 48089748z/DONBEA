@@ -12,7 +12,24 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="3"/>
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="10"
+        android:text="Download Options"
+        android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/loadingDownload"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/ic_logo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,14 +56,10 @@
             android:layout_weight="10"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/loadingDownload"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@mipmap/ic_logo"/>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="4"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,58 +76,21 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Audio"/>
+            android:text="Audio Only"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:weightSum="100"
-        android:orientation="horizontal"
-        android:layout_weight="10">
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-        <Button
-            android:id="@+id/BTvideo144"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="60"
-            android:text="Video 144 (LD)"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:weightSum="100"
-        android:orientation="horizontal"
-        android:layout_weight="10">
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-        <Button
-            android:id="@+id/BTvideo240"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="60"
-            android:text="Video 240 (LD)"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-    </LinearLayout>
-
-
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -130,13 +106,21 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 360 (MD)"/>
+            android:text="Video 360p"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -152,13 +136,21 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 480 (MD)"/>
+            android:text="Video 480p"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -169,18 +161,28 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
+
         <Button
             android:id="@+id/BTvideo720"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 720 (HD)"/>
+            android:background="@color/GREY_TEXT_DARK"
+            android:text="Video 720p HD"
+            android:textAllCaps="false"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -196,13 +198,21 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 1080 (HD)"/>
+            android:text="Video 1080p HD"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -218,15 +228,21 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 2160 (4K SUPER HD)"/>
+            android:text="2160p (4K Super HD)"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="20"/>
     </LinearLayout>
-
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -242,7 +258,12 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 4320 (8K SUPER HD)"/>
+            android:text="4320p (8K Super HD)"
+            android:textAllCaps="false"
+            android:background="@color/GREY_TEXT_DARK"
+            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"

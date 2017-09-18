@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,15 +34,13 @@ public class DownloadActivity extends AppCompatActivity
     private ImageView loadingDownload;
     private TextView TVtitleDownload;
     private Button BTaudio;
-    private Button BTvideo144;
-    private Button BTvideo240;
     private Button BTvideo360;
     private Button BTvideo480;
     private Button BTvideo720;
     private Button BTvideo1080;
     private Button BTvideo2160;
     private Button BTvideo4320;
-    private ProgressBar PBdownloading;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,58 +50,59 @@ public class DownloadActivity extends AppCompatActivity
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         TVtitleDownload = (TextView) this.findViewById(R.id.TVtitleDownload);
         BTaudio = (Button) this.findViewById(R.id.BTaudio);
-        BTvideo144 = (Button) this.findViewById(R.id.BTvideo144);
-        BTvideo240 = (Button) this.findViewById(R.id.BTvideo240);
         BTvideo360 = (Button) this.findViewById(R.id.BTvideo360);
         BTvideo480 = (Button) this.findViewById(R.id.BTvideo480);
         BTvideo720 = (Button) this.findViewById(R.id.BTvideo720);
         BTvideo1080 = (Button) this.findViewById(R.id.BTvideo1080);
         BTvideo2160 = (Button) this.findViewById(R.id.BTvideo2160);
         BTvideo4320 = (Button) this.findViewById(R.id.BTvideo4320);
-
         loadingDownload = (ImageView) this.findViewById(R.id.loadingDownload);
         spinImage();
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
         getYoutubeVideoFileURL(link);
+
+        BTaudio.setOnClickListener(view -> download(getFragment(-1)));
+        BTvideo360.setOnClickListener(view -> download(getFragment(360)));
+        BTvideo480.setOnClickListener(view -> download(getFragment(480)));
+        BTvideo720.setOnClickListener(view -> download(getFragment(720)));
+        BTvideo1080.setOnClickListener(view -> download(getFragment(1080)));
+        BTvideo2160.setOnClickListener(view -> download(getFragment(2160)));
+        BTvideo4320.setOnClickListener(view -> download(getFragment(4320)));
     }
-    private void manageButtons(final String videoTitle, final YoutubeFragmentedVideo ytFrVideo)
+    private YoutubeFragmentedVideo getFragment (int code)
     {
+        for (YoutubeFragmentedVideo chosenFragment: formatsToShowList)
+        {
+            if (chosenFragment.height == code) {return chosenFragment;}
+        }
+        return null;
+    }
+    private void download(final YoutubeFragmentedVideo fragmentedVideo)
+    {
+        String videoTitle = fragmentedVideo.title;
         TVtitleDownload.setText(videoTitle);
-
-        String btnText;
-        if (ytFrVideo.height == -1)
+        String filename;
+        if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
+        else {filename = videoTitle;}
+        filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
+        filename += (fragmentedVideo.height == -1) ? "" : "-" + fragmentedVideo.height + "p";
+        String downloadIds = "";
+        boolean hideAudioDownloadNotification = false;
+        if (fragmentedVideo.videoFile != null)
         {
-            btnText = "Audio " + ytFrVideo.audioFile.getFormat().getAudioBitrate() + " kbit/s";
+            downloadIds += downloadFromUrl(fragmentedVideo.videoFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.videoFile.getFormat().getExt(), false);
+            downloadIds += "-";
+            hideAudioDownloadNotification = true;
         }
-        else
+        if (fragmentedVideo.audioFile != null)
         {
-            btnText = (ytFrVideo.videoFile.getFormat().getFps() == 60) ? ytFrVideo.height + "p60" : ytFrVideo.height + "p";
+            downloadIds += downloadFromUrl(fragmentedVideo.audioFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
         }
-
-        BTaudio.setOnClickListener(v ->
+        if (fragmentedVideo.audioFile != null)
         {
-            String filename;
-            if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
-            else {filename = videoTitle;}
-            filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
-            filename += (ytFrVideo.height == -1) ? "" : "-" + ytFrVideo.height + "p";
-            String downloadIds = "";
-            boolean hideAudioDownloadNotification = false;
-            if (ytFrVideo.videoFile != null)
-            {
-                downloadIds += downloadFromUrl(ytFrVideo.videoFile.getUrl(), videoTitle, filename + "." + ytFrVideo.videoFile.getFormat().getExt(), false);downloadIds += "-";
-                hideAudioDownloadNotification = true;
-            }
-            if (ytFrVideo.audioFile != null)
-            {
-                downloadIds += downloadFromUrl(ytFrVideo.audioFile.getUrl(), videoTitle, filename + "." + ytFrVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
-            }
-            if (ytFrVideo.audioFile != null)
-            {
-                cacheDownloadIds(downloadIds);
-            }
-            finish();
-        });
+            cacheDownloadIds(downloadIds);
+        }
+        finish();
     }
     private void getYoutubeVideoFileURL(String link)
     {
@@ -112,27 +112,28 @@ public class DownloadActivity extends AppCompatActivity
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
                 loadingDownload.clearAnimation();
-                BTaudio.setVisibility(View.VISIBLE);
-                BTvideo144.setVisibility(View.VISIBLE);
-                BTvideo240.setVisibility(View.VISIBLE);
-                BTvideo360.setVisibility(View.VISIBLE);
-                BTvideo480.setVisibility(View.VISIBLE);
-                BTvideo720.setVisibility(View.VISIBLE);
-                BTvideo1080.setVisibility(View.VISIBLE);
-                BTvideo2160.setVisibility(View.VISIBLE);
-                BTvideo4320.setVisibility(View.VISIBLE);
+                TVtitleDownload.setText(vMeta.getTitle());
                 formatsToShowList = new ArrayList<>();
                 for (int i = 0, itag; i < ytFiles.size(); i++)
                 {
                     itag = ytFiles.keyAt(i);
                     YtFile ytFile = ytFiles.get(itag);
-                    if (ytFile.getFormat().getHeight() == -1 || ytFile.getFormat().getHeight() >= 360) {
-                        fillFormatsArray(ytFile, ytFiles);}
+                    if (ytFile.getFormat().getHeight() == -1 || ytFile.getFormat().getHeight() >= 360)
+                    {
+                        fillFormatsArray(ytFile, ytFiles);
+                    }
                 }
                 Collections.sort(formatsToShowList, (lhs, rhs) -> lhs.height - rhs.height);
-                for (YoutubeFragmentedVideo files : formatsToShowList)
+                for (YoutubeFragmentedVideo fragmentedVideo : formatsToShowList)
                 {
-                    manageButtons(vMeta.getTitle(), files);
+                    fragmentedVideo.title = vMeta.getTitle();
+                    if (fragmentedVideo.height == -1){BTaudio.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 360){BTvideo360.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 480){BTvideo480.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 720){BTvideo720.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 1080){BTvideo1080.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 2160){BTvideo2160.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == 4320){BTvideo4320.setVisibility(View.VISIBLE);}
                 }
             }
         }.extract(link, true, true);
@@ -192,8 +193,6 @@ public class DownloadActivity extends AppCompatActivity
         spinner.setRepeatCount(Animation.INFINITE);
         loadingDownload.setVisibility(View.VISIBLE);
         BTaudio.setVisibility(View.INVISIBLE);
-        BTvideo144.setVisibility(View.INVISIBLE);
-        BTvideo240.setVisibility(View.INVISIBLE);
         BTvideo360.setVisibility(View.INVISIBLE);
         BTvideo480.setVisibility(View.INVISIBLE);
         BTvideo720.setVisibility(View.INVISIBLE);
