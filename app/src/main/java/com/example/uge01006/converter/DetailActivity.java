@@ -1,6 +1,8 @@
 package com.example.uge01006.converter;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -13,6 +15,9 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+
+import java.io.IOException;
+
 public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener
 {
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
@@ -57,6 +62,16 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         LLdownloadVideo.setOnClickListener(view ->
         {
             //TODO Download Youtube Video to Smartphone
+
+            //String url = "http://137.110.92.231/~chenyu/BBC.mp4";
+
+            MediaPlayer mediaPlayer = new MediaPlayer();
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            try {mediaPlayer.setDataSource(YOUTUBE_BASE_URL+clickedVideo.getId());}
+            catch (IOException e) {e.printStackTrace();}
+            try {mediaPlayer.prepare();}
+            catch (IOException e) {e.printStackTrace();}
+            mediaPlayer.start();
         });
 
         LLdownloadAudio.setOnClickListener(view ->
