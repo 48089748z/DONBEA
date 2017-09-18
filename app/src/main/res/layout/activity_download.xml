@@ -14,10 +14,11 @@
         android:layout_height="1dp"
         android:layout_weight="1"/>
     <TextView
+        android:id="@+id/TVheaderDownload"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="10"
-        android:text="Download Options"
+        android:text="Converting Video ..."
         android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
         android:gravity="center"
         android:textSize="30dp"
@@ -45,7 +46,6 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_weight="80"
-            android:text="Loading Download Options ..."
             android:textSize="20dp"
             android:gravity="center"
             android:textStyle="bold"

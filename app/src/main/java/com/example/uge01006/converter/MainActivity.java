@@ -70,12 +70,13 @@ public class MainActivity extends AppCompatActivity
         LVlist.setAdapter(LVadapter);
 
         IVback.setOnClickListener(view -> showToolbarHideKeyboard());
-        ETsearch.setOnEditorActionListener((v, actionId, event) -> {
+        ETsearch.setOnEditorActionListener((v, actionId, event) ->
+        {
             if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) || actionId == EditorInfo.IME_ACTION_NEXT)
             {
                 clearList();
                 showToolbarHideKeyboard();
-                loadingText.setText("Loading Results for '"+ETsearch.getText().toString()+"' ...");
+                loadingText.setText("Loading Results for '" + ETsearch.getText().toString() + "' ...");
                 loadCustom(ETsearch.getText().toString());
             }
             return false;

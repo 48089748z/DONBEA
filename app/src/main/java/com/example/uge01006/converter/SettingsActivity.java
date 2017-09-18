@@ -32,8 +32,9 @@ public class SettingsActivity extends AppCompatActivity
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
         setSupportActionBar(toolbar);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
-
-        ETcustomSearch.addTextChangedListener(new TextWatcher() {
+        IVbackSettings.setOnClickListener(view -> ETcustomSearch.setText(""));
+        ETcustomSearch.addTextChangedListener(new TextWatcher()
+        {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
             @Override
@@ -46,8 +47,8 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
-
-        SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) ->
+        {
             if (isChecked)
             {
                 IVbackSettings.setVisibility(View.VISIBLE);
@@ -66,8 +67,6 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
-
-        IVbackSettings.setOnClickListener(view -> {ETcustomSearch.setText("");});
         if (settings.getBoolean("custom", true))
         {
             IVbackSettings.setVisibility(View.VISIBLE);

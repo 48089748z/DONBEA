@@ -1,4 +1,5 @@
 package com.example.uge01006.converter;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DownloadManager;
@@ -6,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
@@ -15,7 +15,6 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
@@ -33,6 +32,7 @@ public class DownloadActivity extends AppCompatActivity
     private List<YoutubeFragmentedVideo> formatsToShowList;
     private ImageView loadingDownload;
     private TextView TVtitleDownload;
+    private TextView TVheaderDownload;
     private Button BTaudio;
     private Button BTvideo360;
     private Button BTvideo480;
@@ -49,6 +49,7 @@ public class DownloadActivity extends AppCompatActivity
         setContentView(R.layout.activity_download);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         TVtitleDownload = (TextView) this.findViewById(R.id.TVtitleDownload);
+        TVheaderDownload = (TextView) this.findViewById(R.id.TVheaderDownload);
         BTaudio = (Button) this.findViewById(R.id.BTaudio);
         BTvideo360 = (Button) this.findViewById(R.id.BTvideo360);
         BTvideo480 = (Button) this.findViewById(R.id.BTvideo480);
@@ -57,6 +58,7 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo2160 = (Button) this.findViewById(R.id.BTvideo2160);
         BTvideo4320 = (Button) this.findViewById(R.id.BTvideo4320);
         loadingDownload = (ImageView) this.findViewById(R.id.loadingDownload);
+
         spinImage();
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
         getYoutubeVideoFileURL(link);
@@ -111,8 +113,9 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                loadingDownload.clearAnimation();
+                TVheaderDownload.setText("Download Options");
                 TVtitleDownload.setText(vMeta.getTitle());
+                loadingDownload.clearAnimation();
                 formatsToShowList = new ArrayList<>();
                 for (int i = 0, itag; i < ytFiles.size(); i++)
                 {
@@ -127,6 +130,7 @@ public class DownloadActivity extends AppCompatActivity
                 for (YoutubeFragmentedVideo fragmentedVideo : formatsToShowList)
                 {
                     fragmentedVideo.title = vMeta.getTitle();
+                    if (fragmentedVideo.height == -1){BTaudio.setVisibility(View.VISIBLE);}
                     if (fragmentedVideo.height == -1){BTaudio.setVisibility(View.VISIBLE);}
                     if (fragmentedVideo.height == 360){BTvideo360.setVisibility(View.VISIBLE);}
                     if (fragmentedVideo.height == 480){BTvideo480.setVisibility(View.VISIBLE);}
