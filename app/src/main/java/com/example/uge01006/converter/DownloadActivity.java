@@ -23,27 +23,66 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 public class DownloadActivity extends AppCompatActivity
 {
-
     private static final int ITAG_FOR_AUDIO = 140;
     private LinearLayout mainLayout;
     private ProgressBar mainProgressBar;
     private List<YtFragmentedVideo> formatsToShowList;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_download);
-        mainLayout = (LinearLayout) findViewById(R.id.LLdownloader);
-        mainProgressBar = (ProgressBar) findViewById(R.id.prgrBar);
+        mainLayout = (LinearLayout) this.findViewById(R.id.LLdownloader);
+        mainProgressBar = (ProgressBar) this.findViewById(R.id.prgrBar);
+        button = (Button) this.findViewById(R.id.button);
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
         getYoutubeDownloadUrl(link);
     }
-
+    private void addButtonToMainLayout(final String videoTitle, final YtFragmentedVideo ytFrVideo)
+    {
+        Log.e("MENUUUUUUUUUUU", videoTitle);
+        // Display some buttons and let the user choose the format
+        String btnText;
+        if (ytFrVideo.height == -1)
+        {
+            btnText = "Audio " + ytFrVideo.audioFile.getFormat().getAudioBitrate() + " kbit/s";
+        }
+        else
+        {
+            btnText = (ytFrVideo.videoFile.getFormat().getFps() == 60) ? ytFrVideo.height + "p60" : ytFrVideo.height + "p";
+        }
+        //Button btn = new Button(this);
+        button.setText(btnText);
+        button.setOnClickListener(v ->
+        {
+            String filename;
+            if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
+            else {filename = videoTitle;}
+            filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
+            filename += (ytFrVideo.height == -1) ? "" : "-" + ytFrVideo.height + "p";
+            String downloadIds = "";
+            boolean hideAudioDownloadNotification = false;
+            if (ytFrVideo.videoFile != null)
+            {
+                downloadIds += downloadFromUrl(ytFrVideo.videoFile.getUrl(), videoTitle, filename + "." + ytFrVideo.videoFile.getFormat().getExt(), false);downloadIds += "-";
+                hideAudioDownloadNotification = true;
+            }
+            if (ytFrVideo.audioFile != null)
+            {
+                downloadIds += downloadFromUrl(ytFrVideo.audioFile.getUrl(), videoTitle, filename + "." + ytFrVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
+            }
+            if (ytFrVideo.audioFile != null)
+            {
+                cacheDownloadIds(downloadIds);
+            }
+            finish();
+        });
+        Log.e("ERRORRRRRRRRRRRRR", "mainLayout.addView not working");
+    }
     private void getYoutubeDownloadUrl(String link)
     {
         new YouTubeExtractor(this)
@@ -72,7 +111,6 @@ public class DownloadActivity extends AppCompatActivity
             }
         }.extract(link, true, true);
     }
-
     private void addFormatToList(YtFile ytFile, SparseArray<YtFile> ytFiles)
     {
         int height = ytFile.getFormat().getHeight();
@@ -97,43 +135,6 @@ public class DownloadActivity extends AppCompatActivity
         else {frVideo.videoFile = ytFile;}
         formatsToShowList.add(frVideo);
     }
-
-
-    private void addButtonToMainLayout(final String videoTitle, final YtFragmentedVideo ytFrVideo)
-    {
-        Log.e("MENUUUUUUUUUUU", videoTitle);
-        // Display some buttons and let the user choose the format
-        String btnText;
-        if (ytFrVideo.height == -1) btnText = "Audio " + ytFrVideo.audioFile.getFormat().getAudioBitrate() + " kbit/s";
-        else btnText = (ytFrVideo.videoFile.getFormat().getFps() == 60) ? ytFrVideo.height + "p60" : ytFrVideo.height + "p";
-        Button btn = new Button(this);
-        btn.setText(btnText);
-        btn.setOnClickListener(v ->
-        {
-            String filename;
-            if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
-            else {filename = videoTitle;}
-            filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
-            filename += (ytFrVideo.height == -1) ? "" : "-" + ytFrVideo.height + "p";
-            String downloadIds = "";
-            boolean hideAudioDownloadNotification = false;
-            if (ytFrVideo.videoFile != null)
-            {
-                downloadIds += downloadFromUrl(ytFrVideo.videoFile.getUrl(), videoTitle, filename + "." + ytFrVideo.videoFile.getFormat().getExt(), false);downloadIds += "-";
-                hideAudioDownloadNotification = true;
-            }
-            if (ytFrVideo.audioFile != null)
-            {
-                downloadIds += downloadFromUrl(ytFrVideo.audioFile.getUrl(), videoTitle, filename + "." + ytFrVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
-            }
-            if (ytFrVideo.audioFile != null) cacheDownloadIds(downloadIds);
-            finish();
-        });
-        Log.e("ERRORRRRRRRRRRRRR", "mainLayout.addView not working");
-        btn.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        mainLayout.addView(btn);
-    }
-
     private long downloadFromUrl(String youtubeDlUrl, String downloadTitle, String fileName, boolean hide)
     {
         Uri uri = Uri.parse(youtubeDlUrl);
@@ -151,14 +152,12 @@ public class DownloadActivity extends AppCompatActivity
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         return manager.enqueue(request);
     }
-
     private void cacheDownloadIds(String downloadIds)
     {
         File dlCacheFile = new File(this.getCacheDir().getAbsolutePath() + "/" + downloadIds);
         try {dlCacheFile.createNewFile();}
         catch (IOException e) {e.printStackTrace();}
     }
-
     private class YtFragmentedVideo
     {
         int height;

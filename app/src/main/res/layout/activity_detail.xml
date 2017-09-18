@@ -187,34 +187,10 @@
         android:background="@color/GREY_TEXT_LIGHT_SUPER">
     </TextView>
 
-    <LinearLayout
-        android:id="@+id/LLdownloadVideo"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="11"
-        android:weightSum="100"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="25"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="50"
-            android:text="Download (Video)"
-            android:textColor="@color/GREY_TEXT_LIGHT"
-            android:gravity="center"
-            android:textSize="18dp"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/download_48_green"/>
-    </LinearLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_weight="10"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -238,7 +214,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Convert (Audio)"
+            android:text="Download"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>
@@ -310,7 +286,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Share Video"
+            android:text="Share"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>
@@ -321,7 +297,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/share_48_orange"/>
+            android:src="@drawable/share_48_green"/>
     </LinearLayout>
 
     <TextView

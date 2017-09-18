@@ -23,8 +23,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVlikesDetail;
     private TextView TVdislikesDetail;
     private TextView TVuserDetail;
-    private LinearLayout LLdownloadVideo;
-    private LinearLayout LLdownloadAudio;
+    private LinearLayout LLdownload;
     private LinearLayout LLwatchYoutube;
     private LinearLayout LLshareVideo;
 
@@ -35,39 +34,28 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         setContentView(R.layout.activity_detail);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         clickedVideo = (VideoYoutube) getIntent().getExtras().getSerializable("selectedVideo");
-
         TVtitleDetail = this.findViewById(R.id.TVtitleDetail);
         youtubePlayer = this.findViewById(R.id.YTVplayer);
         TVviewsDetail = this.findViewById(R.id.TVviewsDetail);
         TVlikesDetail = this.findViewById(R.id.TVlikesDetail);
         TVdislikesDetail = this.findViewById(R.id.TVdislikesDetail);
         TVuserDetail = this.findViewById(R.id.TVuserDetail);
-        LLdownloadVideo = this.findViewById(R.id.LLdownloadVideo);
-        LLdownloadAudio = this.findViewById(R.id.LLdownloadAudio);
+        LLdownload = this.findViewById(R.id.LLdownload);
         LLwatchYoutube = this.findViewById(R.id.LLwatchYoutube);
         LLshareVideo = this.findViewById(R.id.LLshareVideo);
-
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
         youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
-
-        LLdownloadVideo.setOnClickListener(view ->
+        LLdownload.setOnClickListener(view ->
         {
-            //TODO Download Youtube Video to Smartphone
-
             Intent downloader = new Intent(this, DownloadActivity.class);
             downloader.setType("text/plain");
             downloader.putExtra(Intent.EXTRA_TEXT, YOUTUBE_BASE_URL+clickedVideo.getId());
             startActivity(downloader);
 
-        });
-
-        LLdownloadAudio.setOnClickListener(view ->
-        {
-            //TODO Convert to Audio the Youtube Video & Download it to Smartphone
         });
         LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube();});
         LLshareVideo.setOnClickListener(view -> {share();});
