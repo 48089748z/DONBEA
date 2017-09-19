@@ -83,8 +83,8 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
         checkTheme();
         spinImage();
-        String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
-        getYoutubeVideoFileURL(link);
+        String YOUTUBE_VIDEO_LINK = getIntent().getStringExtra(Intent.EXTRA_TEXT);
+        getYoutubeVideoFileURL(YOUTUBE_VIDEO_LINK);
 
         BTaudio.setOnClickListener(view -> download(getFragment(-1)));
         BTvideo360.setOnClickListener(view -> download(getFragment(360)));

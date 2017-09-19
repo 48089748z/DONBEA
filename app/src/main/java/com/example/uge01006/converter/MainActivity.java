@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,16 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try
+        {
+            Bundle extras = getIntent().getExtras();
+            String YOUTUBE_VIDEO_LINK = extras.getString(Intent.EXTRA_TEXT);
+            Intent downloader = new Intent(this, DownloadActivity.class);
+            downloader.setType("text/plain");
+            downloader.putExtra(Intent.EXTRA_TEXT, YOUTUBE_VIDEO_LINK);
+            startActivity(downloader);
+        }
+        catch (Exception ignored){}
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         LVlist = (ListView) this.findViewById(R.id.LVitems);
