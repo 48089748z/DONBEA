@@ -17,4 +17,11 @@
 
     <!-- DETAILS ACTIVITY-->
     <string name="share">Share</string>
+    <string name="watch_on_youtube">Watch on Youtube</string>
+    <string name="convert">Convert</string>
+    <string name="channel">Channel</string>
+
+    <!-- DOWNLOAD ACTIVITY-->
+    <string name="download_title">Download Options</string>
+    <string name="converting_video">Converting Video …</string>
 </resources>

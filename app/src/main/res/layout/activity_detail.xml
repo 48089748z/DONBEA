@@ -49,7 +49,7 @@
             android:id="@+id/TVviewsDetail"
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:text="Views"
+            android:text="@string/views"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"
@@ -63,7 +63,7 @@
             android:id="@+id/TVuserDetail"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:text="Channel"
+            android:text="@string/channel"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"
@@ -132,7 +132,7 @@
             android:id="@+id/TVlikesDetail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Likes"
+            android:text="@string/likes"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"/>
@@ -165,7 +165,7 @@
             android:id="@+id/TVdislikesDetail"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Dislikes"
+            android:text="@string/dislikes"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:textSize="15dp"
             android:gravity="center_vertical"/>
@@ -202,7 +202,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Convert"
+            android:text="@string/convert"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>
@@ -238,7 +238,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Watch on Youtube"
+            android:text="@string/watch_on_youtube"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>
@@ -274,7 +274,7 @@
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
-            android:text="Share"
+            android:text="@string/share"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
             android:textSize="18dp"/>
