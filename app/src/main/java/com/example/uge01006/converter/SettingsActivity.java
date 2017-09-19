@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity
             {
                 settingsEditor = settings.edit();
                 settingsEditor.putString("text", ETcustomSearch.getText().toString());
-                settingsEditor.commit();
+                settingsEditor.apply();
             }
         });
     }
@@ -76,12 +76,12 @@ public class SettingsActivity extends AppCompatActivity
             if (isChecked)
             {
                 settingsEditor.putBoolean("audio", true);
-                settingsEditor.commit();
+                settingsEditor.apply();
             }
             else
             {
                 settingsEditor.putBoolean("audio", false);
-                settingsEditor.commit();
+                settingsEditor.apply();
             }
 
         });
@@ -95,13 +95,13 @@ public class SettingsActivity extends AppCompatActivity
             if (isChecked)
             {
                 settingsEditor.putBoolean("dark", true);
-                settingsEditor.commit();
+                settingsEditor.apply();
                 setDarkTheme();
             }
             else
             {
                 settingsEditor.putBoolean("dark", false);
-                settingsEditor.commit();
+                settingsEditor.apply();
                 setLightTheme();
             }
         });
@@ -127,14 +127,14 @@ public class SettingsActivity extends AppCompatActivity
                 ETcustomSearch.setVisibility(View.VISIBLE);
                 ETcustomSearch.setText(settings.getString("text", "settings"));
                 settingsEditor.putBoolean("custom", true);
-                settingsEditor.commit();
+                settingsEditor.apply();
             }
             else
             {
                 IVbackSettings.setVisibility(View.INVISIBLE);
                 ETcustomSearch.setVisibility(View.INVISIBLE);
                 settingsEditor.putBoolean("custom", false);
-                settingsEditor.commit();
+                settingsEditor.apply();
             }
         });
         if (settings.getBoolean("custom", true))

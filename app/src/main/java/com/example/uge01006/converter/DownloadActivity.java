@@ -157,30 +157,33 @@ public class DownloadActivity extends AppCompatActivity
                         BTaudio.setVisibility(View.VISIBLE);
                         IVaudioDownload.setVisibility(View.VISIBLE);
                     }
-                    if (fragmentedVideo.height == 360)
+                    if (!settings.getBoolean("audio", true))
                     {
-                        BTvideo360.setVisibility(View.VISIBLE);
-                        IVvideo360Download.setVisibility(View.VISIBLE);
-                    }
-                    if (fragmentedVideo.height == 480)
-                    {
-                        BTvideo480.setVisibility(View.VISIBLE);
-                        IVvideo480Download.setVisibility(View.VISIBLE);
-                    }
-                    if (fragmentedVideo.height == 720)
-                    {
-                        BTvideo720.setVisibility(View.VISIBLE);
-                        IVvideo720Download.setVisibility(View.VISIBLE);
-                    }
-                    if (fragmentedVideo.height == 1080)
-                    {
-                        BTvideo1080.setVisibility(View.VISIBLE);
-                        IVvideo1080Download.setVisibility(View.VISIBLE);
-                    }
-                    if (fragmentedVideo.height == 2160)
-                    {
-                        BTvideo2160.setVisibility(View.VISIBLE);
-                        IVvideo2160Download.setVisibility(View.VISIBLE);
+                        if (fragmentedVideo.height == 360)
+                        {
+                            BTvideo360.setVisibility(View.VISIBLE);
+                            IVvideo360Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 480)
+                        {
+                            BTvideo480.setVisibility(View.VISIBLE);
+                            IVvideo480Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 720)
+                        {
+                            BTvideo720.setVisibility(View.VISIBLE);
+                            IVvideo720Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 1080)
+                        {
+                            BTvideo1080.setVisibility(View.VISIBLE);
+                            IVvideo1080Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 2160)
+                        {
+                            BTvideo2160.setVisibility(View.VISIBLE);
+                            IVvideo2160Download.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -312,7 +315,5 @@ public class DownloadActivity extends AppCompatActivity
         Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo720Download);
         Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo1080Download);
         Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo2160Download);
-
-
     }
 }

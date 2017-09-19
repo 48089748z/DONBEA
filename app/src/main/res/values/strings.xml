@@ -3,7 +3,7 @@
     <string name="app_name" translatable="false">Youtube Downloader</string>
 
     <!-- MAIN ACTIVITY -->
-    <string name="loading_popular_videos_of_today">Loading Popular Videos of Today …</string>
+    <string name="loading_popular_videos_of_today">Loading Youtube Music Channel ...</string>
     <string name="loading_results_for">Loading Results for</string>
     <string name="search">Search …</string>
 
