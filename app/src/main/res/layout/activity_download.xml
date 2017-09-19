@@ -8,11 +8,17 @@
     tools:context="com.example.uge01006.converter.DownloadActivity"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"
     android:weightSum="100">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="1"/>
+        android:layout_weight="2"/>
     <TextView
         android:id="@+id/TVheaderDownload"
         android:layout_width="match_parent"
@@ -21,16 +27,20 @@
         android:text="Converting Video ..."
         android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
         android:gravity="center"
-        android:textSize="30dp"
+        android:textSize="32dp"
         android:textStyle="bold"/>
 
     <ImageView
-        android:id="@+id/loadingDownload"
+        android:id="@+id/IVloadingDownload"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@mipmap/ic_logo"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="2"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,6 +65,16 @@
             android:layout_height="match_parent"
             android:layout_weight="10"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="4"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 
     <TextView
         android:layout_width="match_parent"
@@ -70,22 +90,33 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="7"/>
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/audio_48_grey_light"
+            android:id="@+id/IVaudioDownload"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
         <Button
             android:id="@+id/BTaudio"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Audio Only"
+            android:text="Audio"
             android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
+            android:background="@color/GREY_TEXT_LIGHT"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            />
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -100,22 +131,32 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="7"/>
+        <ImageView
+            android:id="@+id/IVvideo360Download"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/video_48_grey_light"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
         <Button
             android:id="@+id/BTvideo360"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 360p"
+            android:text="360p"
             android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
+            android:background="@color/GREY_TEXT_LIGHT"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -130,22 +171,34 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="7"/>
+        <ImageView
+            android:id="@+id/IVvideo480Download"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/video_48_grey_light"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
+
         <Button
             android:id="@+id/BTvideo480"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 480p"
+            android:background="@color/GREY_TEXT_LIGHT"
+            android:text="480p"
             android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -160,15 +213,24 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
-
+            android:layout_weight="7"/>
+        <ImageView
+            android:id="@+id/IVvideo720Download"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/video_48_grey_light"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
         <Button
             android:id="@+id/BTvideo720"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:background="@color/GREY_TEXT_DARK"
-            android:text="Video 720p HD"
+            android:background="@color/GREY_TEXT_LIGHT"
+            android:text="720p (HD)"
             android:textAllCaps="false"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
@@ -177,7 +239,7 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -192,22 +254,32 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="7"/>
+        <ImageView
+            android:id="@+id/IVvideo1080Download"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/video_48_grey_light"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
         <Button
             android:id="@+id/BTvideo1080"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="60"
-            android:text="Video 1080p HD"
+            android:text="1080p (HD)"
             android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
+            android:background="@color/GREY_TEXT_LIGHT"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -222,7 +294,17 @@
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="7"/>
+        <ImageView
+            android:id="@+id/IVvideo2160Download"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:src="@drawable/video_48_grey_light"/>
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"/>
         <Button
             android:id="@+id/BTvideo2160"
             android:layout_width="1dp"
@@ -230,43 +312,23 @@
             android:layout_weight="60"
             android:text="2160p (4K Super HD)"
             android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
+            android:background="@color/GREY_TEXT_LIGHT"
             android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
             android:textSize="18dp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"/>
+            android:layout_weight="13"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="2"/>
-    <LinearLayout
+        android:layout_weight="4"/>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:weightSum="100"
-        android:orientation="horizontal"
-        android:layout_weight="10">
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-        <Button
-            android:id="@+id/BTvideo4320"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="60"
-            android:text="4320p (8K Super HD)"
-            android:textAllCaps="false"
-            android:background="@color/GREY_TEXT_DARK"
-            android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
-            android:textSize="18dp"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="20"/>
-    </LinearLayout>
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 </LinearLayout>

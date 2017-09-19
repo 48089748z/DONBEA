@@ -1,5 +1,4 @@
 package com.example.uge01006.converter;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DownloadManager;
@@ -30,7 +29,7 @@ public class DownloadActivity extends AppCompatActivity
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private static final int ITAG_FOR_AUDIO = 140;
     private List<YoutubeFragmentedVideo> formatsToShowList;
-    private ImageView loadingDownload;
+    private ImageView IVloadingDownload;
     private TextView TVtitleDownload;
     private TextView TVheaderDownload;
     private Button BTaudio;
@@ -39,8 +38,12 @@ public class DownloadActivity extends AppCompatActivity
     private Button BTvideo720;
     private Button BTvideo1080;
     private Button BTvideo2160;
-    private Button BTvideo4320;
-
+    private ImageView IVaudioDownload;
+    private ImageView IVvideo360Download;
+    private ImageView IVvideo480Download;
+    private ImageView IVvideo720Download;
+    private ImageView IVvideo1080Download;
+    private ImageView IVvideo2160Download;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,8 +59,13 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo720 = (Button) this.findViewById(R.id.BTvideo720);
         BTvideo1080 = (Button) this.findViewById(R.id.BTvideo1080);
         BTvideo2160 = (Button) this.findViewById(R.id.BTvideo2160);
-        BTvideo4320 = (Button) this.findViewById(R.id.BTvideo4320);
-        loadingDownload = (ImageView) this.findViewById(R.id.loadingDownload);
+        IVloadingDownload = (ImageView) this.findViewById(R.id.IVloadingDownload);
+        IVaudioDownload = (ImageView) this.findViewById(R.id.IVaudioDownload) ;
+        IVvideo360Download = (ImageView) this.findViewById(R.id.IVvideo360Download);
+        IVvideo480Download = (ImageView) this.findViewById(R.id.IVvideo480Download);
+        IVvideo720Download = (ImageView) this.findViewById(R.id.IVvideo720Download);
+        IVvideo1080Download = (ImageView) this.findViewById(R.id.IVvideo1080Download);
+        IVvideo2160Download = (ImageView) this.findViewById(R.id.IVvideo2160Download);
 
         spinImage();
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
@@ -69,7 +77,6 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo720.setOnClickListener(view -> download(getFragment(720)));
         BTvideo1080.setOnClickListener(view -> download(getFragment(1080)));
         BTvideo2160.setOnClickListener(view -> download(getFragment(2160)));
-        BTvideo4320.setOnClickListener(view -> download(getFragment(4320)));
     }
     private YoutubeFragmentedVideo getFragment (int code)
     {
@@ -115,7 +122,7 @@ public class DownloadActivity extends AppCompatActivity
             {
                 TVheaderDownload.setText("Download Options");
                 TVtitleDownload.setText(vMeta.getTitle());
-                loadingDownload.clearAnimation();
+                IVloadingDownload.clearAnimation();
                 formatsToShowList = new ArrayList<>();
                 for (int i = 0, itag; i < ytFiles.size(); i++)
                 {
@@ -130,14 +137,36 @@ public class DownloadActivity extends AppCompatActivity
                 for (YoutubeFragmentedVideo fragmentedVideo : formatsToShowList)
                 {
                     fragmentedVideo.title = vMeta.getTitle();
-                    if (fragmentedVideo.height == -1){BTaudio.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == -1){BTaudio.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 360){BTvideo360.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 480){BTvideo480.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 720){BTvideo720.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 1080){BTvideo1080.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 2160){BTvideo2160.setVisibility(View.VISIBLE);}
-                    if (fragmentedVideo.height == 4320){BTvideo4320.setVisibility(View.VISIBLE);}
+                    if (fragmentedVideo.height == -1)
+                    {
+                        BTaudio.setVisibility(View.VISIBLE);
+                        IVaudioDownload.setVisibility(View.VISIBLE);
+                    }
+                    if (fragmentedVideo.height == 360)
+                    {
+                        BTvideo360.setVisibility(View.VISIBLE);
+                        IVvideo360Download.setVisibility(View.VISIBLE);
+                    }
+                    if (fragmentedVideo.height == 480)
+                    {
+                        BTvideo480.setVisibility(View.VISIBLE);
+                        IVvideo480Download.setVisibility(View.VISIBLE);
+                    }
+                    if (fragmentedVideo.height == 720)
+                    {
+                        BTvideo720.setVisibility(View.VISIBLE);
+                        IVvideo720Download.setVisibility(View.VISIBLE);
+                    }
+                    if (fragmentedVideo.height == 1080)
+                    {
+                        BTvideo1080.setVisibility(View.VISIBLE);
+                        IVvideo1080Download.setVisibility(View.VISIBLE);
+                    }
+                    if (fragmentedVideo.height == 2160)
+                    {
+                        BTvideo2160.setVisibility(View.VISIBLE);
+                        IVvideo2160Download.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         }.extract(link, true, true);
@@ -195,14 +224,19 @@ public class DownloadActivity extends AppCompatActivity
         spinner.setInterpolator(new LinearInterpolator());
         spinner.setDuration(1200);
         spinner.setRepeatCount(Animation.INFINITE);
-        loadingDownload.setVisibility(View.VISIBLE);
+        IVloadingDownload.setVisibility(View.VISIBLE);
         BTaudio.setVisibility(View.INVISIBLE);
         BTvideo360.setVisibility(View.INVISIBLE);
         BTvideo480.setVisibility(View.INVISIBLE);
         BTvideo720.setVisibility(View.INVISIBLE);
         BTvideo1080.setVisibility(View.INVISIBLE);
         BTvideo2160.setVisibility(View.INVISIBLE);
-        BTvideo4320.setVisibility(View.INVISIBLE);
-        loadingDownload.startAnimation(spinner);
+        IVaudioDownload.setVisibility(View.INVISIBLE);
+        IVvideo360Download.setVisibility(View.INVISIBLE);
+        IVvideo480Download.setVisibility(View.INVISIBLE);
+        IVvideo720Download.setVisibility(View.INVISIBLE);
+        IVvideo1080Download.setVisibility(View.INVISIBLE);
+        IVvideo2160Download.setVisibility(View.INVISIBLE);
+        IVloadingDownload.startAnimation(spinner);
     }
 }

@@ -78,7 +78,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="92">
+        android:layout_weight="91">
 
         <ListView
             android:id="@+id/LVitems"
@@ -139,6 +139,13 @@
 
         </LinearLayout>
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER"
+        android:id="@+id/TVsplitBar3">
+    </TextView>
 </LinearLayout>
 
 

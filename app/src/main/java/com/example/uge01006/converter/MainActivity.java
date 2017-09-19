@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences settings;
     private TextView TVsplitBar1;
     private TextView TVsplitBar2;
+    private TextView TVsplitBar3;
     private LinearLayout LLtoolbarLayout;
     private LinearLayout LLsearchLayout;
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity
         loadingText = (TextView) this.findViewById(R.id.TVloading);
         TVsplitBar1 = (TextView) this.findViewById(R.id.TVsplitBar1);
         TVsplitBar2 = (TextView) this.findViewById(R.id.TVsplitBar2);
+        TVsplitBar3 = (TextView) this.findViewById(R.id.TVsplitBar3);
         setSupportActionBar(toolbar);
 
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
@@ -189,6 +191,7 @@ public class MainActivity extends AppCompatActivity
             loadingText.setVisibility(View.VISIBLE);
             TVsplitBar1.setVisibility(View.VISIBLE);
             TVsplitBar2.setVisibility(View.VISIBLE);
+            TVsplitBar3.setVisibility(View.VISIBLE);
         }
         protected Integer doInBackground(String... params)
         {
@@ -208,6 +211,7 @@ public class MainActivity extends AppCompatActivity
                 loadingText.setVisibility(View.INVISIBLE);
                 TVsplitBar1.setVisibility(View.INVISIBLE);
                 TVsplitBar2.setVisibility(View.INVISIBLE);
+                TVsplitBar3.setVisibility(View.INVISIBLE);
                 LVadapter.notifyDataSetChanged();
             }
             query = "";
