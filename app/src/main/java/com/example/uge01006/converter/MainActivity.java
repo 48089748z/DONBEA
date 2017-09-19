@@ -245,8 +245,6 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar1.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar2.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
-        ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-        ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
         TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
     }
     private void setLightTheme()
@@ -255,8 +253,6 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar1.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar2.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
-        ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
-        ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_DARK));
         TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
     }
 
