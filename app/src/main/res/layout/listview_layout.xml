@@ -133,7 +133,7 @@ VERTICAL: 100dp
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:textSize="11dp"
-                android:text="Views"
+                android:text="@string/views"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
@@ -163,7 +163,7 @@ VERTICAL: 100dp
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:textSize="11dp"
-                android:text="Likes"
+                android:text="@string/likes"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
@@ -193,7 +193,7 @@ VERTICAL: 100dp
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:textSize="11dp"
-                android:text="Dislikes"
+                android:text="@string/dislikes"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>

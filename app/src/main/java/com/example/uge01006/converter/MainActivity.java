@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
             {
                 clearList();
                 showToolbarHideKeyboard();
-                loadingText.setText("Loading Results for '" + ETsearch.getText().toString() + "' ...");
+                loadingText.setText(getResources().getString(R.string.loading_custom)+" '"+ETsearch.getText().toString() + "' ...");
                 loadCustom(ETsearch.getText().toString());
             }
             return false;
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity
 
     public void loadCustom(String custom)
     {
-        loadingText.setText("Loading Results for '"+custom+"' ...");
+        loadingText.setText(getResources().getString(R.string.loading_custom)+" '"+custom+"' ...");
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery(custom);
         loader.execute();
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
     public void loadDefault()
     {
         clearList();
-        loadingText.setText("Loading Popular Videos of Today ...");
+        loadingText.setText(getResources().getString(R.string.loading_popular));
         AsyncListLoader loader = new AsyncListLoader();
         loader.setQuery("");
         loader.execute();

@@ -74,7 +74,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="90"
-                android:text="Custom Default Search"
+                android:text="@string/custom_default_search"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
                 android:textSize="16dp"/>
             <TextView
@@ -104,7 +104,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="80"
-                android:hint="Enter Default Search"
+                android:hint="@string/enter_default_search"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
                 android:textColorHint="@color/GREY_TEXT_LIGHT"
                 android:textSize="16dp"/>

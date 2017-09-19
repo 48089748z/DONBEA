@@ -1,3 +1,20 @@
 <resources>
+    <!-- APP NAME-->
     <string name="app_name">Youtube Downloader</string>
+
+    <!-- MAIN ACTIVITY-->
+    <string name="loading_popular">Loading Popular Videos of Today …</string>
+    <string name="loading_custom">Loading Results for</string>
+
+    <!-- LISTVIEW LAYOUT-->
+    <string name="views">Views</string>
+    <string name="likes">Likes</string>
+    <string name="dislikes">Dislikes</string>
+
+    <!-- SETTINGS ACTIVITY-->
+    <string name="custom_default_search">Custom Default Search</string>
+    <string name="enter_default_search">Enter Default Search</string>
+
+    <!-- DETAILS ACTIVITY-->
+    <string name="share">Share</string>
 </resources>

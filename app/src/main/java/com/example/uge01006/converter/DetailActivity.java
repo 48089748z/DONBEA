@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.uge01006.converter.DAOs.DeveloperKey;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -67,7 +66,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, YOUTUBE_BASE_URL+clickedVideo.getId());
-            startActivity(Intent.createChooser(shareIntent, " Share"));
+            startActivity(Intent.createChooser(shareIntent, " "+getResources().getString(R.string.share)));
         }
         catch(Exception e) {e.printStackTrace();}
     }
@@ -80,7 +79,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     }
     private String addDots(String number)
     {
-
         int counter = 0;
         for (int x=number.length(); x>0; x--)
         {
@@ -103,11 +101,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         if (requestCode == 1) {youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);}
     }
     @Override
-    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason)
-    {
-        if (errorReason.isUserRecoverableError()) {errorReason.getErrorDialog(this, 1).show();}
-        else {Toast.makeText(this, "There was an error initializing the Video", Toast.LENGTH_LONG).show();}
-    }
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {}
     @Override
     protected void onPause() {super.onPause(); this.finish();}
 }
