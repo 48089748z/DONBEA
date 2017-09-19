@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
     private ImageView loading;
     private TextView loadingText;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-    private SharedPreferences settings;
     private TextView TVsplitBar1;
     private TextView TVsplitBar2;
     private TextView TVsplitBar3;
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
         LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
-        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        SharedPreferences settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         LLsearchLayout.setVisibility(View.INVISIBLE);

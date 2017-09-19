@@ -29,7 +29,8 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:src="@drawable/back_48_lightgrey" />
+                android:src="@drawable/back_48_lightgrey"
+                android:contentDescription="@string/back" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -39,7 +40,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="88"
-                android:hint="Search ..."
+                android:hint="@string/search"
                 android:textColorHint="@color/GREY_TEXT_MEDIUM"
                 android:inputType="textCapSentences"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
@@ -60,7 +61,8 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:src="@mipmap/ic_logo"/>
+                android:src="@mipmap/ic_logo"
+                android:contentDescription="@string/logo" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -113,15 +115,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@mipmap/ic_logo"/>
+                android:background="@mipmap/ic_logo"
+                android:contentDescription="@string/logo" />
             <TextView
                 android:id="@+id/TVloading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Loading Default Text XML"
+                android:text="@string/loading_results_for"
                 android:textAlignment="center"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"/>
             <TextView

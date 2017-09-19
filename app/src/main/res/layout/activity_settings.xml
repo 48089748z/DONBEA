@@ -28,7 +28,8 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:src="@mipmap/ic_logo" />
+                android:src="@mipmap/ic_logo"
+                android:contentDescription="@string/logo" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -42,7 +43,7 @@
                 app:titleTextColor="@color/WHITE"
                 android:layout_gravity="center_vertical"
                 android:textAlignment="center"
-                android:title="Settings">
+                android:title="@string/settings">
             </android.support.v7.widget.Toolbar>
         </LinearLayout>
     </RelativeLayout>
@@ -76,7 +77,7 @@
                 android:layout_weight="90"
                 android:text="@string/custom_default_search"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
-                android:textSize="16dp"/>
+                android:textSize="16sp"/>
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -107,13 +108,14 @@
                 android:hint="@string/enter_default_search"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
                 android:textColorHint="@color/GREY_TEXT_LIGHT"
-                android:textSize="16dp"/>
+                android:textSize="16sp"/>
             <ImageView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
                 android:src="@drawable/close_48_white"
-                android:id="@+id/IVbackSettings"/>
+                android:id="@+id/IVbackSettings"
+                android:contentDescription="@string/delete" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"

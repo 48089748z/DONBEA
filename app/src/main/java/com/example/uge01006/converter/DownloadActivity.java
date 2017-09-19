@@ -120,7 +120,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                TVheaderDownload.setText("Download Options");
+                TVheaderDownload.setText(getResources().getString(R.string.download_options));
                 TVtitleDownload.setText(vMeta.getTitle());
                 IVloadingDownload.clearAnimation();
                 formatsToShowList = new ArrayList<>();

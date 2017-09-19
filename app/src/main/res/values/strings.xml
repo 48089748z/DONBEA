@@ -1,27 +1,44 @@
 <resources>
-    <!-- APP NAME-->
+    <!-- APP NAME -->
     <string name="app_name">Youtube Downloader</string>
 
-    <!-- MAIN ACTIVITY-->
-    <string name="loading_popular">Loading Popular Videos of Today …</string>
-    <string name="loading_custom">Loading Results for</string>
+    <!-- MAIN ACTIVITY -->
+    <string name="loading_popular_videos_of_today">Loading Popular Videos of Today …</string>
+    <string name="loading_results_for">Loading Results for</string>
+    <string name="search">Search …</string>
 
-    <!-- LISTVIEW LAYOUT-->
+    <!-- LISTVIEW LAYOUT -->
     <string name="views">Views</string>
     <string name="likes">Likes</string>
     <string name="dislikes">Dislikes</string>
 
-    <!-- SETTINGS ACTIVITY-->
+    <!-- SETTINGS ACTIVITY -->
     <string name="custom_default_search">Custom Default Search</string>
     <string name="enter_default_search">Enter Default Search</string>
+    <string name="settings">Settings</string>
 
-    <!-- DETAILS ACTIVITY-->
+    <!-- DETAILS ACTIVITY -->
     <string name="share">Share</string>
     <string name="watch_on_youtube">Watch on Youtube</string>
     <string name="convert">Convert</string>
     <string name="channel">Channel</string>
 
-    <!-- DOWNLOAD ACTIVITY-->
-    <string name="download_title">Download Options</string>
+    <!-- DOWNLOAD ACTIVITY -->
+    <string name="download_options">Download Options</string>
     <string name="converting_video">Converting Video …</string>
+    <string name="audio">Audio</string>
+
+    <!-- HOVER DESCRIPTIONS -->
+    <string name="logo">Logo</string>
+    <string name="video">Video</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+
+    <!-- NO TRANSLATION NEEDED -->
+    <string name="_360p">360p</string>
+    <string name="_480p">480p</string>
+    <string name="_720p_hd">720p (HD)</string>
+    <string name="_1080p_hd">1080p (HD)</string>
+    <string name="_2160p_4k_super_hd">2160p (4K Super HD)</string>
+
 </resources>

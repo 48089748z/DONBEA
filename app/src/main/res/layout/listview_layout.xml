@@ -28,7 +28,7 @@ VERTICAL: 100dp
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="1sp"
             android:layout_weight="100"
             android:weightSum="100"
             android:orientation="vertical">
@@ -38,7 +38,8 @@ VERTICAL: 100dp
                 android:layout_weight="100"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/video" />
             <TextView
                 android:id="@+id/TVduration"
                 android:layout_width="wrap_content"
@@ -49,8 +50,7 @@ VERTICAL: 100dp
                 android:textStyle="bold"
                 android:background="#000000"
                 android:textAlignment="textEnd"
-                android:textSize="15dp"
-                android:text=" 18:36"/>
+                android:textSize="15sp" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -59,7 +59,7 @@ VERTICAL: 100dp
     HORIZONTAL: 3% SCREEN
     VERTICAL: MATCH_PARENT = 100dp
     -->
-    <LinearLayout
+    <TextView
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:layout_weight="2"/>
@@ -102,9 +102,9 @@ VERTICAL: 100dp
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="viewStart"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:text="Title"
+                android:text="@string/video"
                 android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
         </LinearLayout>
 
@@ -122,7 +122,8 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/views_24_green" />
+                app:srcCompat="@drawable/views_24_green"
+                android:contentDescription="@string/views" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -132,7 +133,7 @@ VERTICAL: 100dp
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp"
+                android:textSize="11sp"
                 android:text="@string/views"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
@@ -152,7 +153,8 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/like_24_blue"/>
+                app:srcCompat="@drawable/like_24_blue"
+                android:contentDescription="@string/likes" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -162,7 +164,7 @@ VERTICAL: 100dp
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp"
+                android:textSize="11sp"
                 android:text="@string/likes"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
@@ -182,7 +184,8 @@ VERTICAL: 100dp
             <ImageView
                 android:layout_width="15dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@drawable/dislike_24_red"/>
+                app:srcCompat="@drawable/dislike_24_red"
+                android:contentDescription="@string/dislikes" />
             <TextView
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
@@ -192,7 +195,7 @@ VERTICAL: 100dp
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
-                android:textSize="11dp"
+                android:textSize="11sp"
                 android:text="@string/dislikes"
                 android:textColor="@color/GREY_TEXT_LIGHT"
                 android:layout_gravity="center_vertical"/>
