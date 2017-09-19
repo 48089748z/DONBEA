@@ -1,6 +1,6 @@
 <resources>
     <!-- APP NAME -->
-    <string name="app_name">Youtube Downloader</string>
+    <string name="app_name" translatable="false">Youtube Downloader</string>
 
     <!-- MAIN ACTIVITY -->
     <string name="loading_popular_videos_of_today">Loading Popular Videos of Today …</string>
@@ -35,10 +35,10 @@
     <string name="delete">Delete</string>
 
     <!-- NO TRANSLATION NEEDED -->
-    <string name="_360p">360p</string>
-    <string name="_480p">480p</string>
-    <string name="_720p_hd">720p (HD)</string>
-    <string name="_1080p_hd">1080p (HD)</string>
-    <string name="_2160p_4k_super_hd">2160p (4K Super HD)</string>
+    <string name="_360p" translatable="false">360p</string>
+    <string name="_480p" translatable="false">480p</string>
+    <string name="_720p_hd" translatable="false">720p (HD)</string>
+    <string name="_1080p_hd" translatable="false">1080p (HD)</string>
+    <string name="_2160p_4k_super_hd" translatable="false">2160p (4K Super HD)</string>
 
 </resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Youtube Downloader</string>
+    <string name="audio">Audio</string>
+    <string name="back">Tornar</string>
+    <string name="channel">Canal</string>
+    <string name="convert">Convertir</string>
+    <string name="converting_video">Convertint Video ...</string>
+    <string name="custom_default_search">Cerca Personalitzada</string>
+    <string name="delete">Esborrar</string>
+    <string name="dislikes">No M\'agrada</string>
+    <string name="download_options">Opcions de Descárrega</string>
+    <string name="enter_default_search">Introdueix Cerca Personalitzada</string>
+    <string name="likes">M\'agrada</string>
+    <string name="loading_popular_videos_of_today">Carregant Videos Populars Avui</string>
+    <string name="loading_results_for">Carregant Resultats</string>
+    <string name="logo">Logotip</string>
+    <string name="search">Cercar ...</string>
+    <string name="settings">Configuració</string>
+    <string name="watch_on_youtube">Veure a Youtube</string>
+    <string name="views">Visites</string>
+    <string name="video">Video</string>
+    <string name="share">Compartir</string>
+</resources>
