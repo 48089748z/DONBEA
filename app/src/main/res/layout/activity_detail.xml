@@ -195,7 +195,7 @@
         android:id="@+id/LLdownload"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="11"
+        android:layout_weight="13"
         android:weightSum="100"
         android:orientation="horizontal">
         <TextView
@@ -209,7 +209,8 @@
             android:text="@string/convert"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -232,7 +233,7 @@
         android:id="@+id/LLwatchYoutube"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="11"
+        android:layout_weight="13"
         android:weightSum="100"
         android:orientation="horizontal">
         <TextView
@@ -246,7 +247,8 @@
             android:text="@string/watch_on_youtube"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
@@ -269,7 +271,7 @@
         android:id="@+id/LLshareVideo"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="11"
+        android:layout_weight="13"
         android:weightSum="100"
         android:orientation="horizontal">
         <TextView
@@ -283,7 +285,8 @@
             android:text="@string/share"
             android:textColor="@color/GREY_TEXT_LIGHT"
             android:gravity="center"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"

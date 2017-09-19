@@ -27,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
+        toolbar.setTitle(getResources().getString(R.string.settings));
         SWcustomSearch = (Switch) this.findViewById(R.id.SWcustomSearch);
         ETcustomSearch = (EditText) this.findViewById(R.id.ETcustomSearch);
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
