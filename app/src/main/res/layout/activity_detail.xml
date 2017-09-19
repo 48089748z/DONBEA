@@ -7,7 +7,8 @@
     tools:context="com.example.uge01006.converter.DetailActivity"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/GREY_BACKGROUND_DARK_SUPER">
+    android:background="@color/GREY_BACKGROUND_DARK_SUPER"
+    android:id="@+id/LLdetail">
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/YTVplayer"
@@ -16,6 +17,7 @@
         android:layout_weight="35"/>
 
     <TextView
+        android:id="@+id/TVsplitbar11"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
@@ -185,6 +187,7 @@
         android:layout_weight="7"/>
 
     <TextView
+        android:id="@+id/TVsplitbar12"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
@@ -192,7 +195,7 @@
     </TextView>
 
     <LinearLayout
-        android:id="@+id/LLdownload"
+        android:id="@+id/LLconvert"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="13"
@@ -203,6 +206,7 @@
             android:layout_height="match_parent"
             android:layout_weight="25"/>
         <TextView
+            android:id="@+id/TVconvert"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
@@ -226,7 +230,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+        android:background="@color/GREY_TEXT_LIGHT_SUPER"
+        android:id="@+id/TVsplitbar13">
     </TextView>
 
     <LinearLayout
@@ -241,6 +246,7 @@
             android:layout_height="match_parent"
             android:layout_weight="25"/>
         <TextView
+            android:id="@+id/TVwatchYoutube"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
@@ -264,7 +270,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+        android:background="@color/GREY_TEXT_LIGHT_SUPER"
+        android:id="@+id/TVsplitbar14">
     </TextView>
 
     <LinearLayout
@@ -279,6 +286,7 @@
             android:layout_height="match_parent"
             android:layout_weight="25"/>
         <TextView
+            android:id="@+id/TVshare"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
@@ -302,7 +310,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER">
-    </TextView>
+        android:background="@color/GREY_TEXT_LIGHT_SUPER"
+        android:id="@+id/TVsplitbar15"/>
 
 </LinearLayout>

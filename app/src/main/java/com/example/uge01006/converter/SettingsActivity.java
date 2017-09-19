@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-
 public class SettingsActivity extends AppCompatActivity
 {
     private SharedPreferences settings;
@@ -28,6 +27,8 @@ public class SettingsActivity extends AppCompatActivity
     private TextView TVsplitbar4;
     private TextView TVsplitbar5;
     private TextView TVsplitbar6;
+    private TextView TVsplitbar16;
+    private Switch SWdownloadOptions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +37,9 @@ public class SettingsActivity extends AppCompatActivity
         setContentView(R.layout.activity_settings);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.settings));
+        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        settingsEditor = settings.edit();
+        setSupportActionBar(toolbar);
         SWcustomSearch = (Switch) this.findViewById(R.id.SWcustomSearch);
         ETcustomSearch = (EditText) this.findViewById(R.id.ETcustomSearch);
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
@@ -44,9 +48,12 @@ public class SettingsActivity extends AppCompatActivity
         TVsplitbar4 = (TextView) this.findViewById(R.id.TVsplitbar4);
         TVsplitbar5 = (TextView) this.findViewById(R.id.TVsplitbar5);
         TVsplitbar6 = (TextView) this.findViewById(R.id.TVsplitbar6);
-        setSupportActionBar(toolbar);
-        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        TVsplitbar16 = (TextView) this.findViewById(R.id.TVsplitbar16);
+        SWdownloadOptions = (Switch) this.findViewById(R.id.SWdownloadOptions);
         IVbackSettings.setOnClickListener(view -> ETcustomSearch.setText(""));
+        configureCustomSearchSwitch();
+        configureThemeSwitch();
+        configureDownloadOptions();
         ETcustomSearch.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -58,54 +65,76 @@ public class SettingsActivity extends AppCompatActivity
             {
                 settingsEditor = settings.edit();
                 settingsEditor.putString("text", ETcustomSearch.getText().toString());
-                settingsEditor.apply();
+                settingsEditor.commit();
             }
         });
-        configureCustomSearchSwitch();
-        configureThemeSwitch();
-        checkTheme();
     }
-    public void configureThemeSwitch()
+    public void configureDownloadOptions()
     {
-        SWtheme.setOnCheckedChangeListener((buttonView, isChecked) ->
+        SWdownloadOptions.setOnCheckedChangeListener((compoundButton, isChecked) ->
         {
             if (isChecked)
             {
-                settingsEditor = settings.edit();
+                settingsEditor.putBoolean("audio", true);
+                settingsEditor.commit();
+            }
+            else
+            {
+                settingsEditor.putBoolean("audio", false);
+                settingsEditor.commit();
+            }
+
+        });
+        if (settings.getBoolean("audio", true)) {SWdownloadOptions.setChecked(true);}
+        else {SWdownloadOptions.setChecked(false);}
+    }
+    public void configureThemeSwitch()
+    {
+        SWtheme.setOnCheckedChangeListener((compoundButton, isChecked) ->
+        {
+            if (isChecked)
+            {
                 settingsEditor.putBoolean("dark", true);
-                settingsEditor.apply();
+                settingsEditor.commit();
                 setDarkTheme();
             }
             else
             {
-                settingsEditor = settings.edit();
                 settingsEditor.putBoolean("dark", false);
-                settingsEditor.apply();
+                settingsEditor.commit();
                 setLightTheme();
             }
         });
+        if (settings.getBoolean("dark", true))
+        {
+            SWtheme.setChecked(true);
+            setDarkTheme();
+        }
+        else
+        {
+            SWtheme.setChecked(false);
+            setLightTheme();
+        }
     }
 
     public void configureCustomSearchSwitch()
     {
-        SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) ->
+        SWcustomSearch.setOnCheckedChangeListener((compoundButton, isChecked) ->
         {
             if (isChecked)
             {
                 IVbackSettings.setVisibility(View.VISIBLE);
                 ETcustomSearch.setVisibility(View.VISIBLE);
-                ETcustomSearch.setText(settings.getString("text", "default"));
-                settingsEditor = settings.edit();
+                ETcustomSearch.setText(settings.getString("text", "settings"));
                 settingsEditor.putBoolean("custom", true);
-                settingsEditor.apply();
+                settingsEditor.commit();
             }
             else
             {
                 IVbackSettings.setVisibility(View.INVISIBLE);
                 ETcustomSearch.setVisibility(View.INVISIBLE);
-                settingsEditor = settings.edit();
                 settingsEditor.putBoolean("custom", false);
-                settingsEditor.apply();
+                settingsEditor.commit();
             }
         });
         if (settings.getBoolean("custom", true))
@@ -113,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity
             IVbackSettings.setVisibility(View.VISIBLE);
             ETcustomSearch.setVisibility(View.VISIBLE);
             SWcustomSearch.setChecked(true);
-            ETcustomSearch.setText(settings.getString("text", "default"));
+            ETcustomSearch.setText(settings.getString("text", "settings"));
         }
         else
         {
@@ -144,27 +173,16 @@ public class SettingsActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
-    public void checkTheme()
-    {
-        if (settings.getBoolean("dark", true))
-        {
-            SWtheme.setChecked(true);
-            setDarkTheme();
-        }
-        else
-        {
-            SWtheme.setChecked(false);
-            setLightTheme();
-        }
-    }
     private void setDarkTheme()
     {
         LLsettings.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar4.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar5.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar6.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar16.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         SWcustomSearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         SWtheme.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        SWdownloadOptions.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         ETcustomSearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         ETcustomSearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
 
@@ -175,8 +193,10 @@ public class SettingsActivity extends AppCompatActivity
         TVsplitbar4.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar5.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar6.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar16.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         SWcustomSearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
         SWtheme.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        SWdownloadOptions.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
         ETcustomSearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
         ETcustomSearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_DARK));
     }

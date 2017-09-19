@@ -21,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 class ListViewAdapter extends ArrayAdapter<VideoYoutube>
 {
+    private SharedPreferences settings;
     private ImageView IVimage;
     private TextView TVtitle;
     private TextView TVviews;
@@ -30,7 +31,6 @@ class ListViewAdapter extends ArrayAdapter<VideoYoutube>
     private LinearLayout LLlistview;
     private TextView TVsplitbar7;
 
-    private SharedPreferences settings;
     ListViewAdapter(Context context, int resource, List<VideoYoutube> objects) {super(context, resource, objects);}
     @NonNull
     @Override
@@ -111,8 +111,6 @@ class ListViewAdapter extends ArrayAdapter<VideoYoutube>
         TVviews.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         TVlikes.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         TVdislikes.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-
-
     }
     private void setLightTheme()
     {

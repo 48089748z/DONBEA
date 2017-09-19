@@ -15,11 +15,14 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
 import com.example.uge01006.converter.Extractor.YoutubeFragmentedVideo;
 import com.example.uge01006.converter.Extractor.YtFile;
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,6 +49,11 @@ public class DownloadActivity extends AppCompatActivity
     private ImageView IVvideo720Download;
     private ImageView IVvideo1080Download;
     private ImageView IVvideo2160Download;
+    private LinearLayout LLdownload;
+    private TextView TVsplitbar8;
+    private TextView TVsplitbar9;
+    private TextView TVsplitbar10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -69,7 +77,11 @@ public class DownloadActivity extends AppCompatActivity
         IVvideo720Download = (ImageView) this.findViewById(R.id.IVvideo720Download);
         IVvideo1080Download = (ImageView) this.findViewById(R.id.IVvideo1080Download);
         IVvideo2160Download = (ImageView) this.findViewById(R.id.IVvideo2160Download);
-
+        LLdownload = (LinearLayout) this.findViewById(R.id.LLdownload);
+        TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
+        TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
+        TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
+        checkTheme();
         spinImage();
         String link = getIntent().getStringExtra(Intent.EXTRA_TEXT);
         getYoutubeVideoFileURL(link);
@@ -241,5 +253,66 @@ public class DownloadActivity extends AppCompatActivity
         IVvideo1080Download.setVisibility(View.INVISIBLE);
         IVvideo2160Download.setVisibility(View.INVISIBLE);
         IVloadingDownload.startAnimation(spinner);
+    }
+    public void checkTheme()
+    {
+        if (settings.getBoolean("dark", true)) {setDarkTheme();}
+        else {setLightTheme();}
+    }
+    private void setDarkTheme()
+    {
+        LLdownload.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar8.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar9.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar10.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVheaderDownload.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVtitleDownload.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        BTaudio.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTaudio.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTvideo360.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTvideo360.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTvideo480.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTvideo480.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTvideo720.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTvideo720.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTvideo1080.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTvideo1080.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTvideo2160.setBackgroundResource(R.color.GREY_TEXT_LIGHT);
+        BTvideo2160.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        Picasso.with(this).load(R.drawable.audio_48_grey_light).fit().into(IVaudioDownload);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo360Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo480Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo720Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo1080Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo2160Download);
+    }
+    private void setLightTheme()
+    {
+        LLdownload.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar8.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar9.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar10.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVheaderDownload.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVtitleDownload.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        BTaudio.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTaudio.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        BTvideo360.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTvideo360.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        BTvideo480.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTvideo480.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        BTvideo720.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTvideo720.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        BTvideo1080.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTvideo1080.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        BTvideo2160.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        BTvideo2160.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        Picasso.with(this).load(R.drawable.audio_48_grey_dark).fit().into(IVaudioDownload);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo360Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo480Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo720Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo1080Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo2160Download);
+
+
     }
 }

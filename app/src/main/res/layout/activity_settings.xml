@@ -62,7 +62,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="9">
+        android:layout_weight="12">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -127,16 +127,23 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:layout_weight="2"/>
+
+    <TextView
         android:id="@+id/TVsplitbar5"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
         android:background="@color/GREY_TEXT_LIGHT_SUPER">
     </TextView>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_weight="9">
+        android:layout_weight="12">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -171,4 +178,42 @@
         android:background="@color/GREY_TEXT_LIGHT_SUPER">
     </TextView>
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="12">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+            <Switch
+                android:id="@+id/SWdownloadOptions"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="90"
+                android:text="@string/download_options"
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textSize="16sp"
+                android:textOn="@string/audio_caps"
+                android:textOff="@string/all"/>
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/TVsplitbar16"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.1"
+        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+    </TextView>
 </LinearLayout>

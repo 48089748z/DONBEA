@@ -19,6 +19,8 @@
     <string name="app_theme">App Theme</string>
     <string name="dark">DARK</string>
     <string name="light">LIGHT</string>
+    <string name="all">ALL</string>
+    <string name="audio_caps">AUDIO</string>
 
     <!-- DETAILS ACTIVITY -->
     <string name="share">Share</string>

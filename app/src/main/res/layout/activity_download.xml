@@ -7,8 +7,10 @@
     android:orientation="vertical"
     tools:context="com.example.uge01006.converter.DownloadActivity"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"
-    android:weightSum="100">
+    android:weightSum="100"
+    android:id="@+id/LLdownload">
     <TextView
+        android:id="@+id/TVsplitbar8"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
@@ -71,6 +73,7 @@
         android:layout_height="1dp"
         android:layout_weight="4"/>
     <TextView
+        android:id="@+id/TVsplitbar9"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
@@ -333,6 +336,7 @@
         android:layout_height="1dp"
         android:layout_weight="5"/>
     <TextView
+        android:id="@+id/TVsplitbar10"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"

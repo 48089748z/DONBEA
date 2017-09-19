@@ -25,9 +25,18 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVlikesDetail;
     private TextView TVdislikesDetail;
     private TextView TVuserDetail;
-    private LinearLayout LLdownload;
+    private LinearLayout LLconvert;
     private LinearLayout LLwatchYoutube;
     private LinearLayout LLshareVideo;
+    private LinearLayout LLdetail;
+    private TextView TVsplitbar11;
+    private TextView TVsplitbar12;
+    private TextView TVsplitbar13;
+    private TextView TVsplitbar14;
+    private TextView TVsplitbar15;
+    private TextView TVconvert;
+    private TextView TVwatchYoutube;
+    private TextView TVshare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,16 +52,26 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVlikesDetail = this.findViewById(R.id.TVlikesDetail);
         TVdislikesDetail = this.findViewById(R.id.TVdislikesDetail);
         TVuserDetail = this.findViewById(R.id.TVuserDetail);
-        LLdownload = this.findViewById(R.id.LLdownload);
+        LLconvert = this.findViewById(R.id.LLconvert);
         LLwatchYoutube = this.findViewById(R.id.LLwatchYoutube);
         LLshareVideo = this.findViewById(R.id.LLshareVideo);
+        LLdetail = this.findViewById(R.id.LLdetail);
+        TVsplitbar11 = this.findViewById(R.id.TVsplitbar11);
+        TVsplitbar12 = this.findViewById(R.id.TVsplitbar12);
+        TVsplitbar13 = this.findViewById(R.id.TVsplitbar13);
+        TVsplitbar14 = this.findViewById(R.id.TVsplitbar14);
+        TVsplitbar15 = this.findViewById(R.id.TVsplitbar15);
+        TVconvert = this.findViewById(R.id.TVconvert);
+        TVwatchYoutube = this.findViewById(R.id.TVwatchYoutube);
+        TVshare = this.findViewById(R.id.TVshare);
+        checkTheme();
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
         youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
-        LLdownload.setOnClickListener(view ->
+        LLconvert.setOnClickListener(view ->
         {
             Intent downloader = new Intent(this, DownloadActivity.class);
             downloader.setType("text/plain");
@@ -108,4 +127,43 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {}
     @Override
     protected void onPause() {super.onPause(); this.finish();}
+    public void checkTheme()
+    {
+        if (settings.getBoolean("dark", true)) {setDarkTheme();}
+        else {setLightTheme();}
+    }
+    private void setDarkTheme()
+    {
+        LLdetail.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar11.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar12.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar13.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar14.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar15.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVtitleDetail.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVviewsDetail.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVlikesDetail.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVdislikesDetail.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVuserDetail.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVconvert.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVwatchYoutube.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVshare.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+    }
+    private void setLightTheme()
+    {
+        LLdetail.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar11.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar12.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar13.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar14.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar15.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVtitleDetail.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVviewsDetail.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVlikesDetail.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVdislikesDetail.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVuserDetail.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVconvert.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVwatchYoutube.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVshare.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+    }
 }

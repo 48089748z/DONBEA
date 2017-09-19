@@ -237,7 +237,6 @@ public class MainActivity extends AppCompatActivity
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
         TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-
     }
     private void setLightTheme()
     {
@@ -248,6 +247,11 @@ public class MainActivity extends AppCompatActivity
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
         ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_DARK));
         TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LVadapter.notifyDataSetChanged();
     }
 }
