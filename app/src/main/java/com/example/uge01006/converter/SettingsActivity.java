@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
+import android.widget.TextView;
+
 public class SettingsActivity extends AppCompatActivity
 {
     private SharedPreferences settings;
@@ -20,6 +23,11 @@ public class SettingsActivity extends AppCompatActivity
     private Switch SWcustomSearch;
     private EditText ETcustomSearch;
     private ImageView IVbackSettings;
+    private Switch SWtheme;
+    private LinearLayout LLsettings;
+    private TextView TVsplitbar4;
+    private TextView TVsplitbar5;
+    private TextView TVsplitbar6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,6 +39,11 @@ public class SettingsActivity extends AppCompatActivity
         SWcustomSearch = (Switch) this.findViewById(R.id.SWcustomSearch);
         ETcustomSearch = (EditText) this.findViewById(R.id.ETcustomSearch);
         IVbackSettings = (ImageView) this.findViewById(R.id.IVbackSettings);
+        SWtheme = (Switch) this.findViewById(R.id.SWtheme);
+        LLsettings = (LinearLayout) this.findViewById(R.id.LLsettings);
+        TVsplitbar4 = (TextView) this.findViewById(R.id.TVsplitbar4);
+        TVsplitbar5 = (TextView) this.findViewById(R.id.TVsplitbar5);
+        TVsplitbar6 = (TextView) this.findViewById(R.id.TVsplitbar6);
         setSupportActionBar(toolbar);
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         IVbackSettings.setOnClickListener(view -> ETcustomSearch.setText(""));
@@ -48,6 +61,33 @@ public class SettingsActivity extends AppCompatActivity
                 settingsEditor.apply();
             }
         });
+        configureCustomSearchSwitch();
+        configureThemeSwitch();
+        checkTheme();
+    }
+    public void configureThemeSwitch()
+    {
+        SWtheme.setOnCheckedChangeListener((buttonView, isChecked) ->
+        {
+            if (isChecked)
+            {
+                settingsEditor = settings.edit();
+                settingsEditor.putBoolean("dark", true);
+                settingsEditor.apply();
+                setDarkTheme();
+            }
+            else
+            {
+                settingsEditor = settings.edit();
+                settingsEditor.putBoolean("dark", false);
+                settingsEditor.apply();
+                setLightTheme();
+            }
+        });
+    }
+
+    public void configureCustomSearchSwitch()
+    {
         SWcustomSearch.setOnCheckedChangeListener((buttonView, isChecked) ->
         {
             if (isChecked)
@@ -103,5 +143,41 @@ public class SettingsActivity extends AppCompatActivity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    public void checkTheme()
+    {
+        if (settings.getBoolean("dark", true))
+        {
+            SWtheme.setChecked(true);
+            setDarkTheme();
+        }
+        else
+        {
+            SWtheme.setChecked(false);
+            setLightTheme();
+        }
+    }
+    private void setDarkTheme()
+    {
+        LLsettings.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar4.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar5.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar6.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        SWcustomSearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        SWtheme.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        ETcustomSearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        ETcustomSearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+
+    }
+    private void setLightTheme()
+    {
+        LLsettings.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar4.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar5.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar6.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        SWcustomSearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        SWtheme.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        ETcustomSearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        ETcustomSearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_DARK));
     }
 }

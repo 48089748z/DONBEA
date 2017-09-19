@@ -16,6 +16,9 @@
     <string name="custom_default_search">Custom Default Search</string>
     <string name="enter_default_search">Enter Default Search</string>
     <string name="settings">Settings</string>
+    <string name="app_theme">App Theme</string>
+    <string name="dark">DARK</string>
+    <string name="light">LIGHT</string>
 
     <!-- DETAILS ACTIVITY -->
     <string name="share">Share</string>

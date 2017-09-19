@@ -28,6 +28,7 @@ import com.example.uge01006.converter.POJOs.VideoYoutube;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
+    private SharedPreferences settings;
     private Toolbar toolbar;
     private ArrayList<VideoYoutube> items;
     private ListViewAdapter LVadapter;
@@ -38,27 +39,33 @@ public class MainActivity extends AppCompatActivity
     private ImageView loading;
     private TextView loadingText;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-    private TextView TVsplitBar1;
-    private TextView TVsplitBar2;
-    private TextView TVsplitBar3;
+    private TextView TVsplitbar1;
+    private TextView TVsplitbar2;
+    private TextView TVsplitbar3;
     private LinearLayout LLtoolbarLayout;
     private LinearLayout LLsearchLayout;
+    private LinearLayout LLmain;
+    private TextView TVloading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         LVlist = (ListView) this.findViewById(R.id.LVitems);
         ETsearch = (EditText) this.findViewById(R.id.ETsearch);
         IVback = (ImageView) this.findViewById(R.id.IVback);
         loading = (ImageView) this.findViewById(R.id.loading);
         loadingText = (TextView) this.findViewById(R.id.TVloading);
-        TVsplitBar1 = (TextView) this.findViewById(R.id.TVsplitBar1);
-        TVsplitBar2 = (TextView) this.findViewById(R.id.TVsplitBar2);
-        TVsplitBar3 = (TextView) this.findViewById(R.id.TVsplitBar3);
+        TVsplitbar1 = (TextView) this.findViewById(R.id.TVsplitbar1);
+        TVsplitbar2 = (TextView) this.findViewById(R.id.TVsplitbar2);
+        TVsplitbar3 = (TextView) this.findViewById(R.id.TVsplitbar3);
+        LLmain = (LinearLayout) this.findViewById(R.id.LLmain);
+        TVloading = (TextView) this.findViewById(R.id.TVloading);
         setSupportActionBar(toolbar);
+        checkTheme();
 
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
         LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
@@ -188,9 +195,9 @@ public class MainActivity extends AppCompatActivity
             spinImage();
             loading.setVisibility(View.VISIBLE);
             loadingText.setVisibility(View.VISIBLE);
-            TVsplitBar1.setVisibility(View.VISIBLE);
-            TVsplitBar2.setVisibility(View.VISIBLE);
-            TVsplitBar3.setVisibility(View.VISIBLE);
+            TVsplitbar1.setVisibility(View.VISIBLE);
+            TVsplitbar2.setVisibility(View.VISIBLE);
+            TVsplitbar3.setVisibility(View.VISIBLE);
         }
         protected Integer doInBackground(String... params)
         {
@@ -208,12 +215,39 @@ public class MainActivity extends AppCompatActivity
                 loading.clearAnimation();
                 loading.setVisibility(View.INVISIBLE);
                 loadingText.setVisibility(View.INVISIBLE);
-                TVsplitBar1.setVisibility(View.INVISIBLE);
-                TVsplitBar2.setVisibility(View.INVISIBLE);
-                TVsplitBar3.setVisibility(View.INVISIBLE);
+                TVsplitbar1.setVisibility(View.INVISIBLE);
+                TVsplitbar2.setVisibility(View.INVISIBLE);
+                TVsplitbar3.setVisibility(View.INVISIBLE);
                 LVadapter.notifyDataSetChanged();
             }
             query = "";
         }
+    }
+    public void checkTheme()
+    {
+        if (settings.getBoolean("dark", true)) {setDarkTheme();}
+        else {setLightTheme();}
+    }
+    private void setDarkTheme()
+    {
+        LLmain.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar1.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar2.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar3.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
+        TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+
+    }
+    private void setLightTheme()
+    {
+        LLmain.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar1.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar2.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar3.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        ETsearch.setHintTextColor(getResources().getColor(R.color.GREY_TEXT_DARK));
+        TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+
     }
 }

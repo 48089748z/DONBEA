@@ -21,4 +21,7 @@
     <string name="views">Visites</string>
     <string name="video">Video</string>
     <string name="share">Compartir</string>
+    <string name="dark">FOSC</string>
+    <string name="light">CLAR</string>
+    <string name="app_theme">Aparença</string>
 </resources>

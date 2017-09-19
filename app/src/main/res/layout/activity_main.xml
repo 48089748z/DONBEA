@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/GREY_BACKGROUND_DARK_SUPER">
+    android:background="@color/GREY_BACKGROUND_DARK_SUPER"
+    android:id="@+id/LLmain">
 
 
     <RelativeLayout
@@ -102,7 +104,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="0.1"
                 android:background="@color/GREY_TEXT_LIGHT_SUPER"
-                android:id="@+id/TVsplitBar1">
+                android:id="@+id/TVsplitbar1">
             </TextView>
 
             <TextView
@@ -137,7 +139,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="0.1"
                 android:background="@color/GREY_TEXT_LIGHT_SUPER"
-                android:id="@+id/TVsplitBar2">
+                android:id="@+id/TVsplitbar2">
             </TextView>
 
         </LinearLayout>
@@ -147,7 +149,7 @@
         android:layout_height="1dp"
         android:layout_weight="0.1"
         android:background="@color/GREY_TEXT_LIGHT_SUPER"
-        android:id="@+id/TVsplitBar3">
+        android:id="@+id/TVsplitbar3">
     </TextView>
 
 </LinearLayout>

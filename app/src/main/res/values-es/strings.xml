@@ -21,4 +21,7 @@
     <string name="video">Video</string>
     <string name="share">Compartir</string>
     <string name="settings">Configuración</string>
+    <string name="dark">OSCURO</string>
+    <string name="light">CLARO</string>
+    <string name="app_theme">Apariencia</string>
 </resources>

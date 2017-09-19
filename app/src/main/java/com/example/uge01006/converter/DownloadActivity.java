@@ -1,4 +1,5 @@
 package com.example.uge01006.converter;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DownloadManager;
@@ -26,6 +27,7 @@ import java.util.Collections;
 import java.util.List;
 public class DownloadActivity extends AppCompatActivity
 {
+    private SharedPreferences settings;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private static final int ITAG_FOR_AUDIO = 140;
     private List<YoutubeFragmentedVideo> formatsToShowList;
@@ -50,6 +52,7 @@ public class DownloadActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
+        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         TVtitleDownload = (TextView) this.findViewById(R.id.TVtitleDownload);
         TVheaderDownload = (TextView) this.findViewById(R.id.TVheaderDownload);

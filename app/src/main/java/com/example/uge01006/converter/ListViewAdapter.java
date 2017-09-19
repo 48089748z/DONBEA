@@ -1,10 +1,12 @@
 package com.example.uge01006.converter;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
@@ -19,31 +21,44 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 class ListViewAdapter extends ArrayAdapter<VideoYoutube>
 {
+    private ImageView IVimage;
+    private TextView TVtitle;
+    private TextView TVviews;
+    private TextView TVlikes;
+    private TextView TVdislikes;
+    private TextView TVduration;
+    private LinearLayout LLlistview;
+    private TextView TVsplitbar7;
+
+    private SharedPreferences settings;
     ListViewAdapter(Context context, int resource, List<VideoYoutube> objects) {super(context, resource, objects);}
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
     {
+        settings = getContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
         VideoYoutube item = getItem(position);
         if (convertView == null)
         {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.listview_layout, parent, false);
         }
+        IVimage = convertView.findViewById(R.id.IVimage);
+        TVtitle = convertView.findViewById(R.id.TVtitle);
+        TVviews = convertView.findViewById(R.id.TVviews);
+        TVlikes = convertView.findViewById(R.id.TVlikes);
+        TVdislikes = convertView.findViewById(R.id.TVdislikes);
+        TVduration = convertView.findViewById(R.id.TVduration);
+        LLlistview = convertView.findViewById(R.id.LLlistview);
+        TVsplitbar7 = convertView.findViewById(R.id.TVsplitbar7);
+        checkTheme();
 
-        ImageView image = convertView.findViewById(R.id.IVimage);
-        TextView title = convertView.findViewById(R.id.TVtitle);
-        TextView views = convertView.findViewById(R.id.TVviews);
-        TextView likes = convertView.findViewById(R.id.TVlikes);
-        TextView dislikes = convertView.findViewById(R.id.TVdislikes);
-        TextView duration = convertView.findViewById(R.id.TVduration);
-
-        Picasso.with(getContext()).load(item.getThumbnailmedium()).fit().into(image);
-        title.setText(item.getTitle());
-        views.setText(getKorM(item.getViewCount())+" views");
-        likes.setText(getKorM(item.getLikeCount())+" likes");
-        dislikes.setText(getKorM(item.getDislikeCount())+" dislikes");
-        duration.setText(translateDuration(item.getDuration()));
+        Picasso.with(getContext()).load(item.getThumbnailmedium()).fit().into(IVimage);
+        TVtitle.setText(item.getTitle());
+        TVviews.setText(getKorM(item.getViewCount())+" views");
+        TVlikes.setText(getKorM(item.getLikeCount())+" likes");
+        TVdislikes.setText(getKorM(item.getDislikeCount())+" dislikes");
+        TVduration.setText(translateDuration(item.getDuration()));
         return convertView;
     }
 
@@ -82,5 +97,30 @@ class ListViewAdapter extends ArrayAdapter<VideoYoutube>
         else if (number.length()>8) {result = number.substring(0,number.length()-6)+"M";}
         else {return number;}
         return result;
+    }
+    public void checkTheme()
+    {
+        if (settings.getBoolean("dark", true)) {setDarkTheme();}
+        else {setLightTheme();}
+    }
+    private void setDarkTheme()
+    {
+        LLlistview.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVsplitbar7.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVtitle.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVviews.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVlikes.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        TVdislikes.setTextColor(getContext().getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+
+
+    }
+    private void setLightTheme()
+    {
+        LLlistview.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        TVsplitbar7.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        TVtitle.setTextColor(getContext().getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVviews.setTextColor(getContext().getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVlikes.setTextColor(getContext().getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        TVdislikes.setTextColor(getContext().getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
     }
 }

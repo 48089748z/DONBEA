@@ -1,6 +1,8 @@
 package com.example.uge01006.converter;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -15,6 +17,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlayer.OnInitializedListener
 {
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
+    private SharedPreferences settings;
     private YouTubePlayerView youtubePlayer;
     private VideoYoutube clickedVideo;
     private TextView TVtitleDetail;
@@ -32,6 +35,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         clickedVideo = (VideoYoutube) getIntent().getExtras().getSerializable("selectedVideo");
         TVtitleDetail = this.findViewById(R.id.TVtitleDetail);
         youtubePlayer = this.findViewById(R.id.YTVplayer);
