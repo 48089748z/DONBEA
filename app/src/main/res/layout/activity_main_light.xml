@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/GREY_BACKGROUND_DARK_SUPER">
+    android:background="@color/GREY_TEXT_LIGHT_SUPER">
 
 
     <RelativeLayout
@@ -41,9 +41,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="88"
                 android:hint="@string/search"
-                android:textColorHint="@color/GREY_TEXT_MEDIUM"
+                android:textColorHint="@color/GREY_TEXT_DARK"
                 android:inputType="textCapSentences"
-                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"/>
         </LinearLayout>
 
         <LinearLayout
@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="0.1"
-                android:background="@color/GREY_TEXT_LIGHT_SUPER"
+                android:background="@color/GREY_BACKGROUND_DARK_SUPER"
                 android:id="@+id/TVsplitBar1">
             </TextView>
 
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/loading_results_for"
                 android:textAlignment="center"
-                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"/>
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="0.1"
-                android:background="@color/GREY_TEXT_LIGHT_SUPER"
+                android:background="@color/GREY_BACKGROUND_DARK_SUPER"
                 android:id="@+id/TVsplitBar2">
             </TextView>
 
@@ -146,10 +146,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER"
+        android:background="@color/GREY_BACKGROUND_DARK_SUPER"
         android:id="@+id/TVsplitBar3">
     </TextView>
 
 </LinearLayout>
-
-

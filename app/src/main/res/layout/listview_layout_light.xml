@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+FULL LIST VIEW LAYOUT
+HORIZONTAL: 100% SCREEN
+VERTICAL: 100dp
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:weightSum="100"
+    android:orientation="horizontal"
+    android:background="@color/GREY_TEXT_LIGHT_SUPER"
+    >
+
+    <!--
+    LEFT LIST VIEW LAYOUT CONTAINER
+    HORIZONTAL: 45% SCREEN
+    VERTICAL: MATCH_PARENT = 100dp
+    -->
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="43"
+        android:weightSum="100"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_weight="100"
+            android:weightSum="100"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/IVimage"
+                android:layout_weight="100"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/video" />
+            <TextView
+                android:id="@+id/TVduration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/IVimage"
+                android:layout_alignBottom="@id/IVimage"
+                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textStyle="bold"
+                android:background="#000000"
+                android:textAlignment="textEnd"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--
+    MIDDLE LIST VIEW LAYOUT SPLITTER
+    HORIZONTAL: 3% SCREEN
+    VERTICAL: MATCH_PARENT = 100dp
+    -->
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"/>
+
+    <!--
+    RIGHT LIST VIEW LAYOUT CONTAINER
+    HORIZONTAL: 52% SCREEN
+    VERTICAL: MATCH_PARENT = 100dp
+    -->
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="55"
+        android:weightSum="100"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.1"
+            android:background="@color/GREY_BACKGROUND_DARK_SUPER">
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="3"/>
+
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 50% SCREEN
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="57.9">
+
+            <TextView
+                android:id="@+id/TVtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text="@string/video"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"/>
+        </LinearLayout>
+
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="12"
+            android:weightSum="100"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/views_24_green"
+                android:contentDescription="@string/views" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5" />
+            <TextView
+                android:id="@+id/TVviews"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:textSize="11sp"
+                android:text="@string/views"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="12"
+            android:weightSum="100"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/like_24_blue"
+                android:contentDescription="@string/likes" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5" />
+            <TextView
+                android:id="@+id/TVlikes"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:textSize="11sp"
+                android:text="@string/likes"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <!--
+        RIGHT LIST VIEW LAYOUT CONTAINER
+        HORIZONTAL: 60% SCREEN
+        VERTICAL: 15% SCREEN
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="12"
+            android:weightSum="100"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/dislike_24_red"
+                android:contentDescription="@string/dislikes" />
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5" />
+            <TextView
+                android:id="@+id/TVdislikes"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="80"
+                android:textSize="11sp"
+                android:text="@string/dislikes"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="3"/>
+    </LinearLayout>
+</LinearLayout>

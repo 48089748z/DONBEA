@@ -7,7 +7,7 @@
     tools:context="com.example.uge01006.converter.SettingsActivity"
     android:orientation="vertical"
     android:weightSum="100"
-    android:background="@color/GREY_BACKGROUND_DARK_SUPER">
+    android:background="@color/GREY_TEXT_LIGHT_SUPER">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+        android:background="@color/GREY_BACKGROUND_DARK_SUPER">
     </TextView>
 
     <RelativeLayout
@@ -76,7 +76,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="90"
                 android:text="@string/custom_default_search"
-                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
                 android:textSize="16sp"/>
             <TextView
                 android:layout_width="1dp"
@@ -106,8 +106,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="80"
                 android:hint="@string/enter_default_search"
-                android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
-                android:textColorHint="@color/GREY_TEXT_LIGHT"
+                android:textColor="@color/GREY_BACKGROUND_DARK_SUPER"
+                android:textColorHint="@color/GREY_TEXT_DARK"
                 android:textSize="16sp"/>
             <ImageView
                 android:layout_width="1dp"
@@ -127,7 +127,10 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_weight="0.1"
-        android:background="@color/GREY_TEXT_LIGHT_SUPER">
+        android:background="@color/GREY_BACKGROUND_DARK_SUPER">
     </TextView>
 
 </LinearLayout>
+
+
+
