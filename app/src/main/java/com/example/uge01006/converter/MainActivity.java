@@ -3,6 +3,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,8 @@ import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
@@ -55,16 +58,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        try
-        {
-            Bundle extras = getIntent().getExtras();
-            String YOUTUBE_VIDEO_LINK = extras.getString(Intent.EXTRA_TEXT);
-            Intent downloader = new Intent(this, DownloadActivity.class);
-            downloader.setType("text/plain");
-            downloader.putExtra(Intent.EXTRA_TEXT, YOUTUBE_VIDEO_LINK);
-            startActivity(downloader);
-        }
-        catch (Exception ignored){}
         settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         LVlist = (ListView) this.findViewById(R.id.LVitems);
@@ -108,10 +101,24 @@ public class MainActivity extends AppCompatActivity
             startActivity(detail);
         });
         checkTheme();
+        setFirstExecutionSettings();
         if (settings.getBoolean("custom", true)) {loadCustom(settings.getString("text", "default"));}
         else {loadDefault();}
     }
 
+    private void setFirstExecutionSettings()
+    {
+        SharedPreferences.Editor settingsEditor = settings.edit();
+        if (settings.getString("firstExecution", "default").equals("default"))
+        {
+            settingsEditor.putString("firstExecution", "NOPE");
+            settingsEditor.putString("text", "");
+            settingsEditor.putBoolean("custom", false);
+            settingsEditor.putBoolean("dark", true);
+            settingsEditor.putBoolean("audio", false);
+            settingsEditor.apply();
+        }
+    }
     private void settings()
     {
         Intent settings = new Intent(this, SettingsActivity.class);

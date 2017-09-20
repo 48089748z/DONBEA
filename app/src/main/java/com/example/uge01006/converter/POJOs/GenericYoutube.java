@@ -3,7 +3,6 @@ import java.io.Serializable;
 
 public abstract class GenericYoutube implements Serializable
 {
-
     private String id;
     private String publishedAt;
     private String title;
