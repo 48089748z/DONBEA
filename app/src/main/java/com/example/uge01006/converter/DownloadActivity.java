@@ -84,6 +84,9 @@ public class DownloadActivity extends AppCompatActivity
         checkTheme();
         spinImage();
         String YOUTUBE_VIDEO_LINK = getIntent().getExtras().getString(Intent.EXTRA_TEXT);
+
+        /* TODO Add advertisements */
+
         getYoutubeVideoFileURL(YOUTUBE_VIDEO_LINK);
         BTaudio.setOnClickListener(view -> download(getFragment(-1)));
         BTvideo360.setOnClickListener(view -> download(getFragment(360)));
