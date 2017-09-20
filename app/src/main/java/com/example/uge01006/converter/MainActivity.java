@@ -3,11 +3,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,9 +26,6 @@ import android.widget.TextView;
 import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
@@ -256,10 +251,9 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar2.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-        Log.e("DARK THEME", "EXECUTED");
         LLsearchLayout.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-        Picasso.with(this).load(R.drawable.back_48_lightgrey).into(IVback);
+        Picasso.with(this).load(R.drawable.back_48_lightgrey).fit().into(IVback);
     }
     private void setLightTheme()
     {
@@ -268,10 +262,9 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar2.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
-        Log.e("LIGHT THEME", "EXECUTED");
         LLsearchLayout.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
-        Picasso.with(this).load(R.drawable.back_48_darkgrey).into(IVback);
+        Picasso.with(this).load(R.drawable.back_48_darkgrey).fit().into(IVback);
     }
 
     @Override

@@ -22,12 +22,15 @@ import com.example.uge01006.converter.Extractor.YouTubeExtractor;
 import com.example.uge01006.converter.Extractor.YoutubeFragmentedVideo;
 import com.example.uge01006.converter.Extractor.YtFile;
 import com.squareup.picasso.Picasso;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 public class DownloadActivity extends AppCompatActivity
 {
     private SharedPreferences settings;
@@ -53,6 +56,7 @@ public class DownloadActivity extends AppCompatActivity
     private TextView TVsplitbar8;
     private TextView TVsplitbar9;
     private TextView TVsplitbar10;
+    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -81,12 +85,19 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
+
+
+        //ca-app-pub-3940256099942544~3347511713
+        //ca-app-pub-3940256099942544/1033173712
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         checkTheme();
+
+        displayAd();
         spinImage();
         String YOUTUBE_VIDEO_LINK = getIntent().getExtras().getString(Intent.EXTRA_TEXT);
-
-        /* TODO Add advertisements */
-
         getYoutubeVideoFileURL(YOUTUBE_VIDEO_LINK);
         BTaudio.setOnClickListener(view -> download(getFragment(-1)));
         BTvideo360.setOnClickListener(view -> download(getFragment(360)));
@@ -95,6 +106,12 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo1080.setOnClickListener(view -> download(getFragment(1080)));
         BTvideo2160.setOnClickListener(view -> download(getFragment(2160)));
     }
+
+    private void displayAd()
+    {
+        if (mInterstitialAd.isLoaded()) {mInterstitialAd.show();}
+    }
+
     private YoutubeFragmentedVideo getFragment (int code)
     {
         for (YoutubeFragmentedVideo chosenFragment: formatsToShowList)
