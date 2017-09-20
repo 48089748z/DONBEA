@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.example.uge01006.converter.DAOs.DeveloperKey;
+import com.example.uge01006.converter.DAOs.X;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -37,6 +41,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVconvert;
     private TextView TVwatchYoutube;
     private TextView TVshare;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,12 +70,13 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVwatchYoutube = this.findViewById(R.id.TVwatchYoutube);
         TVshare = this.findViewById(R.id.TVshare);
         checkTheme();
+        configureDisplayAd();
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
-        youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);
+        youtubePlayer.initialize(X.DEVELOPER_PRO, this);
         LLconvert.setOnClickListener(view ->
         {
             Intent downloader = new Intent(this, DownloadActivity.class);
@@ -80,6 +86,16 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         });
         LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube();});
         LLshareVideo.setOnClickListener(view -> {share();});
+    }
+
+    public void configureDisplayAd()
+    {
+        MobileAds.initialize(this, X.ADVERTISER_TEST);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(X.INTERSTITIAL_TEST);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
     }
 
     public void share()
@@ -121,7 +137,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 1) {youtubePlayer.initialize(DeveloperKey.DEVELOPER_KEY, this);}
+        if (requestCode == 1) {youtubePlayer.initialize(X.DEVELOPER_PRO, this);}
     }
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {}

@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-public class YoutubeAPI
+public class API
 {
-    private static String API_KEY = DeveloperKey.DEVELOPER_KEY;
+    private static String API_KEY = X.DEVELOPER_PRO;
     private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private final JsonFactory JSON_FACTORY = new JacksonFactory();
     public final long MAX_ITEMS_RETURNED = 15;
     private YouTube youtube;
-    public YoutubeAPI()
+    public API()
     {
         youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, httpRequest -> {}).setApplicationName("youtube-cmdline-search_48_white-sample").build();
     }

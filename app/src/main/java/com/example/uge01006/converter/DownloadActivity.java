@@ -17,10 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.uge01006.converter.DAOs.X;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
 import com.example.uge01006.converter.Extractor.YoutubeFragmentedVideo;
 import com.example.uge01006.converter.Extractor.YtFile;
+import com.google.android.gms.ads.AdListener;
 import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.IOException;
@@ -85,17 +88,8 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
-
-
-        //ca-app-pub-3940256099942544~3347511713
-        //ca-app-pub-3940256099942544/1033173712
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        configureDisplayAd();
         checkTheme();
-
-        displayAd();
         spinImage();
         String YOUTUBE_VIDEO_LINK = getIntent().getExtras().getString(Intent.EXTRA_TEXT);
         getYoutubeVideoFileURL(YOUTUBE_VIDEO_LINK);
@@ -107,9 +101,14 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo2160.setOnClickListener(view -> download(getFragment(2160)));
     }
 
-    private void displayAd()
+    public void configureDisplayAd()
     {
-        if (mInterstitialAd.isLoaded()) {mInterstitialAd.show();}
+        MobileAds.initialize(this, X.ADVERTISER_TEST);
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(X.INTERSTITIAL_TEST);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
     }
 
     private YoutubeFragmentedVideo getFragment (int code)

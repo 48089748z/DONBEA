@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.example.uge01006.converter.DAOs.YoutubeAPI;
+import com.example.uge01006.converter.DAOs.API;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity
     private class AsyncListLoader extends AsyncTask<String, Void, Integer>
     {
         private String query = "";
-        private YoutubeAPI youtubeAPI = new YoutubeAPI();
+        private API API = new API();
         void setQuery(String query) {this.query = query;}
         protected void onPreExecute()
         {
@@ -216,10 +216,10 @@ public class MainActivity extends AppCompatActivity
         }
         protected Integer doInBackground(String... params)
         {
-            while (items.size()<youtubeAPI.MAX_ITEMS_RETURNED)
+            while (items.size()< API.MAX_ITEMS_RETURNED)
             {
-                if (query.equals("")) {items.addAll(youtubeAPI.getMusicChannelVideos());}
-                else {items.addAll(youtubeAPI.searchVideos(query));}
+                if (query.equals("")) {items.addAll(API.getMusicChannelVideos());}
+                else {items.addAll(API.searchVideos(query));}
             }
             return 0;
         }

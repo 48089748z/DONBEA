@@ -34,17 +34,19 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:26+'
 
-    /**GOOGLE ADVERTISIMENTS*/
-    compile 'com.google.android.gms:play-services-ads:11.0.0'
-
-
     /**YOUTUBE API*/
     compile 'com.google.apis:google-api-services-youtube:v3-rev181-1.22.0'
 
     /**PICASSO FOR LOADING IMAGES PROPERLY*/
     compile 'com.squareup.picasso:picasso:+'
 
+    /**PARSE VIDEOS*/
+    compile 'com.googlecode.mp4parser:isoparser:1.1.17'
+
+    /**GOOGLE ADVERTISIMENTS*/
+    compile 'com.google.android.gms:play-services-ads:11.0.4'
+
     /**NO FUCKING IDEA*/
     compile 'org.aspectj:aspectjrt:1.8.8'
-    compile 'com.googlecode.mp4parser:isoparser:1.1.17'
+
 }
