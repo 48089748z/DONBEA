@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Youtube Downloader</string>
     <string name="audio">Audio</string>
     <string name="back">Volver</string>
     <string name="channel">Canal</string>
@@ -24,4 +23,6 @@
     <string name="dark">OSCURO</string>
     <string name="light">CLARO</string>
     <string name="app_theme">Apariencia</string>
+    <string name="audio_caps">AUDIO</string>
+    <string name="all">TODAS</string>
 </resources>
