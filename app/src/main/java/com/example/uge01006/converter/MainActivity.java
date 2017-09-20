@@ -26,6 +26,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uge01006.converter.DAOs.YoutubeAPI;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
 {
@@ -75,11 +77,10 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar3 = (TextView) this.findViewById(R.id.TVsplitbar3);
         LLmain = (LinearLayout) this.findViewById(R.id.LLmain);
         TVloading = (TextView) this.findViewById(R.id.TVloading);
-        setSupportActionBar(toolbar);
-        checkTheme();
-
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
         LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
+
+        setSupportActionBar(toolbar);
         SharedPreferences settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         keyboard = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -87,7 +88,6 @@ public class MainActivity extends AppCompatActivity
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
-
         IVback.setOnClickListener(view -> showToolbarHideKeyboard());
         ETsearch.setOnEditorActionListener((v, actionId, event) ->
         {
@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity
             detail.putExtra("selectedVideo", clickedVideo);
             startActivity(detail);
         });
+        checkTheme();
         if (settings.getBoolean("custom", true)) {loadCustom(settings.getString("text", "default"));}
         else {loadDefault();}
     }
@@ -178,6 +179,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.action_search)
         {
+            checkTheme();
             search();
             return true;
         }
@@ -239,6 +241,7 @@ public class MainActivity extends AppCompatActivity
         if (settings.getBoolean("dark", true)) {setDarkTheme();}
         else {setLightTheme();}
     }
+
     private void setDarkTheme()
     {
         LLmain.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
@@ -246,6 +249,10 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar2.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        Log.e("DARK THEME", "EXECUTED");
+        LLsearchLayout.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
+        ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
+        Picasso.with(this).load(R.drawable.back_48_lightgrey).into(IVback);
     }
     private void setLightTheme()
     {
@@ -254,6 +261,10 @@ public class MainActivity extends AppCompatActivity
         TVsplitbar2.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVsplitbar3.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        Log.e("LIGHT THEME", "EXECUTED");
+        LLsearchLayout.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
+        ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
+        Picasso.with(this).load(R.drawable.back_48_darkgrey).into(IVback);
     }
 
     @Override

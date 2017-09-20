@@ -310,10 +310,10 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo2160.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         BTvideo2160.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT));
         Picasso.with(this).load(R.drawable.audio_48_grey_dark).fit().into(IVaudioDownload);
-        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo360Download);
-        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo480Download);
-        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo720Download);
-        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo1080Download);
-        Picasso.with(this).load(R.drawable.video_48_grey_light).fit().into(IVvideo2160Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_dark).fit().into(IVvideo360Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_dark).fit().into(IVvideo480Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_dark).fit().into(IVvideo720Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_dark).fit().into(IVvideo1080Download);
+        Picasso.with(this).load(R.drawable.video_48_grey_dark).fit().into(IVvideo2160Download);
     }
 }
