@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.uge01006.converter.DownloadActivity"
+    tools:context="com.extractor.uri48089748z.converter.DownloadActivity"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"
     android:weightSum="100"
     android:id="@+id/LLdownload">

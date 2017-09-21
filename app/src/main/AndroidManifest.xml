@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.uge01006.converter">
+    package="com.extractor.uri48089748z.converter">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -11,11 +11,10 @@
         android:label="@string/app_name"
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo"
-        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name="com.extractor.uri48089748z.converter.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.MAIN" />
@@ -24,17 +23,17 @@
         </activity>
 
         <activity
-            android:name=".DetailActivity"
+            android:name="com.extractor.uri48089748z.converter.DetailActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.extractor.uri48089748z.converter.SettingsActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".DownloadActivity"
+            android:name="com.extractor.uri48089748z.converter.DownloadActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>

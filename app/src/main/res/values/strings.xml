@@ -1,6 +1,6 @@
 <resources>
     <!-- APP NAME -->
-    <string name="app_name" translatable="false">Extractor Lite</string>
+    <string name="app_name" translatable="false">Extractor PRO</string>
 
     <!-- MAIN ACTIVITY -->
     <string name="loading_popular_videos_of_today">Loading Youtube Music Channel …</string>
