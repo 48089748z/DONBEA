@@ -87,7 +87,7 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
-        if (!X.PRO)
+        if (!X.ADVERTISEMENTS)
         {
             configureAds();
             showInterstitialAD();
@@ -129,7 +129,7 @@ public class DownloadActivity extends AppCompatActivity
     }
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
-        if (!X.PRO){showInterstitialAD();}
+        if (X.ADVERTISEMENTS){showInterstitialAD();}
         String videoTitle = fragmentedVideo.title;
         TVtitleDownload.setText(videoTitle);
         String filename;
@@ -161,7 +161,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                if (!X.PRO){showInterstitialAD();}
+                if (X.ADVERTISEMENTS){showInterstitialAD();}
                 TVheaderDownload.setText(getResources().getString(R.string.download_options));
                 TVtitleDownload.setText(vMeta.getTitle());
                 IVloadingDownload.clearAnimation();
@@ -196,23 +196,20 @@ public class DownloadActivity extends AppCompatActivity
                             BTvideo480.setVisibility(View.VISIBLE);
                             IVvideo480Download.setVisibility(View.VISIBLE);
                         }
-                        if (X.PRO)
+                        if (fragmentedVideo.height == 720)
                         {
-                            if (fragmentedVideo.height == 720)
-                            {
-                                BTvideo720.setVisibility(View.VISIBLE);
-                                IVvideo720Download.setVisibility(View.VISIBLE);
-                            }
-                            if (fragmentedVideo.height == 1080)
-                            {
-                                BTvideo1080.setVisibility(View.VISIBLE);
-                                IVvideo1080Download.setVisibility(View.VISIBLE);
-                            }
-                            if (fragmentedVideo.height == 2160)
-                            {
-                                BTvideo2160.setVisibility(View.VISIBLE);
-                                IVvideo2160Download.setVisibility(View.VISIBLE);
-                            }
+                            BTvideo720.setVisibility(View.VISIBLE);
+                            IVvideo720Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 1080)
+                        {
+                            BTvideo1080.setVisibility(View.VISIBLE);
+                            IVvideo1080Download.setVisibility(View.VISIBLE);
+                        }
+                        if (fragmentedVideo.height == 2160)
+                        {
+                            BTvideo2160.setVisibility(View.VISIBLE);
+                            IVvideo2160Download.setVisibility(View.VISIBLE);
                         }
                     }
                 }

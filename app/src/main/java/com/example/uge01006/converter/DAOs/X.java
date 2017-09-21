@@ -1,7 +1,7 @@
 package com.example.uge01006.converter.DAOs;
 public class X
 {
-    public static final boolean PRO = false;
+    public static final boolean ADVERTISEMENTS = true;
     public static final String DEVELOPER = "AIzaSyBGcQhbTSqaeldT3Hn0l2eb-pIXShk2ZVE";
 
     public static final String ADVERTISER = "ca-app-pub-4011968681687837~9197030809";

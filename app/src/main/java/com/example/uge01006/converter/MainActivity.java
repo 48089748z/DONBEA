@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
-        if (!X.PRO)
+        if (!X.ADVERTISEMENTS)
         {
             configureAds();
             showInterstitialAD();
