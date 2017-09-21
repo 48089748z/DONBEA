@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
@@ -18,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.uge01006.converter.DAOs.X;
 import com.example.uge01006.converter.Extractor.VideoMeta;
 import com.example.uge01006.converter.Extractor.YouTubeExtractor;
