@@ -164,7 +164,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                showInterstitialAD();
+                if (ADVERTISEMENTS){showInterstitialAD();}
                 TVheaderDownload.setText(getResources().getString(R.string.download_options));
                 TVtitleDownload.setText(vMeta.getTitle());
                 IVloadingDownload.clearAnimation();
