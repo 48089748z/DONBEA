@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
@@ -36,6 +37,7 @@ import com.google.android.gms.ads.MobileAds;
 
 public class DownloadActivity extends AppCompatActivity
 {
+    private static final boolean ADVERTISEMENTS = false;
     private SharedPreferences settings;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private static final int ITAG_FOR_AUDIO = 140;
@@ -88,7 +90,11 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
-        configureDisplayAd();
+        if (ADVERTISEMENTS)
+        {
+            configureAds();
+            showInterstitialAD();
+        }
         checkTheme();
         spinImage();
         String YOUTUBE_VIDEO_LINK = getIntent().getExtras().getString(Intent.EXTRA_TEXT);
@@ -101,13 +107,18 @@ public class DownloadActivity extends AppCompatActivity
         BTvideo2160.setOnClickListener(view -> download(getFragment(2160)));
     }
 
-    public void configureDisplayAd()
+    private void configureAds()
     {
         MobileAds.initialize(this, X.ADVERTISER_TEST);
+
+        /** Configure INTERSTITIAL ADVERTISEMENT */
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.ADVERTISER_TEST_ADS);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdUnitId(X.ADVERTISER_AD_INTERSTITIAL_TEST);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+    }
+
+    public void showInterstitialAD()
+    {
         mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
     }
 
@@ -121,7 +132,7 @@ public class DownloadActivity extends AppCompatActivity
     }
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
-        configureDisplayAd();
+        if (ADVERTISEMENTS){showInterstitialAD();}
         String videoTitle = fragmentedVideo.title;
         TVtitleDownload.setText(videoTitle);
         String filename;
@@ -145,7 +156,6 @@ public class DownloadActivity extends AppCompatActivity
         {
             cacheDownloadIds(downloadIds);
         }
-        finish();
     }
     private void getYoutubeVideoFileURL(String link)
     {
@@ -154,6 +164,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
+                showInterstitialAD();
                 TVheaderDownload.setText(getResources().getString(R.string.download_options));
                 TVtitleDownload.setText(vMeta.getTitle());
                 IVloadingDownload.clearAnimation();

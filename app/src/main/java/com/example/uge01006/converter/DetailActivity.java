@@ -104,6 +104,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         try {startActivity(appIntent);}
         catch (ActivityNotFoundException ex) {startActivity(webIntent);}
     }
+
     private String addDots(String number)
     {
         int counter = 0;

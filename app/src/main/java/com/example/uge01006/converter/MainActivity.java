@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity
         TVloading.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
         LLsearchLayout.setBackgroundResource(R.color.GREY_BACKGROUND_DARK_SUPER);
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_TEXT_LIGHT_SUPER));
-        Picasso.with(this).load(R.drawable.back_48_lightgrey).fit().into(IVback);
+        Picasso.with(this).load(R.drawable.back_48_lightgrey).into(IVback);
     }
     private void setLightTheme()
     {
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity
         TVloading.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
         LLsearchLayout.setBackgroundResource(R.color.GREY_TEXT_LIGHT_SUPER);
         ETsearch.setTextColor(getResources().getColor(R.color.GREY_BACKGROUND_DARK_SUPER));
-        Picasso.with(this).load(R.drawable.back_48_darkgrey).fit().into(IVback);
+        Picasso.with(this).load(R.drawable.back_48_darkgrey).into(IVback);
     }
 
     @Override

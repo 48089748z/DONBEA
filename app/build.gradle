@@ -38,7 +38,7 @@ dependencies {
     compile 'com.google.apis:google-api-services-youtube:v3-rev181-1.22.0'
 
     /**PICASSO FOR LOADING IMAGES PROPERLY*/
-    compile 'com.squareup.picasso:picasso:+'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     /**PARSE VIDEOS*/
     compile 'com.googlecode.mp4parser:isoparser:1.1.17'
