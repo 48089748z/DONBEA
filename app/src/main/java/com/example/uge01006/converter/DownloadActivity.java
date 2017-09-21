@@ -87,7 +87,7 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
-        if (!X.ADVERTISEMENTS)
+        if (X.ADVERTISEMENTS)
         {
             configureAds();
             showInterstitialAD();
