@@ -24,7 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.example.uge01006.converter.DAOs.API;
+import com.example.uge01006.converter.DAOs.X;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout LLsearchLayout;
     private LinearLayout LLmain;
     private TextView TVloading;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,7 +73,6 @@ public class MainActivity extends AppCompatActivity
         TVloading = (TextView) this.findViewById(R.id.TVloading);
         LLtoolbarLayout = (LinearLayout) this.findViewById(R.id.LLtoolbarLayout);
         LLsearchLayout = (LinearLayout) this.findViewById(R.id.LLsearchLayout);
-
         setSupportActionBar(toolbar);
         SharedPreferences settings = getSharedPreferences("settings", Context.MODE_PRIVATE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -76,6 +81,11 @@ public class MainActivity extends AppCompatActivity
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
+        if (!X.PRO)
+        {
+            configureAds();
+            showInterstitialAD();
+        }
         IVback.setOnClickListener(view -> showToolbarHideKeyboard());
         ETsearch.setOnEditorActionListener((v, actionId, event) ->
         {
@@ -101,6 +111,20 @@ public class MainActivity extends AppCompatActivity
         else {loadDefault();}
     }
 
+    private void configureAds()
+    {
+        MobileAds.initialize(this, X.ADVERTISER);
+
+        /** Configure INTERSTITIAL ADVERTISEMENT */
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId(X.ADVERTISER_INTERSTITIAL);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+    }
+
+    public void showInterstitialAD()
+    {
+        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
+    }
     private void setFirstExecutionSettings()
     {
         SharedPreferences.Editor settingsEditor = settings.edit();
