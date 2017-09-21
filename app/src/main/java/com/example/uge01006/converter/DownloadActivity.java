@@ -108,11 +108,11 @@ public class DownloadActivity extends AppCompatActivity
 
     private void configureAds()
     {
-        MobileAds.initialize(this, X.ADVERTISER_TEST);
+        MobileAds.initialize(this, X.ADVERTISER);
 
         /** Configure INTERSTITIAL ADVERTISEMENT */
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.ADVERTISER_INTERSTITIAL_TEST);
+        mInterstitialAd.setAdUnitId(X.ADVERTISER_INTERSTITIAL);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
