@@ -221,7 +221,7 @@ public class DownloadFinishedReceiver extends BroadcastReceiver
         }
     }
 
-    // From the mp4parser metadata example
+    // From the mp4parser metadata uri48089748z
     private void correctChunkOffsets(Container container, long correction) {
         List<Box> chunkOffsetBoxes = Path.getPaths(container, "/moov[0]/trak/mdia[0]/minf[0]/stbl[0]/stco[0]");
         for (Box chunkOffsetBox : chunkOffsetBoxes) {
