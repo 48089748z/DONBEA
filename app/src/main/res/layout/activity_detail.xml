@@ -222,7 +222,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_logo_pro"
+            android:src="@mipmap/ic_logo"
             android:contentDescription="@string/logo" />
     </LinearLayout>
 

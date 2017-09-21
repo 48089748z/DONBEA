@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@mipmap/ic_logo_pro"
+        android:background="@mipmap/ic_logo"
         android:contentDescription="@string/logo" />
     <TextView
         android:layout_width="match_parent"

@@ -37,7 +37,6 @@ import com.google.android.gms.ads.MobileAds;
 
 public class DownloadActivity extends AppCompatActivity
 {
-    private static final boolean ADVERTISEMENTS = false;
     private SharedPreferences settings;
     private RotateAnimation spinner = new RotateAnimation(360f, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
     private static final int ITAG_FOR_AUDIO = 140;
@@ -90,7 +89,7 @@ public class DownloadActivity extends AppCompatActivity
         TVsplitbar8 = (TextView) this.findViewById(R.id.TVsplitbar8);
         TVsplitbar9 = (TextView) this.findViewById(R.id.TVsplitbar9);
         TVsplitbar10 = (TextView) this.findViewById(R.id.TVsplitbar10);
-        if (ADVERTISEMENTS)
+        if (!X.PRO)
         {
             configureAds();
             showInterstitialAD();
@@ -113,7 +112,7 @@ public class DownloadActivity extends AppCompatActivity
 
         /** Configure INTERSTITIAL ADVERTISEMENT */
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.ADVERTISER_AD_INTERSTITIAL_TEST);
+        mInterstitialAd.setAdUnitId(X.ADVERTISER_INTERSTITIAL_TEST);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
@@ -132,7 +131,7 @@ public class DownloadActivity extends AppCompatActivity
     }
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
-        if (ADVERTISEMENTS){showInterstitialAD();}
+        if (!X.PRO){showInterstitialAD();}
         String videoTitle = fragmentedVideo.title;
         TVtitleDownload.setText(videoTitle);
         String filename;
@@ -164,7 +163,7 @@ public class DownloadActivity extends AppCompatActivity
             @Override
             public void onExtractionComplete(SparseArray<YtFile> ytFiles, VideoMeta vMeta)
             {
-                if (ADVERTISEMENTS){showInterstitialAD();}
+                if (!X.PRO){showInterstitialAD();}
                 TVheaderDownload.setText(getResources().getString(R.string.download_options));
                 TVtitleDownload.setText(vMeta.getTitle());
                 IVloadingDownload.clearAnimation();
@@ -199,20 +198,23 @@ public class DownloadActivity extends AppCompatActivity
                             BTvideo480.setVisibility(View.VISIBLE);
                             IVvideo480Download.setVisibility(View.VISIBLE);
                         }
-                        if (fragmentedVideo.height == 720)
+                        if (X.PRO)
                         {
-                            BTvideo720.setVisibility(View.VISIBLE);
-                            IVvideo720Download.setVisibility(View.VISIBLE);
-                        }
-                        if (fragmentedVideo.height == 1080)
-                        {
-                            BTvideo1080.setVisibility(View.VISIBLE);
-                            IVvideo1080Download.setVisibility(View.VISIBLE);
-                        }
-                        if (fragmentedVideo.height == 2160)
-                        {
-                            BTvideo2160.setVisibility(View.VISIBLE);
-                            IVvideo2160Download.setVisibility(View.VISIBLE);
+                            if (fragmentedVideo.height == 720)
+                            {
+                                BTvideo720.setVisibility(View.VISIBLE);
+                                IVvideo720Download.setVisibility(View.VISIBLE);
+                            }
+                            if (fragmentedVideo.height == 1080)
+                            {
+                                BTvideo1080.setVisibility(View.VISIBLE);
+                                IVvideo1080Download.setVisibility(View.VISIBLE);
+                            }
+                            if (fragmentedVideo.height == 2160)
+                            {
+                                BTvideo2160.setVisibility(View.VISIBLE);
+                                IVvideo2160Download.setVisibility(View.VISIBLE);
+                            }
                         }
                     }
                 }

@@ -64,7 +64,7 @@
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:src="@mipmap/ic_logo_pro"
+                android:src="@mipmap/ic_logo"
                 android:contentDescription="@string/logo" />
             <TextView
                 android:layout_width="1dp"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@mipmap/ic_logo_pro"
+                android:background="@mipmap/ic_logo"
                 android:contentDescription="@string/logo" />
             <TextView
                 android:id="@+id/TVloading"

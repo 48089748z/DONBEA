@@ -10,10 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.uge01006.converter.DAOs.X;
 import com.example.uge01006.converter.POJOs.VideoYoutube;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -74,7 +70,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
-        youtubePlayer.initialize(X.DEVELOPER_PRO, this);
+        youtubePlayer.initialize(X.DEVELOPER, this);
         LLconvert.setOnClickListener(view ->
         {
             Intent downloader = new Intent(this, DownloadActivity.class);
@@ -126,7 +122,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 1) {youtubePlayer.initialize(X.DEVELOPER_PRO, this);}
+        if (requestCode == 1) {youtubePlayer.initialize(X.DEVELOPER, this);}
     }
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {}
