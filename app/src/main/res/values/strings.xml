@@ -30,8 +30,9 @@
 
     <!-- DOWNLOAD ACTIVITY -->
     <string name="download_options">Download Options</string>
-    <string name="converting_video">Converting Video …</string>
+    <string name="converting_video">Converting Video</string>
     <string name="audio">Audio</string>
+    <string name="please_wait">Please wait a few seconds …</string>
 
     <!-- HOVER DESCRIPTIONS -->
     <string name="logo">Logo</string>

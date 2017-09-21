@@ -105,7 +105,7 @@ public class DownloadActivity extends AppCompatActivity
     {
         MobileAds.initialize(this, X.ADVERTISER_TEST);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.INTERSTITIAL_TEST);
+        mInterstitialAd.setAdUnitId(X.ADVERTISER_TEST_ADS);
         AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
         mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
@@ -121,6 +121,7 @@ public class DownloadActivity extends AppCompatActivity
     }
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
+        configureDisplayAd();
         String videoTitle = fragmentedVideo.title;
         TVtitleDownload.setText(videoTitle);
         String filename;

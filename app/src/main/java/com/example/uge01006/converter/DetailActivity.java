@@ -41,7 +41,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     private TextView TVconvert;
     private TextView TVwatchYoutube;
     private TextView TVshare;
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +69,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVwatchYoutube = this.findViewById(R.id.TVwatchYoutube);
         TVshare = this.findViewById(R.id.TVshare);
         checkTheme();
-        configureDisplayAd();
         TVtitleDetail.setText(clickedVideo.getTitle());
         TVviewsDetail.setText(addDots(clickedVideo.getViewCount()));
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
@@ -86,16 +84,6 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         });
         LLwatchYoutube.setOnClickListener(view -> {watchOnYoutube();});
         LLshareVideo.setOnClickListener(view -> {share();});
-    }
-
-    public void configureDisplayAd()
-    {
-        MobileAds.initialize(this, X.ADVERTISER_TEST);
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.INTERSTITIAL_TEST);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
-        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
     }
 
     public void share()

@@ -25,4 +25,5 @@
     <string name="app_theme">Apariencia</string>
     <string name="audio_caps">AUDIO</string>
     <string name="all">TODAS</string>
+    <string name="please_wait">Por favor espere ...</string>
 </resources>

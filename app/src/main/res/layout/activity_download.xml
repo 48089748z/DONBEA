@@ -62,7 +62,8 @@
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/GREY_TEXT_LIGHT_SUPER"/>
+            android:textColor="@color/GREY_TEXT_LIGHT_SUPER"
+            android:text="@string/please_wait"/>
         <TextView
             android:layout_width="1dp"
             android:layout_height="match_parent"
