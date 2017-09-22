@@ -46,5 +46,7 @@
     <string name="_720p_hd" translatable="false">720p (HD)</string>
     <string name="_1080p_hd" translatable="false">1080p (HD)</string>
     <string name="_2160p_4k_super_hd" translatable="false">2160p (4K Super HD)</string>
+    <string name="DEVELOPER" translatable="false">264246884097487</string>
+    <string name="PROTOCOL" translatable="false">fb264246884097487</string>
 
 </resources>

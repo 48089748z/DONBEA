@@ -70,7 +70,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
         TVlikesDetail.setText(addDots(clickedVideo.getLikeCount()));
         TVdislikesDetail.setText(addDots(clickedVideo.getDislikeCount()));
         TVuserDetail.setText(clickedVideo.getChannelTitle());
-        youtubePlayer.initialize(X.RED_KEY, this);
+        youtubePlayer.initialize(X.DEVELOPER, this);
         LLconvert.setOnClickListener(view ->
         {
             Intent downloader = new Intent(this, DownloadActivity.class);
@@ -122,7 +122,7 @@ public class DetailActivity extends YouTubeBaseActivity implements  YouTubePlaye
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == 1) {youtubePlayer.initialize(X.RED_KEY, this);}
+        if (requestCode == 1) {youtubePlayer.initialize(X.DEVELOPER, this);}
     }
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult errorReason) {}
