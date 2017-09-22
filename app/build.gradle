@@ -46,6 +46,9 @@ dependencies {
     /**GOOGLE ADVERTISIMENTS*/
     compile 'com.google.android.gms:play-services-ads:11.0.4'
 
+    /**FACEBOOK API*/
+    compile 'com.facebook.android:facebook-android-sdk:4.5.0'
+
     /**NO FUCKING IDEA*/
     compile 'org.aspectj:aspectjrt:1.8.8'
 

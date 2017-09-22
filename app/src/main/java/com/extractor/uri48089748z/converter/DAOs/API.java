@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 public class API
 {
-    private static String DEVELOPER = X.DEVELOPER;
+    private static String DEVELOPER = X.RED_KEY;
     private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private final JsonFactory JSON_FACTORY = new JacksonFactory();
     public final long MAX_ITEMS_RETURNED = 15;

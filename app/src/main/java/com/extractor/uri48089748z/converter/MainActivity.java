@@ -32,6 +32,8 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 public class MainActivity extends AppCompatActivity
 {
     private SharedPreferences settings;
