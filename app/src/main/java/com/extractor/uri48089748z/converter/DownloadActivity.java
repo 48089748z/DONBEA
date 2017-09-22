@@ -116,7 +116,10 @@ public class DownloadActivity extends AppCompatActivity
 
     public void showInterstitialAD()
     {
-        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
+        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded()
+        {
+            try {mInterstitialAd.show();} catch (Exception ignored) {}
+        }});
     }
 
     private YoutubeFragmentedVideo getFragment (int code)

@@ -15,7 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 public class API
 {
-    private static String API_KEY = X.DEVELOPER;
+    private static String DEVELOPER = X.DEVELOPER;
     private final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private final JsonFactory JSON_FACTORY = new JacksonFactory();
     public final long MAX_ITEMS_RETURNED = 15;
@@ -33,7 +33,7 @@ public class API
         try
         {
             YouTube.Videos.List videos = youtube.videos().list("id,snippet,statistics,contentDetails");
-            videos.setKey(API_KEY);
+            videos.setKey(DEVELOPER);
             videos.setId(ids);
             videos.setMaxResults(MAX_ITEMS_RETURNED);
             videos.setFields("items(id,snippet/publishedAt,snippet/title,snippet/description," +
@@ -94,7 +94,7 @@ public class API
         {
             String MUSIC_CHANNEL_ID = "UC-9-kyTW8ZkZNDHQJ6FgpwQ";
             YouTube.Search.List search = youtube.search().list("id");
-            search.setKey(API_KEY);
+            search.setKey(DEVELOPER);
             search.setChannelId(MUSIC_CHANNEL_ID);
             search.setType("video");
             search.setFields("items(id)");
@@ -133,7 +133,7 @@ public class API
     public String getSearchId (String query) throws IOException
     {
         YouTube.Search.List search = youtube.search().list("id");
-        search.setKey(API_KEY);
+        search.setKey(DEVELOPER);
         search.setQ(query);
         search.setType("video");
         search.setFields("items(id)");
