@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.extractor.uri48089748z.converter">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,30 +15,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/DEVELOPER"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/DEVELOPER">
+        </meta-data>
 
-        <activity android:name=".LoginActivity"
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name=".LoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_theme">
-            <intent-filter android:label="@string/app_name">
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+            <intent-filter
+                android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
           </activity>
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".DetailActivity"
             android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait">
         </activity>
+
         <activity
             android:name=".DownloadActivity"
             android:screenOrientation="portrait">
