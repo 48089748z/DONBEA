@@ -130,6 +130,7 @@ public class DownloadActivity extends AppCompatActivity
         }
         return null;
     }
+
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
         if (X.ADVERTISEMENTS){showInterstitialAD();}

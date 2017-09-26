@@ -1,7 +1,7 @@
 package com.extractor.uri48089748z.converter.DAOs;
 public class X
 {
-    public static final boolean ADVERTISEMENTS = true;
+    public static final boolean ADVERTISEMENTS = false;
     public static final String DEVELOPER = "AIzaSyDX1U_SKBOacP_FGY18RaMMue8_eOsdO1g";
 
     public static final String ADVERTISER = "ca-app-pub-4011968681687837~9197030809";
