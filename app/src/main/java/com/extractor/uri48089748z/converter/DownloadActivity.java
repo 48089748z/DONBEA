@@ -116,7 +116,7 @@ public class DownloadActivity extends AppCompatActivity
 
     public void showInterstitialAD()
     {
-        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded()
+        mInterstitialAd.setAdListener(new AdListener() {public void onAdLoaded()
         {
             try {mInterstitialAd.show();} catch (Exception ignored) {}
         }});
