@@ -135,7 +135,8 @@
             android:layout_weight="2"/>
         <TextView
             android:id="@+id/TVlikesDetail"
-            android:layout_width="wrap_content"
+            android:layout_weight="78"
+            android:layout_width="1sp"
             android:layout_height="match_parent"
             android:text="@string/likes"
             android:textColor="@color/GREY_TEXT_LIGHT"
@@ -169,7 +170,8 @@
             android:layout_weight="2"/>
         <TextView
             android:id="@+id/TVdislikesDetail"
-            android:layout_width="wrap_content"
+            android:layout_weight="78"
+            android:layout_width="1sp"
             android:layout_height="match_parent"
             android:text="@string/dislikes"
             android:textColor="@color/GREY_TEXT_LIGHT"

@@ -82,11 +82,6 @@ public class MainActivity extends AppCompatActivity
         items = new ArrayList<>();
         LVadapter = new ListViewAdapter(this, 0, items);
         LVlist.setAdapter(LVadapter);
-        if (X.ADVERTISEMENTS)
-        {
-            configureAds();
-            showInterstitialAD();
-        }
         IVback.setOnClickListener(view -> showToolbarHideKeyboard());
         ETsearch.setOnEditorActionListener((v, actionId, event) ->
         {
@@ -110,21 +105,6 @@ public class MainActivity extends AppCompatActivity
         setFirstExecutionSettings();
         if (settings.getBoolean("custom", true)) {loadCustom(settings.getString("text", "default"));}
         else {loadDefault();}
-    }
-
-    private void configureAds()
-    {
-        MobileAds.initialize(this, X.ADVERTISER);
-
-        /** Configure INTERSTITIAL ADVERTISEMENT */
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(X.ADVERTISER_INTERSTITIAL);
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-    }
-
-    public void showInterstitialAD()
-    {
-        mInterstitialAd.setAdListener(new AdListener(){public void onAdLoaded(){mInterstitialAd.show();}});
     }
     private void setFirstExecutionSettings()
     {
