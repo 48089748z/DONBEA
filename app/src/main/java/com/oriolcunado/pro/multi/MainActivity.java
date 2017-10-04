@@ -24,12 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.oriolcunado.pro.multi.DAOs.API;
-import com.oriolcunado.pro.multi.DAOs.X;
 import com.oriolcunado.pro.multi.POJOs.VideoYoutube;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
@@ -53,7 +48,6 @@ public class MainActivity extends AppCompatActivity
     private LinearLayout LLsearchLayout;
     private LinearLayout LLmain;
     private TextView TVloading;
-    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
