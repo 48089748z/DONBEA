@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi;
+package com.oriolcunado.pro.donbea;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.oriolcunado.pro.multi.POJOs.VideoYoutube;
+import com.oriolcunado.pro.donbea.POJOs.VideoYoutube;
 import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.ParseException;

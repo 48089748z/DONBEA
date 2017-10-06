@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi.POJOs;
+package com.oriolcunado.pro.donbea.POJOs;
 import java.io.Serializable;
 
 public abstract class GenericYoutube implements Serializable

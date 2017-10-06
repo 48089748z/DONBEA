@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi.Extractor;
+package com.oriolcunado.pro.donbea.Extractor;
 
 /**
  * Used in JavaScriptInterface to interact with JsRunner

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.oriolcunado.pro.multi.SettingsActivity"
+    tools:context="com.oriolcunado.pro.donbea.SettingsActivity"
     android:orientation="vertical"
     android:weightSum="100"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"

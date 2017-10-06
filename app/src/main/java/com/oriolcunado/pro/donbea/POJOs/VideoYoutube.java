@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi.POJOs;
+package com.oriolcunado.pro.donbea.POJOs;
 /**
  compile 'com.fasterxml.jackson.core:jackson-core:2.5.+'
  compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.+'

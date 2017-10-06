@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi.Extractor;
+package com.oriolcunado.pro.donbea.Extractor;
 
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;

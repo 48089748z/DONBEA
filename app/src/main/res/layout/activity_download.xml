@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.oriolcunado.pro.multi.DownloadActivity"
+    tools:context="com.oriolcunado.pro.donbea.DownloadActivity"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"
     android:weightSum="100"
     android:id="@+id/LLdownload">

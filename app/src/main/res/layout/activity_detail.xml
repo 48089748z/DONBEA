@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.oriolcunado.pro.multi.DetailActivity"
+    tools:context="com.oriolcunado.pro.donbea.DetailActivity"
     android:orientation="vertical"
     android:weightSum="100"
     android:background="@color/GREY_BACKGROUND_DARK_SUPER"

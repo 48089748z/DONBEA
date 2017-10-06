@@ -1,8 +1,8 @@
-package com.oriolcunado.pro.multi.DAOs;
+package com.oriolcunado.pro.donbea.DAOs;
 /**
  * Created by 48089748z on 25/04/16.
  */
-import com.oriolcunado.pro.multi.POJOs.VideoYoutube;
+import com.oriolcunado.pro.donbea.POJOs.VideoYoutube;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;

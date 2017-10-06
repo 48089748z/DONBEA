@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi;
+package com.oriolcunado.pro.donbea;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.oriolcunado.pro.multi.DAOs.X;
-import com.oriolcunado.pro.multi.POJOs.VideoYoutube;
+import com.oriolcunado.pro.donbea.DAOs.X;
+import com.oriolcunado.pro.donbea.POJOs.VideoYoutube;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oriolcunado.pro.multi">
+    package="com.oriolcunado.pro.donbea">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity
-            android:name="com.oriolcunado.pro.multi.MainActivity"
+            android:name="com.oriolcunado.pro.donbea.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter
                 android:label="@string/app_name">
@@ -26,17 +26,17 @@
         </activity>
 
         <activity
-            android:name="com.oriolcunado.pro.multi.DetailActivity"
+            android:name="com.oriolcunado.pro.donbea.DetailActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.oriolcunado.pro.multi.SettingsActivity"
+            android:name="com.oriolcunado.pro.donbea.SettingsActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.oriolcunado.pro.multi.DownloadActivity"
+            android:name="com.oriolcunado.pro.donbea.DownloadActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />

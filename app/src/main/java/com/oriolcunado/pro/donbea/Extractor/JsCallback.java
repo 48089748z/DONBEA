@@ -1,4 +1,4 @@
-package com.oriolcunado.pro.multi.Extractor;
+package com.oriolcunado.pro.donbea.Extractor;
 
 /**
  * Interface for passing code that will be executed after the JS has finished
