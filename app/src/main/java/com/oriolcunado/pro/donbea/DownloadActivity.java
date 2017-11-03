@@ -1,5 +1,7 @@
 package com.oriolcunado.pro.donbea;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.DownloadManager;
@@ -7,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
@@ -131,32 +134,45 @@ public class DownloadActivity extends AppCompatActivity
         return null;
     }
 
+
     private void download(final YoutubeFragmentedVideo fragmentedVideo)
     {
+        String format = getResources().getString(R.string.video);
+        if (fragmentedVideo.videoFile == null) {format = getResources().getString(R.string.audio);}
         if (X.ADVERTISEMENTS){showInterstitialAD();}
-        String videoTitle = fragmentedVideo.title;
-        TVtitleDownload.setText(videoTitle);
-        String filename;
-        if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
-        else {filename = videoTitle;}
-        filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
-        filename += (fragmentedVideo.height == -1) ? "" : "-" + fragmentedVideo.height + "p";
-        String downloadIds = "";
-        boolean hideAudioDownloadNotification = false;
-        if (fragmentedVideo.videoFile != null)
-        {
-            downloadIds += downloadFromUrl(fragmentedVideo.videoFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.videoFile.getFormat().getExt(), false);
-            downloadIds += "-";
-            hideAudioDownloadNotification = true;
-        }
-        if (fragmentedVideo.audioFile != null)
-        {
-            downloadIds += downloadFromUrl(fragmentedVideo.audioFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
-        }
-        if (fragmentedVideo.audioFile != null)
-        {
-            cacheDownloadIds(downloadIds);
-        }
+        new AlertDialog.Builder(this)
+                .setMessage("Download "+fragmentedVideo.title+" in "+format+" format?")
+                .setPositiveButton("Yes", (dialog, which) ->
+                {
+                    String videoTitle = fragmentedVideo.title;
+                    TVtitleDownload.setText(videoTitle);
+                    String filename;
+                    if (videoTitle.length() > 55) {filename = videoTitle.substring(0, 55);}
+                    else {filename = videoTitle;}
+                    filename = filename.replaceAll("\\\\|>|<|\"|\\||\\*|\\?|%|:|#|/", "");
+                    filename += (fragmentedVideo.height == -1) ? "" : "-" + fragmentedVideo.height + "p";
+                    String downloadIds = "";
+                    boolean hideAudioDownloadNotification = false;
+                    if (fragmentedVideo.videoFile != null)
+                    {
+                        downloadIds += downloadFromUrl(fragmentedVideo.videoFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.videoFile.getFormat().getExt(), false);
+                        downloadIds += "-";
+                        hideAudioDownloadNotification = true;
+                    }
+                    if (fragmentedVideo.audioFile != null)
+                    {
+                        downloadIds += downloadFromUrl(fragmentedVideo.audioFile.getUrl(), videoTitle, filename + "." + fragmentedVideo.audioFile.getFormat().getExt(), hideAudioDownloadNotification);
+                    }
+                    if (fragmentedVideo.audioFile != null)
+                    {
+                        cacheDownloadIds(downloadIds);
+                    }
+                    this.finish();
+                })
+                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                .setIcon(R.drawable.search_48_white)
+                .show();
+
     }
     private void getYoutubeVideoFileURL(String link)
     {
